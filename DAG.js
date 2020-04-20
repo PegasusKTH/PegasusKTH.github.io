@@ -19,7 +19,9 @@ class Node {
     for (i = 0; i < this.prerequisites.length; i++) {
 
       temp = new Node(prerequisites[i]);
-      
+
+      temp = temp.buildTree();
+
       addChild(temp);
 
 
