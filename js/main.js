@@ -6,6 +6,7 @@ class Node {
         this.courseCode = courseCode;
         this.prerequisites = [];
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode; 
+        this.parentNode = null;
     }
 
     jsonToArray(){
@@ -37,7 +38,8 @@ class Node {
 
       for (var i = 0; i < reqArr.length; i++){
         var temp = new Node(reqArr[i]);
-
+        
+        temp.parentNode = this;
         this.addChild(temp);
         temp.buildTree();
       }
