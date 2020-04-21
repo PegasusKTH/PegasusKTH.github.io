@@ -5,6 +5,7 @@ class Node {
     constructor(courseCode){
         this.courseCode = courseCode;
         this.prerequisites = [];
+        this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode; 
     }
 
     jsonToArray(){
