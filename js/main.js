@@ -1,30 +1,47 @@
 
 document.write("hello world123");
 
+globalIDcount = 0;
 class Node {
     constructor(courseCode){
         this.courseCode = courseCode;
         this.prerequisites = [];
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
+        this._json_id = globalIDcount++;
     }
 
     // formats singular node to array format for Treant.js
     // format according to chart simple_chart_config, see treantTree.js and treant docs
     formatNode() {
-      var arr = {
-        parent: this.parentNode,
-      	text: { name: this.courseCode }
+
+      if (this.parentNode == null) {
+        var arr = {
+          _json_id: this._json_id,
+          text: { name: this.courseCode }
+        };
+
+        return arr;
+      } else {
+
+        var arr = {
+          _json_id: this._json_id,
+          parent: this.parentNode,
+          text: { name: this.courseCode }
+        };
+
+        return arr;
+
       }
-      return arr;
     }
 
     // converts all nodes to treant array format and return array with all converted nodes
     exportTree() {
+
       // add current node to array
       var arr = [this.formatNode()];
-      for (var i = 0; i < this.prerequisites[i]; i++) {
-        arr.concat(this.prerequisites[i].exportTree());
+      for (var i = 0; i < this.prerequisites.length; i++) {
+        arr = arr.concat(this.prerequisites[i].exportTree());
       }
 
       return arr;
@@ -68,7 +85,5 @@ class Node {
       }
     }
 }
-
-
 
 temp1 = new Node("II1305");
