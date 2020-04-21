@@ -37,6 +37,7 @@ class Node {
             this.buildTree(temp);
         }
     }
+  }
 }
 
 
