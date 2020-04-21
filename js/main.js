@@ -9,12 +9,32 @@ class Node {
         this.parentNode = null;
     }
 
+    // formats singular node to array format for Treant.js
+    // format according to chart simple_chart_config, see treantTree.js and treant docs
+    formatNode() {
+      var arr = {
+        parent: this.parentNode,
+      	text: { name: this.courseCode }
+      }
+      return arr;
+    }
+
+    // converts all nodes to treant array format and return array with all converted nodes
+    exportTree() {
+      // add current node to array
+      var arr = [this.formatNode()];
+      for (var i = 0; i < this.prerequisites[i]; i++) {
+        arr.concat(this.prerequisites[i].exportTree());
+      }
+
+      return arr;
+    }
+
+    // temp function to represent patrik&jing and erik&celine features
+    // input course code
+    // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
       var courseCode = this.courseCode;
-
-        //This temp code is where Patrik and Jings code will be written
-        //It will in turn call for Erik and Celines code
-        //It will at last return an array string with prerequisites for the given course
 
         if (courseCode == "II1305") {
           return ["ID1018", "ID1020", "IS1200"];
@@ -28,10 +48,13 @@ class Node {
 
     }
 
+    // adds child node to parent node prerequisites array
     addChild(node){
         this.prerequisites.push(node);
     }
 
+    // recursively goes through all prerequisites according to json files.
+    // fully constructs tree object for later export
     buildTree(){
 
       var reqArr = this.jsonToArray();
