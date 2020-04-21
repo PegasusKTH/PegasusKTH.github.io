@@ -4,16 +4,15 @@ document.write("hello world123");
 class Node {
     constructor(courseCode){
         this.courseCode = courseCode;
-        //courseName = name; //temp
-        //courseColor = color; //temp
         this.prerequisites = [];
     }
 
     jsonToArray(){
       var courseCode = this.courseCode;
-        //patrikjing
-        //erikceline
-        //temp code returns three strings depending on called number
+
+        //This temp code is where Patrik and Jings code will be written
+        //It will in turn call for Erik and Celines code
+        //It will at last return an array string with prerequisites for the given course
 
         if (courseCode == "II1305") {
           return ["ID1018", "ID1020", "IS1200"];
@@ -45,13 +44,5 @@ class Node {
 }
 
 
-
-
-test = function(firstCourseID){
-    for (var i = 0; i < 3; i++){
-        Node.buildTree(Node.jsonToArray(i));
-    }
-    //Node.buildTree(Node.jsonToArray(firstCourseID))
-}
 
 temp1 = new Node("II1305");
