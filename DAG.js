@@ -28,14 +28,14 @@ class Node {
         this.prerequisites.push(node);
     }
 
-    buildTree(stringArray){
-        for (i=0; i < stringArray.prerequisites.length; i++){
-            temp = new Node(stringArray.prerequisites[i]);
-            temp.prerequisites = stringArray.jsonToArray(stringArray.prerequisites[i]);
+    buildTree(){
+      for (i=0; i < this.prerequisites.length; i++){
+        temp = new Node(this.prerequisites[i]);
+        temp.prerequisites = this.jsonToArray(this.prerequisites[i]);
 
-            this.addChild(temp);
-            this.buildTree(temp);
-        }
+        this.addChild(temp);
+        temp.buildTree();
+      }
     }
   }
 }
