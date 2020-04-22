@@ -1,6 +1,4 @@
 
-document.write("hello world123");
-
 globalIDcount = 0;
 class Node {
     constructor(courseCode){
