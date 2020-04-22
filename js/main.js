@@ -42,7 +42,7 @@ function searching() {
       for (i = 0; i < requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g).length; i++) {
         requiredCoursesArray.push((requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)[i]));
         //index zero since push pushes to first place in the array
-        document.write(requiredCoursesArray[0] + " ");
+        //document.write(requiredCoursesArray[0] + " ");
       }
 
       //finds all coursecodes in the recommended courses string
@@ -51,7 +51,7 @@ function searching() {
       for (i = 0; i < recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g).length; i++) {
         recommendedCoursesArray.push((recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)[i]));
         //index zero since push pushes to first place in the array
-        document.write(recommendedCoursesArray[0] + " ");
+        //document.write(recommendedCoursesArray[0] + " ");
       // console.log(recommendedCoursesArray[0] + " ");
       }
 
@@ -62,7 +62,7 @@ function searching() {
             // recommendedCoursesArray.push(namn);
             var retArray = [namn , requiredCoursesArray, recommendedCoursesArray]
             console.log(retArray);
-
+            document.write(retArray);
             return retArray;
 
      }
