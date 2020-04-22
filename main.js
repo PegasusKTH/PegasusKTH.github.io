@@ -1,4 +1,5 @@
 //( ͡° ͜ʖ ͡°)
+//(  ͡°  ͜ ʖ  ͡° ) w i d e  l e n n y  i s  h e r e  t o  t e s t  i f  c e l i n e  c a n  g i t
 function searching() {
   var requiredCourse;
   var recommendedCourse;
@@ -53,7 +54,7 @@ function searching() {
             var namn = new String(jsonOBJ.course.title);
             // recommendedCoursesArray.push(namn);
             console.log([namn , requiredCoursesArray, recommendedCoursesArray])
-      
+
             return [namn , requiredCoursesArray, recommendedCoursesArray];
 
      }
