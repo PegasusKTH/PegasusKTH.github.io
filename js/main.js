@@ -60,9 +60,10 @@ function searching() {
     arrays with required and recommended courses*/
             var namn = new String(jsonOBJ.course.title);
             // recommendedCoursesArray.push(namn);
-            console.log([namn , requiredCoursesArray, recommendedCoursesArray])
+            var retArray = [namn , requiredCoursesArray, recommendedCoursesArray]
+            console.log(retArray);
 
-            return [namn , requiredCoursesArray, recommendedCoursesArray];
+            return retArray;
 
      }
 
