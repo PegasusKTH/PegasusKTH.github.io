@@ -71,7 +71,7 @@ function searching() {
     ).catch(error => document.write(" HI"))
   }
   catch(err) {
-    document.write("HIII");
+    return([]);
     // document.getElementById("demo").innerHTML = err.message;
   }
 }
