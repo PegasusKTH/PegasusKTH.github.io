@@ -1,7 +1,16 @@
+
 // config for tree container div
 // see html
 var config = {
-	container: "#chart"
+	container: "#chart",
+
+	node: {
+		collapsable: true
+	},
+	connectors: {
+		type: 'step'
+	}
+
 };
 
 // temp1 temporary node. make this into function call
