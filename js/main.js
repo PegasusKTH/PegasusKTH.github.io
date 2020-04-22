@@ -70,7 +70,10 @@ function searching() {
 
 
     //).catch(error => console.error(error))
-    ).catch(error => document.write(" HI"))
+    ).catch(function(){
+      console.log("klar")
+      return([]);})
+      }
   }
   catch(err) {
     return([]);
