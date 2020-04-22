@@ -29,20 +29,26 @@ function searching() {
           var recommendedCourse = jsonOBJ.course.prerequisites;
       }
 
+//reqArrBoi = requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g);
+
+//for (var i = 0; i < reqArrBoi.length; i++) {
+//  console.log(reqArrBoi[i]);
+//}
+
       //finds all coursecodes in the required courses string
       var i;
-
-      for (i = 0; i < requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g).length; i++) {
-        requiredCoursesArray.push((requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)[i]));
+      var reqArray = requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g);
+      for (i = 0; i < reqArray.length; i++) {
+        requiredCoursesArray.push((reqArray[i]));
         //index zero since push pushes to first place in the array
         document.write(requiredCoursesArray[0] + " ");
       }
 
       //finds all coursecodes in the recommended courses string
       var i;
-
-      for (i = 0; i < recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g).length; i++) {
-        recommendedCoursesArray.push((recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)[i]));
+      var recomArray = recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g);
+      for (i = 0; i < recomArray.length; i++) {
+        recommendedCoursesArray.push((recomArray[i]));
         //index zero since push pushes to first place in the array
         document.write(recommendedCoursesArray[0] + " ");
       // console.log(recommendedCoursesArray[0] + " ");
