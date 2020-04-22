@@ -20,7 +20,7 @@ function tempFunction() {
 
     return rootNode;
 }
-
+// types out list element - not collapsable
 function listElementNoChild(node) {
     document.writeln(
     "<li>"
@@ -29,7 +29,7 @@ function listElementNoChild(node) {
         + node.courseName 
     +"</li>");
 }
-
+// types out list element - collapsable
 function listElementWithChild(node) {
     document.writeln(
     '<li><span class="caret">'
