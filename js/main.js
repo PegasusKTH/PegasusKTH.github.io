@@ -1,6 +1,4 @@
 
-document.write("hello world123");
-
 globalIDcount = 0;
 class Node {
     constructor(courseCode){
@@ -52,7 +50,6 @@ class Node {
     // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
       var courseCode = this.courseCode;
-
         if (courseCode == "II1305") {
           return ["ID1018", "ID1020", "IS1200"];
         } else if (courseCode == "ID1018") {
@@ -72,7 +69,7 @@ class Node {
 
     // recursively goes through all prerequisites according to json files.
     // fully constructs tree object for later export
-    buildTree(){
+    buildTree() {
 
       var reqArr = this.jsonToArray();
 
@@ -83,7 +80,9 @@ class Node {
         this.addChild(temp);
         temp.buildTree();
       }
+      return this;
     }
+
 }
 
 temp1 = new Node("II1305");
