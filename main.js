@@ -1,5 +1,6 @@
 //( ͡° ͜ʖ ͡°)
 //(  ͡°  ͜ ʖ  ͡° ) w i d e  l e n n y  i s  h e r e  t o  t e s t  i f  c e l i n e  c a n  g i t
+//(° ͜ʖ°) she could
 function searching() {
   var requiredCourse;
   var recommendedCourse;
