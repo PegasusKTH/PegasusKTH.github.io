@@ -1,0 +1,87 @@
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-top: 50px;
+}
+
+/*body {
+  background-image: url('image/sky.jpeg');
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}*/
+
+#pegasus{
+  height: 120px;
+  width: 140px;
+}
+
+
+h1{
+  color: black;
+  text-align: center;
+  font-size: 55px;
+}
+
+#search{
+  text-align: center;
+}
+
+#button1{
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#button1 img{
+  height: 30px;
+  width: 30px;
+}
+
+#coursecode{
+  border: 0;
+  border-bottom: 1px solid black;
+  outline: 0;
+  font-size: 16px;
+  background:transparent;
+}
+
+
+#footer{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:80px;
+  background:#298fca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+ul#footeritem li {
+  display:inline;
+}
+
+li{
+   margin: 50px;
+}
+
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a{
+  color: white;
+}

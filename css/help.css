@@ -1,0 +1,47 @@
+h1{
+  color: black;
+  text-align: left;
+  font-size: 40px;
+}
+
+#pegasus{
+  height: 72px;
+  width: 84px;
+}
+
+.textarea{
+  color: black;
+  font-size: 20px;
+}
+
+#search{
+  height: 90px;
+  width: 295px;
+}
+
+#footer{
+  bottom:0;
+  width:100%;
+  height:80px;
+  background:#298fca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul#footeritem li {
+  display:inline;
+}
+
+li{
+   margin: 50px;
+   color: white;
+}
+
+a{
+  color: white;
+}
+
+#graylink{
+  color: gray;
+}
