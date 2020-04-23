@@ -20,6 +20,7 @@ function searching() {
       console.log("something went right: " + jsondata)
     );
 
+
     //
     // var x = document.getElementById("coursecode").value;
     // /*fetch the json file from the yrl of the course code*/
