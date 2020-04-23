@@ -1,4 +1,3 @@
-
 // config for tree container div
 // see html
 var config = {
@@ -22,6 +21,6 @@ var simple_chart_config = [config].concat(arr);
 
 
 function getRootNode() {
-	console.log("return");
+	// console.log("return");
 	return listIntegration;
 }
