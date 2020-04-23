@@ -10,6 +10,8 @@ function searching() {
 
   try {
 
+    var x = document.getElementById("coursecode").value;
+    
     async function getJsonAsync(x) {
       let u = await fetch('https://api.kth.se/api/kopps/v2/course/'+ x +'/detailedinformation');
       let jsondata = await u.json();
@@ -18,7 +20,9 @@ function searching() {
     }
 
     getJsonAsync('x').then( jsondata =>
-      console.log("something went right: " + jsondata)
+
+
+      //console.log("something went right: " + jsondata)
     );
 
 
