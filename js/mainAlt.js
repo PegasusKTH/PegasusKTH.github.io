@@ -13,10 +13,11 @@ function searching() {
     async function getJsonAsync(x) {
       let u = await fetch('https://api.kth.se/api/kopps/v2/course/'+ x +'/detailedinformation');
       let jsondata = await u.json();
+      console.log("it is actually doing something");
       return jsondata;
     }
 
-    getUserAsync('x').then( jsondata =>
+    getJsonAsync('x').then( jsondata =>
       console.log("something went right: " + jsondata)
     );
 
@@ -69,9 +70,9 @@ function searching() {
     //  }
     //
 
-    ).catch(function(){
-      console.log("klar")
-      return([]);})
+    // ).catch(function(){
+    //   console.log("klar")
+    //   return([]);})
       }
   catch(err) {
     return([]);
