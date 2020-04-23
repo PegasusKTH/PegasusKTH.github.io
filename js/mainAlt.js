@@ -8,23 +8,21 @@ function searching() {
   var recommendedCoursesArray = [];
   var requiredCoursesArray = [];
 
-  try {
-
     var x = document.getElementById("coursecode").value;
-    
+
     async function getJsonAsync(x) {
       let u = await fetch('https://api.kth.se/api/kopps/v2/course/'+ x +'/detailedinformation');
       let jsondata = await u.json();
-      console.log("it is actually doing something");
-      return jsondata;
+      var jsonOBJ = jsondata;
+      return jsonOBJ;
     }
 
-    getJsonAsync('x').then( jsondata =>
-
-
-      //console.log("something went right: " + jsondata)
+    getJsonAsync('x')
+    .then(
+        jsonOBJ => console.log(jsonOBJ)
     );
 
+}
 
     //
     // var x = document.getElementById("coursecode").value;
@@ -65,11 +63,11 @@ function searching() {
     // /*pushing name of the course searched for, so that the index 0 of courses
     // array always contains the name of the searched course, and the rest is two
     // arrays with required and recommended courses*/
-    //         var namn = new String(jsonOBJ.course.title);
-    //             // recommendedCoursesArray.push(namn);
-    //         console.log([namn , requiredCoursesArray, recommendedCoursesArray]);
+    //         var name = new String(jsonOBJ.course.title);
+    //             // recommendedCoursesArray.push(name);
+    //         console.log([name , requiredCoursesArray, recommendedCoursesArray]);
     //
-    //         return [namn , requiredCoursesArray, recommendedCoursesArray];
+    //         return [name , requiredCoursesArray, recommendedCoursesArray];
     //
     //  }
     //
@@ -77,9 +75,8 @@ function searching() {
     // ).catch(function(){
     //   console.log("klar")
     //   return([]);})
-      }
-  catch(err) {
-    return([]);
-    // document.getElementById("demo").innerHTML = err.message;
-  }
-}
+  //     }
+  // catch(err) {
+  //   return([]);
+  //   // document.getElementById("demo").innerHTML = err.message;
+  // }
