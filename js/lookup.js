@@ -44,3 +44,39 @@ function lookup(courseID){
   }
 
 }
+
+
+
+
+
+
+class Node {
+  constructor(courseCode){
+    this.courseName;
+    this.courseCode = courseCode;
+    this.prerequisites = [];
+    this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
+    this.parentNode = null;
+    this._json_id = globalIDcount++;
+  }
+  buildTree() {
+
+    var reqArr = this.jsonToArray();
+
+    for (var i = 0; i < reqArr.length; i++){
+      var temp = new Node(reqArr[i]);
+
+      temp.parentNode = this;
+      this.addChild(temp);
+      temp.buildTree();
+    }
+    return this;
+  }
+}
+
+function nodifyLookup(courseCode){
+  var temp = lookup(courseCode);
+  var lookupNode = new Node(courseCode);
+  lookupNode.courseName = temp[0];
+  lookupNode.prerequisites = temp[2];
+}
