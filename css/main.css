@@ -2,8 +2,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  margin-top: 50px;
+  /* width: 50%; */
+  /* margin-top: 50px; */
 }
 
 /*body {
@@ -15,16 +15,19 @@
   background-size: cover;
 }*/
 
-#pegasus{
-  height: 120px;
-  width: 140px;
+
+#pegasus {
+  /* height: 120px; */
+  margin-top: 1%;
+  margin-left: 37.5%
 }
 
 
 h1{
   color: black;
   text-align: center;
-  font-size: 55px;
+  font-size: 500%;
+  line-height: 100%;
 }
 
 #search{
@@ -39,6 +42,7 @@ h1{
   text-decoration: none;
   display: inline-block;
   font-size: 10px;
+
 }
 
 #button1 img{
@@ -57,9 +61,10 @@ h1{
 
 #footer{
   position:absolute;
-  bottom:0;
-  width:100%;
+  bottom: 0;
+  /* width:100%; converted to bootstrap grid system in index */
   height:80px;
+  /* margin-top: -80px; */
   background:#298fca;
   display: flex;
   align-items: center;
@@ -84,4 +89,22 @@ a:link {
 
 a{
   color: white;
+}
+
+@media (max-width: 1000px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+}
+
+@media (max-width: 750px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
 }
