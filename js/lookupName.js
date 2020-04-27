@@ -24,7 +24,7 @@ function lookupName(courseName) {
 //output: generate one button for each course code
 function buttonGenerator(courseArr){
   for(i = 0; i < courseArr.length; i++){
-    document.write('<button type="button" onclick="call funcktion">'  + courseArr[i] + '</button>'); //replace “call function” with proper function that will generate a tree with the given course code
+    document.write('<a href="graph.html"><button type="button" onclick="buildtree() function">'  + courseArr[i] + '</button></a>'); //replace “buildtree() function” with proper function that will generate a tree with the given course code
 
   }
 }
