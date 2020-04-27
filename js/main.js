@@ -1,4 +1,3 @@
-
 globalIDcount = 0;
 class Node {
     constructor(courseCode){
@@ -161,3 +160,4 @@ var root = null;
 
 
 temp1 = new Node("II1305");
+
