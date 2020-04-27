@@ -27,6 +27,7 @@ function searching(data){
   courseName = new String(data.course.title);
   finalResultArray = [courseName, eligArray, preqArray];
 
+  console.log("finalResultArray: " + finalResultArray);
   return finalResultArray;
 }
 
@@ -54,29 +55,55 @@ class Node {
   constructor(courseCode){
     this.courseName;
     this.courseCode = courseCode;
-    this.prerequisites = [];
+    this.prerequisites = [];  // Prerequisites
+    this.eligibility = [];    // Recommended
     this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
     this.parentNode = null;
     this._json_id = globalIDcount++;
   }
+
+  // Build tree from rootnode with prerequisite-list and eligibility-list
   buildTree() {
+    // prerequisite-list
+    for (var i = 0; i < this.prerequisites.length; i++){
+      var tempPrereq = new Node(this.prerequisites[i]);
+      tempPrereq.parentNode = this;
+      this.prerequisites.push(tempPrereq);
 
-    var reqArr = this.jsonToArray();
+      tempPrereq.buildTree();
+    }
+    // eligibility-list
+    for (let j = 0; j < this.eligibility.length; j++) {
+      var tempElig = new Node(this.eligibility[j]);
+      tempElig.parentNode = this;
+      this.eligibility.push(tempElig)
 
-    for (var i = 0; i < reqArr.length; i++){
-      var temp = new Node(reqArr[i]);
-
-      temp.parentNode = this;
-      this.addChild(temp);
-      temp.buildTree();
+      tempElig.buildTree();
     }
     return this;
   }
 }
-
+// Takes the array with course information and 
+// creates a Node to be root node in the graph
 function nodifyLookup(courseCode){
   var temp = lookup(courseCode);
-  var lookupNode = new Node(courseCode);
-  lookupNode.courseName = temp[0];
-  lookupNode.prerequisites = temp[2];
+  var rootNode = new Node(courseCode);
+  rootNode.courseName = temp[0];
+  rootNode.eligibility = temp[1];
+  rootNode.prerequisites = temp[2];
+
+  return rootNode;
 }
+
+// Maybe needs a return statement????
+function searchbox() {
+  mainRootNode = new nodifyLookup("inputfromsearchbox");
+  mainRootNode.buildTree();
+}
+
+/*
+lookup("1305") --> searching(lookup("1305")) 
+@param: json @output: return example: ["name", ["course eligibilities"], ["course prerequisites"]]
+
+
+*/
