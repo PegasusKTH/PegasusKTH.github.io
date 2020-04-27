@@ -1,8 +1,10 @@
 /* required LIB STYLES */
 /* .Treant se automatski dodaje na svaki chart conatiner */
 .Treant { position: relative; overflow: hidden; padding: 0 !important;}
-.Treant > .node {background-color: lightblue; position: absolute; border: 1px solid black; padding-bot: 3px; padding-top: 3px; padding-left: 5px; padding-right: 5px;}
-.Treant > .pseudo { position: absolute; display: block; visibility: hidden; }
+.Treant > .node {position: absolute; background-color: lightblue; background-position right bottom, left top; border-radius: 11px; 
+padding-left: 5px; padding-right: 5px; box-shadow: 5px 5px 5px grey; transition: all 0.5s; cursor: pointer;
+font-family: "Arial";}
+.Treant > .pseudo { position: absolute; display: block; visibility: hidden;}
 .Treant.Treant-loaded .node,
 .Treant.Treant-loaded .pseudo { visibility: visible; }
 .Treant > .pseudo { width: 0; height: 0; border: none; padding: 0; }
