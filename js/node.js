@@ -1,4 +1,4 @@
-globalIDcount = 0;
+//globalIDcount = 0;
 
 class Node { // Originally Edvin/Alex
     constructor(courseCode){
@@ -8,21 +8,22 @@ class Node { // Originally Edvin/Alex
       this.eligibility = [];    // REQUIRED
       this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
       this.parentNode = null;
-      this._json_id = globalIDcount++;
+      this._json_id = 0;
     }
   
     // Build tree from rootnode with prerequisite-list and eligibility-list
     // Not implemented yet, takes first root node and recursively builds a tree
     buildTree() {
-      var replacerArray = [];
+      console.log(globalIDcount);
 
-      for(var i = 0; i < this.eligibility[0].length; i++){
-        replacerArray.push(nodifyLookup(this.eligibility[0][i]));
+      // replaces string children array with node child array for all index
+      for(var i = 0; i < this.eligibility.length; i++){
+        this.eligibility[i] = nodifyLookup(this.eligibility[i]);
       }
-      this.eligibility = replacerArray;
-      
-      for(var i = 0; i < this.eligibility[0].length; i++){
-        this.eligibility[0][i].buildTree();
+
+      for(var i = 0; i < this.eligibility.length; i++){
+        this.eligibility[i].buildTree();
+        this.eligibility[i].parentNode = this;
       }
 
       return this;
@@ -51,20 +52,26 @@ class Node { // Originally Edvin/Alex
   
         }
     }
-    // NEEDS TO ADD ELIGIBILITY ARRAY SUPPORT
-    exportTree() {
-        // add current node to array
-        var arr = [this.formatNode()];
-        for (var i = 0; i < this.prerequisites.length; i++) {
-          arr = arr.concat(this.prerequisites[i].exportTree());
-        }
+    // NEEDS TO ADD PREREQUISITE ARRAY SUPPORT
+    // exportTree() {
+    //     // add current node to array
+    //     var arr = [this.formatNode()];
+    //     for (var i = 0; i < this.eligibility.length; i++) {
+    //       arr = arr.concat(nodifyLookup(this.eligibility[i]).exportTree());
+    //     }
   
+    //     return arr;
+    //   }
+
+      exportTree(){
+        var arr = [this.formatNode()];
+        
+        for (var i = 0; i < this.eligibility.length; i++) {
+          arr = arr.concat(this.eligibility[i].exportTree());
+        }
         return arr;
       }
   }
-
-
-
 
   // Takes the array with course information and 
   // creates a Node to be root node in the graph
@@ -86,4 +93,4 @@ class Node { // Originally Edvin/Alex
   
   */
 
- temp1 = new Node("II1305");
+//  temp1 = new Node("II1305");

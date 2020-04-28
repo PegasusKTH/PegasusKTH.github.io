@@ -13,7 +13,10 @@ function searching(data){ // Originally Erik/Celine
   // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
   if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
     requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
-    eligArray = new Array(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g))
+    eligArray = requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)
+    if (eligArray == null){
+      eligArray = [];
+    }
   }
 
   //this one finds the prerequisites (recommended courses)
@@ -21,7 +24,10 @@ function searching(data){ // Originally Erik/Celine
   if(data.course.prerequisites){
     var recommendedCourse = data.course.prerequisites;
     //finds all coursecodes in the recommended courses string
-    preqArray = new Array(recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));//recs;
+    preqArray = recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g);//recs;
+    if (preqArray == null){
+      preqArray = [];
+    }
   }
 
   courseName = new String(data.course.title);
