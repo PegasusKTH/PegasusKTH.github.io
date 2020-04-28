@@ -14,7 +14,8 @@ var config = {
 
 // temp1 temporary node. make this into function call
 var listIntegration = nodifyLookup("II1305").buildTree();
-var arr = listIntegration.exportTree();
+//var wegotIDs = assignIDs(listIntegration);
+var nodeStructure = listIntegration.exportTree();
 
 //var rootNode = nodifyLookup("II1305").buildTree();
 // var arr = rootNode.exportTree();
@@ -23,8 +24,7 @@ var arr = listIntegration.exportTree();
 // var arr = temp1.exportTree();
 
 // combine config with tree for treant graph generation
-var simple_chart_config = [config].concat(arr);
-
+var simple_chart_config = [config].concat(nodeStructure);
 
 function getRootNode() {
 	// console.log("return");

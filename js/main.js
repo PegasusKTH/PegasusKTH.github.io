@@ -56,7 +56,7 @@ class Node {
         } else if (courseCode == "ID1018") {
           return []
         } else if (courseCode == "ID1020") {
-          return ["ID1018", "IS1200"]
+          return ["ID1018"]
         } else if (courseCode == "IS1200") {
           return []
         }
