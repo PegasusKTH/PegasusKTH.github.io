@@ -4,7 +4,7 @@
 // return example: ["name", ["course eligibilities"], ["course prerequisites"]]
 function searching(data){ // Originally Erik/Celine
   var eligArray = [];
-  var requiredCourse;
+  var requiredCourse = "";
   var preqArray = [];
   var courseName;
   var finalResultArray = [];
@@ -13,8 +13,8 @@ function searching(data){ // Originally Erik/Celine
   // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
   if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
     requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
+    eligArray = new Array(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g))
   }
-  eligArray = new Array(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g))
 
   //this one finds the prerequisites (recommended courses)
   // can be found in the KOPPS API somewhere

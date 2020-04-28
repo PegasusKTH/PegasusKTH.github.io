@@ -14,7 +14,18 @@ class Node { // Originally Edvin/Alex
     // Build tree from rootnode with prerequisite-list and eligibility-list
     // Not implemented yet, takes first root node and recursively builds a tree
     buildTree() {
-        console.log(this.eligibility);
+      var replacerArray = [];
+
+      for(var i = 0; i < this.eligibility[0].length; i++){
+        replacerArray.push(nodifyLookup(this.eligibility[0][i]));
+      }
+      this.eligibility = replacerArray;
+      
+      for(var i = 0; i < this.eligibility[0].length; i++){
+        this.eligibility[0][i].buildTree();
+      }
+
+      return this;
     }
 
     // formats singular node to array format for Treant.js
@@ -50,35 +61,22 @@ class Node { // Originally Edvin/Alex
   
         return arr;
       }
-  
   }
+
+
+
+
   // Takes the array with course information and 
   // creates a Node to be root node in the graph
   function nodifyLookup(courseCode){
-    var temp = lookup(courseCode);
+    var temp = lookup(courseCode); //here we have a JSON obj
     var rootNode = new Node(courseCode);
     
     rootNode.courseName = temp[0];
-    rootNode.eligibility = stringToArray(temp[1]);
-    rootNode.prerequisites = stringToArray(temp[2]);
+    rootNode.eligibility = temp[1];
+    rootNode.prerequisites = temp[2];
   
     return rootNode;
-  }
-
-  // takes an array of coursecodes in array format and returns a node array
-  // ex; ["ID1020", "II1305", "SF1610"] -> [node ID1020, node II1305, node SF1610] DOES NOT DO THIS!!!
-  function stringToArray(array){
-    var nodeArray = [];
-    for (i = 0; i < array.length; i++){
-        nodeArray.push(new Node(array[i]));
-    }
-    return nodeArray;
-  }
-  
-  // Maybe needs a return statement????
-  function searchbox() {
-    mainRootNode = new nodifyLookup("inputfromsearchbox");
-    mainRootNode.buildTree();
   }
   
   /*
