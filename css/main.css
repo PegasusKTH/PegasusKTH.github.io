@@ -2,8 +2,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  margin-top: 50px;
+  /* width: 50%; */
+  /* margin-top: 50px; */
 }
 
 /*body {
@@ -15,45 +15,58 @@
   background-size: cover;
 }*/
 
-#pegasus{
-  height: 120px;
-  width: 140px;
+#pegasus {
+  /* height: 120px; */
+  margin-top: 1%;
+  margin-left: 37.5%;
+  margin-right: 37.5%;
+
 }
 
-
 h1{
-  color: black;
+  color: #2d3436;
   text-align: center;
-  font-size: 55px;
+  font-size: 500%;
+  line-height: 100%;
+}
+h2{
+  color: #2d3436;
+  text-align: center;
+  margin-top: 0;
 }
 
 #search{
   text-align: center;
+  margin-left: 33%;
+  margin-top: 4%;
 }
 
 #button1{
   border: none;
   background-color: white;
   color: white;
-  padding: 20px 32px 10px 0px;
+  padding: 0px 32px 10px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 10px;
+
 }
 
 #button1 img{
-  height: 30px;
-  width: 58px;
+  height: 100%;
+  width: 100%;
 }
 
 #coursecode{
   border: 0;
   border-bottom: 1px solid black;
   outline: 0;
-  font-size: 16px;
+  font-size: 20px;
   background:transparent;
+  /* margin-left: 20%; */
 }
+
 
 
 #footer{
@@ -67,17 +80,14 @@ h1{
   justify-content: center;
   min-width:100%;
   max-width:100%;
-  <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
-  <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
-  <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
-  <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website &nbsp</a>
-  <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
 }
-
-
 
 ul#footeritem li {
   display:inline;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 2%;
+  margin-top: 50px;
 }
 
 li{
@@ -92,4 +102,60 @@ a:link {
 
 a{
   color: white;
+}
+
+
+
+/* tablet sizes */
+@media (max-width: 990px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  #coursecode{
+    font-size: 20px;
+    padding-top: 10px;
+    /* margin-left: 25%; */
+  }
+
+  #search{
+    margin-left: 22%;
+  }
+
+
+}
+
+
+
+/* smaller handhelds */
+@media (max-width: 750px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  #coursecode{
+    font-size: 16px;
+  }
+
+  .search {
+    margin-left: 0%;
+  }
+
+  h1{
+    font-size: 380%;
+    line-height: 100%;
+  }
+
+  .item {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+
+
 }
