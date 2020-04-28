@@ -106,9 +106,9 @@ a{
 
 
 /* tablet sizes */
-@media (max-width: 990px) {
+ @media (max-width: 990px) and (min-width: 750px)  {
   #pegasus {
-    /* height: 120px; */
+    height: 120px;
     margin-top: 1%;
     margin-left: 25%;
     margin-right: 25%;
@@ -117,7 +117,7 @@ a{
   #coursecode{
     font-size: 20px;
     padding-top: 10px;
-    /* margin-left: 25%; */
+    margin-left: 25%;
   }
 
   #search{
@@ -142,8 +142,8 @@ a{
     font-size: 16px;
   }
 
-  .search {
-    margin-left: 0%;
+  #search {
+    margin-left: 10%;
   }
 
   h1{
