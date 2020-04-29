@@ -1,8 +1,8 @@
 h1{
-  color: black;
-  text-align: left;
-  font-size: 40px;
+  color: #333333;
+  text-align: center;
   font-family: 'Audiowide';
+  max-width: 400px;
 }
 
 #pegasus{
@@ -17,6 +17,13 @@ h1{
   margin-left: 10%;
   width: 80%;
   font-family: 'Manrope'
+}
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 #search{
@@ -55,5 +62,7 @@ li{
 }
 
 a{
-  color: black;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
