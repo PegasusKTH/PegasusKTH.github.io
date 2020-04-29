@@ -17,19 +17,8 @@
 
       <div class="searchbar" id="search" class="center">
           <input type="text" placeholder="Enter course code.." id="coursecode">
-           <a href="graph.html"><button onclick="searching()" id="button1"><img src="image/magnifying2.png"></button></a>
-          <!-- <a href="graph.html"><input type="image" src="image/plz.png" onclick="searching()" id="button1" alt="Submit"></input></a> -->
+          <a href="graph.html"><button onclick="searching()" id="button1"><img src="image/magnifying.png"></button></a>
         </div>
-
-        <script>
-        var input = document.getElementById("coursecode");
-        input.addEventListener("keyup", function(event) {
-          if (event.keyCode === 13) {
-           event.preventDefault();
-           document.getElementById("button1").click();
-          }
-        });
-        </script>
 
       <div class="line"></div>
 
