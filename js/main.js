@@ -7,6 +7,7 @@ class Node {
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = globalIDcount++;
+        console.log("creating node: " + courseCode + " jsonID " + this._json_id);
     }
 
     // formats singular node to array format for Treant.js
@@ -51,15 +52,7 @@ class Node {
     jsonToArray(){
       var courseCode = this.courseCode;
 
-        if (courseCode == "II1305") {
-          return ["ID1018", "ID1020", "IS1200"];
-        } else if (courseCode == "ID1018") {
-          return []
-        } else if (courseCode == "ID1020") {
-          return ["ID1018"]
-        } else if (courseCode == "IS1200") {
-          return []
-        }
+        return lookup(courseCode)[1];
 
     }
 
@@ -151,6 +144,9 @@ var root = null;
 
 
 
+function nodifyLookupMAIN(courseCode) {
+  return new Node(courseCode);
+}
 
 
 
@@ -159,5 +155,5 @@ var root = null;
 
 
 
-
-temp1 = new Node("II1305");
+// temp1 = new Node("II1305");
+// temp2 = new Node("II1305");

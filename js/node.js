@@ -9,9 +9,10 @@ class Node { // Originally Edvin/Alex
     this.eligibility = [];    // REQUIRED
     this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
     this.parentNode = null;
-    this._json_id = null;
+    this._json_id = globalIDCounter++;
+    console.log("creating node:" + this.courseCode + " with ID: " + this._json_id);
   }
-  
+
   // Build tree from rootnode with prerequisite-list and eligibility-list
   // Not implemented yet, takes first root node and recursively builds a tree
   buildTree() {
@@ -24,9 +25,8 @@ class Node { // Originally Edvin/Alex
     }
 
     for(var i = 0; i < this.eligibility.length; i++){
-      this.eligibility[i].buildTree();
       this.eligibility[i].parentNode = this;
-      this.eligibility[i].treeLevel = this.treeLevel + 1;
+      this.eligibility[i].buildTree();
     }
 
     return this;
@@ -39,14 +39,16 @@ class Node { // Originally Edvin/Alex
   formatNode() {
     if (this.parentNode == null) {
       var nodeStructure = {
+        _json_id: this._json_id,
         text: { name: this.courseCode }
       };
 
       return nodeStructure;
     } else {
       var nodeStructure = {
+        _json_id: this._json_id,
         text: { courseID: this.courseCode },
-        parent: { parent: this.parentNode.courseCode },
+        parent: { parent: this.parentNode },
       }
     };
 
@@ -57,19 +59,19 @@ class Node { // Originally Edvin/Alex
     var nodeStructure = [this.formatNode()];
 
     for (let i = 0; i < this.eligibility.length; i++) {
-      nodeStructure = nodeStructure.concat(this.eligibility[i].exportTree());      
+      nodeStructure = nodeStructure.concat(this.eligibility[i].exportTree());
     }
     return nodeStructure;
   }
 
 }
 
-// Takes the array with course information and 
+// Takes the array with course information and
 // creates a Node to be root node in the graph
 function nodifyLookup(courseCode){
   var temp = lookup(courseCode); //here we have a JSON obj
   var rootNode = new Node(courseCode);
-  
+
   rootNode.courseName = temp[0];
   rootNode.eligibility = temp[1];
   rootNode.prerequisites = temp[2];
