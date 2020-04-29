@@ -7,3 +7,9 @@ dark grey - #333333
 fonts:
 headers - Audiowide
 body text - Manrope
+
+header:
+tba
+
+footer:
+tba
