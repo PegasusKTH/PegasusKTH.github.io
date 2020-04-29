@@ -82,83 +82,12 @@ class Node {
       return this;
     }
 
-}
-
-
-function chopTreeInverse(array, len) {
-
-
-
-  var rootArr = array[0];
-  root = new Node(rootArr[1]);
-
-  root.parentNode = null;
-
-  for (var i = 0; i < rootArr[3].length; i++) {
-    var nodeInfo = getCorrectNodeArr(rootArr[3][i]);
-    root.addChild(buildOtherNodePlz(root, nodeInfo));
-  }
-
-
 
 }
-
-function buildOtherNodePlz(pear, yarr) {
-
-  var node = new Node(yarr[1]);
-  node.parentNode = pear;
-
-  for (var i=0; i < yarr[3].length; i++) {
-    var nodeInfo = getCorrectNodeArr(yarr[3][i]);
-    node.addChild(buildOtherNodePlz(node, nodeInfo));
-  }
-
-
-
-
-}
-
-function getCorrectNodeArr(nodeCourseCode) {
-
-  console.log("looking for " + nodeCourseCode);
-  console.log("gloabal arr: ");
-  console.log(allPraiseTheArrGods);
-  console.log(instanceCounter);
-
-  for (var i=0; i < allPraiseTheArrGods.length; i++) {
-    if(allPraiseTheArrGods[i][1] == nodeCourseCode) {
-      console.log("found; " + nodeCourseCode);
-      return allPraiseTheArrGods[i];
-      break;
-    }
-  }
-
-  console.log("getCorrectNodeArr error when looking for: " + nodeCourseCode);
-  console.log(allPraiseTheArrGods);
-
-}
-
-
-// temp global for debug. declare in chopTreeInverse
-var root = null;
-
-
-
-
-
-
-
 
 function nodifyLookupMAIN(courseCode) {
   return new Node(courseCode);
 }
-
-
-
-
-
-
-
 
 // temp1 = new Node("II1305");
 // temp2 = new Node("II1305");

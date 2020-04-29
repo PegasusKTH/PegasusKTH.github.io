@@ -13,21 +13,10 @@ var config = {
 };
 
 // listIntegration has taken jsonObject and converted it into a tree of nodes
-	var listIntegration = nodifyLookupMain("ii1305").buildTree();
-	// console.log("buildTree");
-	// temp2.buildTree();
+var listIntegration = nodifyLookupMAIN("ID1206").buildTree();
 
-	// sets up nodes in the right format for the Treant
-	// console.log("exportTree");
-	var nodeStructure = listIntegration.exportTree();
+// sets up nodes in the right format for the Treant
+var nodeStructure = listIntegration.exportTree();
 
-	// combine config with tree for treant graph generation
-	// console.log("concat");
-	var simple_chart_config = [config].concat(nodeStructure);
-
-
-	// PrereqList gets datastructure form here.
-	// function getRootNode() {
-	// 	// console.log("return");
-	// 	return listIntegration;
-	// }
+// combine config with tree for treant graph generation
+var simple_chart_config = [config].concat(nodeStructure);
