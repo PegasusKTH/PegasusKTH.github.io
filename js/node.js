@@ -36,33 +36,78 @@ class Node { // Originally Edvin/Alex
     // formats singular node to array format for Treant.js
     // format according to chart simple_chart_config, see treantTree.js and treant docs
     formatNode() {
-
+        // root
         if (this.parentNode == null) {
           var nodeStructure = {
             text: { name: this.courseCode }
-            //_json_id: this._json_id
           };
   
           return nodeStructure;
+
         } else {
-          var children = {
-            _json_id: this._json_id,
-            parent: this.parentNode,
-            text: { name: this.courseCode }
-          };
-  
-          return children;
-  
+          
         }
     }
 
     exportTree(){
-      var nodeStructure = [this.formatNode()];
-        
-      for (var i = 0; i < this.eligibility.length; i++) {
-          nodeStructure = nodeStructure.concat(this.eligibility[i].exportTree());
-      }
+      var nodeStructure = this.formatNode();
+
       return nodeStructure;
+    }
+
+    testStructure() {
+      var chart_config = {
+        chart: {
+            container: "#collapsable-example",
+
+            animateOnInit: true,
+            
+            node: {
+                collapsable: true
+            },
+            animation: {
+                nodeAnimation: "easeOutBounce",
+                nodeSpeed: 700,
+                connectorsAnimation: "bounce",
+                connectorsSpeed: 700
+            }
+        },
+        nodeStructure: {
+            image: "img/malory.png",
+            children: [
+                {
+                    image: "img/lana.png",
+                    collapsed: true,
+                    children: [
+                        {
+                            image: "img/figgs.png"
+                        }
+                    ]
+                },
+                {
+                    image: "img/sterling.png",
+                    childrenDropLevel: 1,
+                    children: [
+                        {
+                            image: "img/woodhouse.png"
+                        }
+                    ]
+                },
+                {
+                    pseudo: true,
+                    children: [
+                        {
+                            image: "img/cheryl.png"
+                        },
+                        {
+                            image: "img/pam.png"
+                        }
+                    ]
+                }
+            ]
+        }
+    };
+    return chart_config;
     }
   }
 
