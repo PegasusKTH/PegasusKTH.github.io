@@ -3,47 +3,80 @@
   <head>
     <meta charset="utf-8">
 
+
     <script type="text/javascript" src="js/main.js"></script>
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+
+    <script type="text/javascript" src="js/main.js"></script>
     <title> Task main </title>
     <link href="css/main.css" rel="stylesheet">
   </head>
   <body style="background-image: url('image/background.jpg');" id="backround" >
 
-      <div class="topnav">
-        <img src = "image/logo.png" id="pegasus" class="center">
-        <h1>PEGASEARCH</h1>
-        </div>
+<body>
+  <div id="container">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <img src = "image/logo.png" id="pegasus" class="center col-lg-3 col-md-3 col-sm-6 col-xs-6">
+      <h1 class="title col-lg-12 col-md-12 col-sm-12 col-xs-12">Pegasearch</h1>
+      <!-- <h2 class="title col-lg-12 col-md-12 col-sm-12 col-xs-12"> KTH Course Prerequisites Visualiser</h2> -->
+    </div>
 
-      <div class="searchbar" id="search" class="center">
-          <input type="text" placeholder="Enter course code.." id="coursecode">
-           <a href="graph.html"><button onclick="searching()" id="button1"><img src="image/magnifying2.png"></button></a>
-          <!-- <a href="graph.html"><input type="image" src="image/plz.png" onclick="searching()" id="button1" alt="Submit"></input></a> -->
-        </div>
+    <!-- <div id="search" class="center col-lg-2 col-md-2 col-sm-6 col-xs-8"> -->
+    <div id="search" class="center col-lg-5 col-md-5 col-sm-6 col-xs-8">
+
+      <input type="text" placeholder="Enter course code..." id="coursecode" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+      <a href="graph.html" class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+        <button onclick="searching()" id="button1">
+          <img src="image/magnifying.png">
+        </button>
+      </a>
+    </div>
+  </div>
+
+
 
         <script>
         var input = document.getElementById("coursecode");
         input.addEventListener("keyup", function(event) {
           if (event.keyCode === 13) {
            event.preventDefault();
+           // console.log("hej");
            document.getElementById("button1").click();
+           // console.log("hej");
           }
         });
         </script>
 
       <div class="line"></div>
 
-      <div class="footer" id="footer">
+      <!-- <div class="footer col-lg-12 col-md-12 col-sm-12 col-xs-12" id="footer">
         <ul id="footeritem">
           <li><a href="about.html">About</a></li>
           <li><a href="help.html">Help/FAQ</a></li>
           <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
           <li><a href="mailto:rasham@kth.se">Contact: rasham@kth.se</a></li>
           </ul>
-        </div>
-
-
-
+        </div> -->
+        <div class="footer" id="footer" style="position: fixed">
+            <!-- <ul id="footeritem">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" >About</a></li>
+            <li><a href="help.html">Help/FAQ</a></li>
+            <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
+            <li><a href="mailto:rasham@kth.se" >Contact: rasham@kth.se</a></li>
+            </ul> -->
+            <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
+            <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
+            <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
+            <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website &nbsp</a>
+            <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
+          </div>
 
   </body>
 </html>

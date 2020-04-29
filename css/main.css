@@ -2,48 +2,55 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  margin-top: 0%;
+  /* width: 50%; */
+  /* margin-top: 50px; */
 }
-
-/*body {
-  background-image: url('image/sky.jpeg');
-  height: 100%;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}*/
 
 #backround {
-  background-position: 50% 3  0%;
+  background-position: 50%   0%;
   background-repeat: no-repeat;
-  background-size: 150% 250%;
+  background-size: 170% 210%;
 }
 
-#pegasus{
+#pegasus {
+  /* height: 120px; */
+  margin-top: 1%;
+  margin-left: 43%;
+  /* margin-right: 37.5%; */
   height: 15%;
   width: 15%;
 }
 
-
 h1{
-  color: black;
+  color: #2d3436;
   text-align: center;
-  font-size: 300%;
+  font-size: 400%;
+  line-height: 100%;
+}
+h2{
+  color: #2d3436;
+  text-align: center;
+  margin-top: 0;
+  font-size: 130%;
 }
 
 #search{
   text-align: center;
+  margin-left: 33%;
+  margin-top: 4%;
+  width: 40%;
 }
 
-#button1 {
-   border:none;
-   background-color: transparent;
-   outline:none;
-   width:5%;
-   height:6%;
-   cursor: pointer;
+#button1{
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding: 0px 32px 10px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+
 }
 
 #button1 img{
@@ -53,28 +60,34 @@ h1{
 
 #coursecode{
   border: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1.5px solid black;
   outline: 0;
-  font-size: 110%;
+  font-size: 20px;
   background:transparent;
+  /* margin-left: 20%; */
 }
 
 
+
 #footer{
-  position:absolute;
-  bottom:0;
+  position:fixed;
+  bottom:10px;
   width:100%;
   height:%;
   background:transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width:100%;
+  max-width:100%;
 }
-
-
 
 ul#footeritem li {
   display:inline;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 2%;
+  margin-top: 50px;
 }
 
 li{
@@ -82,12 +95,68 @@ li{
 }
 
 a:link {
-  color: white;
+  color: black;
   background-color: transparent;
   text-decoration: none;
-  font-size: 110%;
+  font-size: 90%;
 }
 
 a{
-  color: white;
+  color: black;
+}
+
+
+
+/* tablet sizes */
+@media (max-width: 990px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  #coursecode{
+    font-size: 20px;
+    padding-top: 10px;
+    /* margin-left: 25%; */
+  }
+
+  #search{
+    margin-left: 22%;
+  }
+
+
+}
+
+
+
+/* smaller handhelds */
+@media (max-width: 750px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  #coursecode{
+    font-size: 16px;
+  }
+
+  .search {
+    margin-left: 0%;
+  }
+
+  h1{
+    font-size: 380%;
+    line-height: 100%;
+  }
+
+  .item {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+
+
 }
