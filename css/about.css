@@ -19,11 +19,21 @@ h1{
   width: 295px;
 }
 
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 80px;    /* Footer height */
+}
+
 #footer{
+  position: absolute;
   bottom:0;
   width:100%;
   height:80px;
-  background:#298fca;
+  background:transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,9 +45,10 @@ ul#footeritem li {
 
 li{
    margin: 50px;
-   color: white;
+   color: black;
+   font-size: 20px;
 }
 
 a{
-  color: white;
+  color: black;
 }

@@ -1,17 +1,17 @@
-h1{
+h2{
   color: black;
-  text-align: left;
-  font-size: 40px;
+  text-align: center;
+  font-size: 28px;
 }
 
-#pegasus{
-  height: 72px;
-  width: 84px;
+#logo{
+  height: 125px;
+  width: 140px;
 }
 
 .textarea{
   color: black;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #search{
@@ -19,11 +19,21 @@ h1{
   width: 295px;
 }
 
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 80px;    /* Footer height */
+}
+
 #footer{
+  position: absolute;
   bottom:0;
   width:100%;
   height:80px;
-  background:#298fca;
+  background:transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,11 +45,12 @@ ul#footeritem li {
 
 li{
    margin: 50px;
-   color: white;
+   color: black;
+   font-size: 20px;
 }
 
 a{
-  color: white;
+  color: black;
 }
 
 #graylink{
