@@ -5,7 +5,17 @@
   width: 50%;
   margin-top: 50px;
 }
-
+/* trying to use fonts
+.serif{
+  font-family: "Times New Roman", Times, serif;
+}
+.serif{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.monospace {
+  font-family: "Lucida Console", Courier, monospace;
+}
+*/
 /*body {
   background-image: url('image/sky.jpeg');
   height: 100%;
@@ -20,11 +30,12 @@
   width: 280px;
 }
 
-
+/*add font with font-family*/
 h1{
   color: black;
   text-align: center;
   font-size: 70px;
+  font-family: 'Audiowide';
 }
 
 #search{
@@ -80,6 +91,7 @@ a:link {
   background-color: transparent;
   text-decoration: none;
   font-size: 25px;
+  font-family: 'Audiowide';
 }
 
 a{

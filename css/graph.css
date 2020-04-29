@@ -2,6 +2,7 @@ h1{
   color: black;
   text-align: left;
   font-size: 40px;
+  font-family: 'Fredoka One';
 }
 
 #logo{
@@ -22,6 +23,7 @@ h1{
 #graphnlist{
   color: black;
   font-size: 25px;
+  font-family: 'Fredoka One';
   text-align: center;
 }
 
@@ -54,6 +56,7 @@ section{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Fredoka One';
 }
 
 ul#footeritem li {
