@@ -2,9 +2,10 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  margin-top: 50px;
+  /* width: 50%; */
+  /* margin-top: 50px; */
 }
+<<<<<<< HEAD
 /* trying to use fonts
 .serif{
   font-family: "Times New Roman", Times, serif;
@@ -21,65 +22,100 @@
   height: 100%;
 
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}*/
+=======
 
-#pegasus{
-  height: 250px;
-  width: 280px;
+#backround {
+  background-position: 50%   0%;
+>>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
+  background-repeat: no-repeat;
+  background-size: 170% 210%;
 }
 
+<<<<<<< HEAD
 /*add font with font-family*/
+=======
+#pegasus {
+  /* height: 120px; */
+  margin-top: 1%;
+  margin-left: 43%;
+  /* margin-right: 37.5%; */
+  height: 15%;
+  width: 15%;
+}
+
+>>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
 h1{
-  color: black;
+  color: #2d3436;
   text-align: center;
+<<<<<<< HEAD
   font-size: 70px;
   font-family: 'Audiowide';
+=======
+  font-size: 400%;
+  line-height: 100%;
+}
+h2{
+  color: #2d3436;
+  text-align: center;
+  margin-top: 0;
+  font-size: 130%;
+>>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
 }
 
 #search{
   text-align: center;
+  margin-left: 33%;
+  margin-top: 4%;
+  width: 40%;
 }
 
-#button1 {
-   border:none;
-   background-color: transparent;
-   outline:none;
-   width:69px;
-   height:36px;
-   cursor: pointer;
+#button1{
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding: 0px 32px 10px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+
 }
 
 #button1 img{
-  height: 36px;
-  width: 69px;
+  height: 100%;
+  width: 100%;
 }
 
 #coursecode{
   border: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1.5px solid black;
   outline: 0;
-  font-size: 25px;
+  font-size: 20px;
   background:transparent;
+  /* margin-left: 20%; */
 }
 
 
+
 #footer{
-  position:absolute;
-  bottom:0;
+  position:fixed;
+  bottom:10px;
   width:100%;
-  height:80px;
+  height:%;
   background:transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width:100%;
+  max-width:100%;
 }
-
-
 
 ul#footeritem li {
   display:inline;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 2%;
+  margin-top: 50px;
 }
 
 li{
@@ -87,13 +123,73 @@ li{
 }
 
 a:link {
-  color: white;
+  color: black;
   background-color: transparent;
   text-decoration: none;
+<<<<<<< HEAD
   font-size: 25px;
   font-family: 'Audiowide';
+=======
+  font-size: 90%;
+>>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
 }
 
 a{
-  color: white;
+  color: black;
+}
+
+
+
+/* tablet sizes */
+@media (max-width: 990px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  #coursecode{
+    font-size: 20px;
+    padding-top: 10px;
+    /* margin-left: 25%; */
+  }
+
+  #search{
+    margin-left: 22%;
+  }
+
+
+}
+
+
+
+/* smaller handhelds */
+@media (max-width: 750px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  #coursecode{
+    font-size: 16px;
+  }
+
+  .search {
+    margin-left: 0%;
+  }
+
+  h1{
+    font-size: 380%;
+    line-height: 100%;
+  }
+
+  .item {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+
+
 }
