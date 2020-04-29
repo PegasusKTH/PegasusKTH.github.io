@@ -2,16 +2,20 @@ h1{
   color: black;
   text-align: left;
   font-size: 40px;
+  font-family: 'Audiowide';
 }
 
 #pegasus{
-  height: 72px;
-  width: 84px;
+  max-width: 250px;
+  height: 30%;
+  width: 30%;
 }
 
 .textarea{
   color: #333333;
-  font-size: 20px;
+  font-size: 22px;
+  margin-left: 10%;
+  width: 80%;
   font-family: 'Manrope'
 }
 

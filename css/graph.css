@@ -6,8 +6,9 @@ h1{
 }
 
 #pegasus{
-  height: 72px;
-  width: 84px;
+  max-width: 250px;
+  height: 30%;
+  width: 30%;
 }
 
 #list{
