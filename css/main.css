@@ -5,35 +5,13 @@
   /* width: 50%; */
   /* margin-top: 50px; */
 }
-<<<<<<< HEAD
-/* trying to use fonts
-.serif{
-  font-family: "Times New Roman", Times, serif;
-}
-.serif{
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-}
-.monospace {
-  font-family: "Lucida Console", Courier, monospace;
-}
-*/
-/*body {
-  background-image: url('image/sky.jpeg');
-  height: 100%;
-
-  background-position: center;
-=======
 
 #backround {
   background-position: 50%   0%;
->>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
   background-repeat: no-repeat;
   background-size: 170% 210%;
 }
 
-<<<<<<< HEAD
-/*add font with font-family*/
-=======
 #pegasus {
   /* height: 120px; */
   margin-top: 1%;
@@ -43,14 +21,9 @@
   width: 15%;
 }
 
->>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
 h1{
   color: #2d3436;
   text-align: center;
-<<<<<<< HEAD
-  font-size: 70px;
-  font-family: 'Audiowide';
-=======
   font-size: 400%;
   line-height: 100%;
 }
@@ -59,7 +32,6 @@ h2{
   text-align: center;
   margin-top: 0;
   font-size: 130%;
->>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
 }
 
 #search{
@@ -126,12 +98,7 @@ a:link {
   color: black;
   background-color: transparent;
   text-decoration: none;
-<<<<<<< HEAD
-  font-size: 25px;
-  font-family: 'Audiowide';
-=======
   font-size: 90%;
->>>>>>> b7dd22eef6bf43b944dca72c1eb4aa0490bac3ca
 }
 
 a{
