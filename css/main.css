@@ -24,11 +24,7 @@
 h1{
   color: black;
   text-align: center;
-<<<<<<< HEAD
   font-size: 70px;
-=======
-  font-size: 55px;
->>>>>>> a31c85e06743282250a4c772bd7a037f65c604ca
 }
 
 #search{
@@ -37,7 +33,6 @@ h1{
 
 #button1 {
    border:none;
-<<<<<<< HEAD
    background-color: transparent;
    outline:none;
    width:69px;
@@ -48,26 +43,13 @@ h1{
 #button1 img{
   height: 36px;
   width: 69px;
-=======
-   background-color: white;
-   outline:none;
-}
-
-#button1 img{
-  height: 30px;
-  width: 58px;
->>>>>>> a31c85e06743282250a4c772bd7a037f65c604ca
 }
 
 #coursecode{
   border: 0;
   border-bottom: 1px solid black;
   outline: 0;
-<<<<<<< HEAD
   font-size: 25px;
-=======
-  font-size: 16px;
->>>>>>> a31c85e06743282250a4c772bd7a037f65c604ca
   background:transparent;
 }
 
@@ -77,11 +59,7 @@ h1{
   bottom:0;
   width:100%;
   height:80px;
-<<<<<<< HEAD
   background:transparent;
-=======
-  background:#298fca;
->>>>>>> a31c85e06743282250a4c772bd7a037f65c604ca
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,10 +79,7 @@ a:link {
   color: white;
   background-color: transparent;
   text-decoration: none;
-<<<<<<< HEAD
   font-size: 25px;
-=======
->>>>>>> a31c85e06743282250a4c772bd7a037f65c604ca
 }
 
 a{
