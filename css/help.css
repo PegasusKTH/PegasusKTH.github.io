@@ -1,7 +1,7 @@
-h1{
+h2{
   color: black;
-  text-align: left;
-  font-size: 40px;
+  text-align: center;
+  font-size: 28px;
 }
 
 #logo{
@@ -11,7 +11,7 @@ h1{
 
 .textarea{
   color: black;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #search{
@@ -33,7 +33,7 @@ h1{
   bottom:0;
   width:100%;
   height:80px;
-  background:#298fca;
+  background:transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,11 +45,12 @@ ul#footeritem li {
 
 li{
    margin: 50px;
-   color: white;
+   color: black;
+   font-size: 20px;
 }
 
 a{
-  color: white;
+  color: black;
 }
 
 #graylink{
