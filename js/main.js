@@ -1,68 +1,164 @@
-//( ͡° ͜ʖ ͡°)
-//(  ͡°  ͜ ʖ  ͡° ) w i d e  l e n n y  i s  h e r e  t o  t e s t  i f  c e l i n e  c a n  g i t
-//(° ͜ʖ°) she could
-function searching() {
-  var requiredCourse = [];
-  var recommendedCourse = [];
-  let jsondata;
-  var recommendedCoursesArray = [];
-  var requiredCoursesArray = [];
 
-  try {
 
-    var x = document.getElementById("coursecode").value;
-    /*fetch the json file from the yrl of the course code*/
-    fetch('https://api.kth.se/api/kopps/v2/course/'+ x +'/detailedinformation').then(
-      function(u){
-        return u.json();}
-    ).then(function(json) {
-    //turns json into a workable object
-      jsondata = json;
-      var jsonOBJ = jsondata;
+globalIDcount = 0;
+class Node {
+    constructor(courseCode){
+        this.courseCode = courseCode;
+        this.prerequisites = [];
+        this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
+        this.parentNode = null;
+        this._json_id = globalIDcount++;
+    }
 
-      //adds data from the place required courses can be found to string
-      if(jsonOBJ.publicSyllabusVersions[0].courseSyllabus.eligibility){
-          var requiredCourse = jsonOBJ.publicSyllabusVersions[0].courseSyllabus.eligibility;
-          //finds all coursecodes in the required courses string
-          var reqArray = new Array(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)); //reqs;
-          if(reqArray.length > 0) {
-            for (i = 0; i < reqArray.length; i++) {
-              requiredCoursesArray.push((reqArray[i]));
-            }
-          }
+    // formats singular node to array format for Treant.js
+    // format according to chart simple_chart_config, see treantTree.js and treant docs
+    formatNode() {
+
+      if (this.parentNode == null) {
+        var arr = {
+          _json_id: this._json_id,
+          text: { name: this.courseCode }
+        };
+
+        return arr;
+      } else {
+
+        var arr = {
+          _json_id: this._json_id,
+          parent: this.parentNode,
+          text: { name: this.courseCode }
+        };
+
+        return arr;
+
       }
-      //adds data from the place recommended courses can be found to string
-      if(jsonOBJ.course.prerequisites){
-          var recommendedCourse = jsonOBJ.course.prerequisites;
-          //finds all coursecodes in the recommended courses string
-          var recArr = new Array(recommendedCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));//recs;
-          if(recArr.length > 0) {
-            for (i = 0; i < recArr.length; i++) {
-              recommendedCoursesArray.push((recArr[i]));
-            }
-          }
+    }
+
+    // converts all nodes to treant array format and return array with all converted nodes
+    exportTree() {
+
+      // add current node to array
+      var arr = [this.formatNode()];
+      for (var i = 0; i < this.prerequisites.length; i++) {
+        arr = arr.concat(this.prerequisites[i].exportTree());
       }
-  
 
-      var i;
-    /*pushing name of the course searched for, so that the index 0 of courses
-    array always contains the name of the searched course, and the rest is two
-    arrays with required and recommended courses*/
-            var namn = new String(jsonOBJ.course.title);
-                // recommendedCoursesArray.push(namn);
-            console.log([namn , requiredCoursesArray, recommendedCoursesArray]);
+      return arr;
+    }
 
-            return [namn , requiredCoursesArray, recommendedCoursesArray];
+    // temp function to represent patrik&jing and erik&celine features
+    // input course code
+    // expected output is string array of required courses course codes. empty array if none exist
+    jsonToArray(){
+      var courseCode = this.courseCode;
 
-     }
+        if (courseCode == "II1305") {
+          return ["ID1018", "ID1020", "IS1200"];
+        } else if (courseCode == "ID1018") {
+          return []
+        } else if (courseCode == "ID1020") {
+          return ["ID1018", "IS1200"]
+        } else if (courseCode == "IS1200") {
+          return []
+        }
 
+    }
 
-    ).catch(function(){
-      console.log("klar")
-      return([]);})
+    // adds child node to parent node prerequisites array
+    addChild(node){
+        this.prerequisites.push(node);
+    }
+
+    // recursively goes through all prerequisites according to json files.
+    // fully constructs tree object for later export
+    buildTree() {
+
+      var reqArr = this.jsonToArray();
+
+      for (var i = 0; i < reqArr.length; i++){
+        var temp = new Node(reqArr[i]);
+
+        temp.parentNode = this;
+        this.addChild(temp);
+        temp.buildTree();
       }
-  catch(err) {
-    return([]);
-    // document.getElementById("demo").innerHTML = err.message;
-  }
+      return this;
+    }
+
 }
+
+
+function chopTreeInverse(array, len) {
+
+
+
+  var rootArr = array[0];
+  root = new Node(rootArr[1]);
+
+  root.parentNode = null;
+
+  for (var i = 0; i < rootArr[3].length; i++) {
+    var nodeInfo = getCorrectNodeArr(rootArr[3][i]);
+    root.addChild(buildOtherNodePlz(root, nodeInfo));
+  }
+
+
+
+}
+
+function buildOtherNodePlz(pear, yarr) {
+
+  var node = new Node(yarr[1]);
+  node.parentNode = pear;
+
+  for (var i=0; i < yarr[3].length; i++) {
+    var nodeInfo = getCorrectNodeArr(yarr[3][i]);
+    node.addChild(buildOtherNodePlz(node, nodeInfo));
+  }
+
+
+
+
+}
+
+function getCorrectNodeArr(nodeCourseCode) {
+
+  console.log("looking for " + nodeCourseCode);
+  console.log("gloabal arr: ");
+  console.log(allPraiseTheArrGods);
+  console.log(instanceCounter);
+
+  for (var i=0; i < allPraiseTheArrGods.length; i++) {
+    if(allPraiseTheArrGods[i][1] == nodeCourseCode) {
+      console.log("found; " + nodeCourseCode);
+      return allPraiseTheArrGods[i];
+      break;
+    }
+  }
+
+  console.log("getCorrectNodeArr error when looking for: " + nodeCourseCode);
+  console.log(allPraiseTheArrGods);
+
+}
+
+
+// temp global for debug. declare in chopTreeInverse
+var root = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+temp1 = new Node("II1305");
