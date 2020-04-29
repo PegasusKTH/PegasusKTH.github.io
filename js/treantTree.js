@@ -13,7 +13,7 @@ var config = {
 };
 
 // listIntegration has taken jsonObject and converted it into a tree of nodes
-	var listIntegration = nodifyLookupMAIN("id1020").buildTree();
+	var listIntegration = nodifyLookupMain("ii1305").buildTree();
 	// console.log("buildTree");
 	// temp2.buildTree();
 

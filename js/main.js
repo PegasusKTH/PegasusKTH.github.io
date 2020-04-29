@@ -52,7 +52,12 @@ class Node {
     jsonToArray(){
       var courseCode = this.courseCode;
 
-        return lookup(courseCode)[1];
+        var resArr = lookup(courseCode)[1];
+
+        console.log("Lookup for " + courseCode + " gave results:");
+        console.log(resArr);
+
+        return resArr;
 
     }
 
