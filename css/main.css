@@ -6,17 +6,22 @@
   /* margin-top: 50px; */
 }
 
-#backround {
-  background-position: 50%   0%;
+body, html {
+  height: 100%;
+}
+
+#background {
+  background-position: 50%  30%;
   background-repeat: no-repeat;
-  background-size: 170% 210%;
+  height: 100%;
+  background-size: cover;
+  position: relative;
 }
 
 #pegasus {
   /* height: 120px; */
   margin-top: 1%;
-  margin-left: 43%;
-  /* margin-right: 37.5%; */
+  margin-left: center;
   height: 15%;
   width: 15%;
 }
@@ -24,8 +29,9 @@
 h1{
   color: #2d3436;
   text-align: center;
-  font-size: 400%;
+  font-size: 5vmax;
   line-height: 100%;
+
 }
 h2{
   color: #2d3436;
