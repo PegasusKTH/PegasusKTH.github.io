@@ -12,20 +12,16 @@ var config = {
 
 };
 
-// temp1 temporary node. make this into function call
+// listIntegration has taken jsonObject and converted it into a tree of nodes
 var listIntegration = nodifyLookup("II1305").buildTree();
-//var wegotIDs = assignIDs(listIntegration);
+
+// sets up nodes in the right format for the Treant
 var nodeStructure = listIntegration.exportTree();
-
-//var rootNode = nodifyLookup("II1305").buildTree();
-// var arr = rootNode.exportTree();
-
-// var listIntegration = temp1.buildTree();
-// var arr = temp1.exportTree();
 
 // combine config with tree for treant graph generation
 var simple_chart_config = [config].concat(nodeStructure);
 
+// PrereqList gets datastructure form here.
 function getRootNode() {
 	// console.log("return");
 	return listIntegration;
