@@ -1,26 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-        Hello Pegasus!
-    <title> Task main </title>
-  </head>
-  <body>
-      <div>
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-        DEN STORA GRAFEN
-      </div>
 
-        <script type="text/javascript" src="JS/prereqList.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <title> Task main </title>
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body style="background-image: url('image/background.jpg');">
+
+      <div class="topnav">
+        <img src = "image/logo.png" id="pegasus" class="center">
+        <h1>PEGASEARCH</h1>
+        </div>
+
+      <div class="searchbar" id="search" class="center">
+          <input type="text" placeholder="Enter course code.." id="coursecode">
+           <a href="graph.html"><button onclick="searching()" id="button1"><img src="image/magnifying2.png"></button></a>
+          <!-- <a href="graph.html"><input type="image" src="image/plz.png" onclick="searching()" id="button1" alt="Submit"></input></a> -->
+        </div>
+
+        <script>
+        var input = document.getElementById("coursecode");
+        input.addEventListener("keyup", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("button1").click();
+          }
+        });
+        </script>
+
+      <div class="line"></div>
+
+      <div class="footer" id="footer">
+        <ul id="footeritem">
+          <li><a href="about.html">About</a></li>
+          <li><a href="help.html">Help/FAQ</a></li>
+          <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
+          <li><a href="mailto:rasham@kth.se">Contact: rasham@kth.se</a></li>
+          </ul>
+        </div>
+
+
+
+
   </body>
 </html>
