@@ -9,7 +9,7 @@ h1{
 
 h2{
   color: black;
-  text-align: center;
+  margin-left: 10%;
   font-size: 28px;
   font-family: 'Audiowide';
 
@@ -23,7 +23,8 @@ h2{
 .textarea{
   color: #333333;
   font-size: 22px;
-
+  margin-left: 10%;
+  width: 80%;
   font-family: 'Manrope'
 
 }
@@ -31,6 +32,7 @@ h2{
 #search{
   height: 100px;
   width: 295px;
+
 }
 
 #page-container {
