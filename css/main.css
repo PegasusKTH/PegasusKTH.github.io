@@ -10,6 +10,16 @@ body, html {
   height: 100%;
 }
 
+#container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+
 #background {
   background-position: 50%  30%;
   background-repeat: no-repeat;
@@ -41,9 +51,10 @@ h2{
 
 #search{
   text-align: center;
-  margin-left: 33%;
+  margin-left: auto;
   margin-top: 4%;
   width: 40%;
+
 }
 
 #button1{
@@ -65,7 +76,7 @@ h2{
 
 #coursecode{
   border: 0;
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid #333333;
   outline: 0;
   font-size: 20px;
   background:transparent;
@@ -75,10 +86,11 @@ h2{
 
 
 #footer{
-  position:fixed;
-  bottom:10px;
-  width:100%;
-  height:%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; 
+  margin-bottom: 15px;
   background:transparent;
   display: flex;
   align-items: center;
@@ -120,18 +132,32 @@ a{
   #pegasus {
     /* height: 120px; */
     margin-top: 1%;
-    margin-left: 25%;
-    margin-right: 25%;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #magnifying-glass{
+    min-width: 25px;
+    max-width: 40px;
   }
 
   #coursecode{
     font-size: 20px;
     padding-top: 10px;
-    /* margin-left: 25%; */
+    margin-left: auto;
+
   }
 
+
+
   #search{
-    margin-left: 22%;
+    text-align: center;
+    margin-left: auto;
+    margin-top: 4%;
+    width: 40%;
+
   }
 
 
@@ -144,16 +170,31 @@ a{
   #pegasus {
     /* height: 120px; */
     margin-top: 1%;
-    margin-left: 25%;
-    margin-right: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
+
 
   #coursecode{
-    font-size: 16px;
+    border: 0;
+    border-bottom: 1.5px solid #333333;
+    outline: 0;
+    font-size: 20px;
+    background:transparent;
+    min-width: 200px;
+    /* margin-left: 20%; */
   }
 
+  #magnifying-glass{
+
+  }
   .search {
-    margin-left: 0%;
+    text-align: center;
+    margin-left: auto;
+    margin-top: 4%;
+    width: 40%;
+  
   }
 
   h1{
@@ -165,6 +206,13 @@ a{
     padding-top: 10px;
     font-size: 20px;
   }
-
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    /* width: 50%; */
+    /* margin-top: 50px; */
+  }
 
 }

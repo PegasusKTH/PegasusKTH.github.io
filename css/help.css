@@ -46,8 +46,13 @@ h2{
   min-height: 100vh;
 }
 
+#container {
+  position: relative;
+  min-height: 100vh;
+}
+
 #content-wrap {
-  padding-bottom: 80px;    /* Footer height */
+  padding-bottom: 2.5rem;
 }
 
 #footer{
