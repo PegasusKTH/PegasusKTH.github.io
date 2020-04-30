@@ -34,19 +34,15 @@ var config = {
 	nodeAlign: 'top',
 
 };
-function searching() {
 
-	var courseCode = document.getElementById("coursecode").value; 
+// listIntegration has taken jsonObject and converted it into a tree of nodes
+var listIntegration = nodifyLookupMAIN("ID1206").buildTree(); // SearchBox integration needed.
 
-	// listIntegration has taken jsonObject and converted it into a tree of nodes
-	var listIntegration = nodifyLookupMAIN(coursecode).buildTree(); // SearchBox integration needed.
+// assigns a unique ID to every node in the tree
+listIntegration.assignIdentifiers([]);
 
-	// assigns a unique ID to every node in the tree
-	listIntegration.assignIdentifiers([]);
+// sets up nodes in the right format for the Treant
+var nodeStructure = listIntegration.exportTree();
 
-	// sets up nodes in the right format for the Treant
-	var nodeStructure = listIntegration.exportTree();
-
-	// combine config with tree for Treant graph generation
-	var simple_chart_config = [config].concat(nodeStructure);
-}
+// combine config with tree for Treant graph generation
+var simple_chart_config = [config].concat(nodeStructure);
