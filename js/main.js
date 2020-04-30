@@ -133,9 +133,3 @@ function getCorrectNodeArr(nodeCourseCode) {
   console.log(allPraiseTheArrGods);
 
 }
-
-
-// temp global for debug. declare in chopTreeInverse
-// var root = null;
-
-// temp1 = new Node("II1305");
