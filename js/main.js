@@ -3,11 +3,16 @@ globalIDcount = 0;
 class Node {
     constructor(courseCode){
         this.courseCode = courseCode;
+        this.courseName = null;
         this.prerequisites = [];
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = null;
         console.log("creating node: " + courseCode + " jsonID " + this._json_id);
+    }
+
+    setName(name) {
+      this.courseName = name;
     }
 
     // formats singular node to array format for Treant.js
@@ -17,7 +22,7 @@ class Node {
       if (this.parentNode == null) {
         var arr = {
           _json_id: this._json_id,
-          text: { name: this.courseCode + " " + this._json_id }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), id:"ID: " + this._json_id}
         };
 
         return arr;
@@ -26,7 +31,7 @@ class Node {
         var arr = {
           _json_id: this._json_id,
           parent: this.parentNode,
-          text: { name: this.courseCode + " " + this._json_id }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), id:"ID: " + this._json_id}
         };
 
         return arr;
@@ -38,10 +43,10 @@ class Node {
       console.log(this.courseCode)
       console.log(globalIDcount);
       this.prerequisites.forEach(element => {
-        queue.push(element);        
+        queue.push(element);
       });
       this._json_id = globalIDcount++;
-      
+
       var nextNode = queue.shift();
 
       if (queue.length > 0) {
@@ -54,7 +59,7 @@ class Node {
     /*
     assignIdentifiersUsingQueue(queue) {
       this.prerequisites.forEach(element => {
-        queue.push(element);        
+        queue.push(element);
       });
       this._json_id = globalIDcount++;
       var nextnode = queue[0];
@@ -81,7 +86,13 @@ class Node {
     jsonToArray(){
       var courseCode = this.courseCode;
 
-        return lookup(courseCode)[1];
+        var resArr = lookup(courseCode);
+        // var resName = lookup(courseCode)[0];
+
+        console.log("Lookup for " + courseCode + " gave results:");
+        console.log(resArr[1]);
+
+        return resArr;
 
     }
 
@@ -94,13 +105,17 @@ class Node {
     // fully constructs tree object for later export
     buildTree() {
 
-      var reqArr = this.jsonToArray();
+      var lookup = this.jsonToArray();
+      var reqArr = lookup[1];
+      this.setName(lookup[0]);
 
       for (var i = 0; i < reqArr.length; i++){
         var temp = new Node(reqArr[i]);
-
         temp.parentNode = this;
         this.addChild(temp);
+        console.log("adding child: " + temp.courseCode + " to " + this.courseCode);
+
+
         temp.buildTree();
       }
       return this;
