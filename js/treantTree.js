@@ -1,6 +1,6 @@
 // config for tree container div
 // see html
-const treetop = "ID1206";
+const treetop = "DD1321";
 
 let TREANT = {
 	chart: {
@@ -30,7 +30,7 @@ while(lookups.length > 0) { //we iterate until there are nothing left to look up
 
   let children = result[1];
   active.text.name = ""+result[0]; // gotta coerce the "string" to act like a proper string
-  active.text.credits = 7.5; //result[3]+" hp";
+  active.text.credits = result[3] + " hp"; //result[3]+" hp";
 
   for(i=0; i<children.length;i++) {
     //babymakin'. we figure out the undefined parts when we lookup that specific course.

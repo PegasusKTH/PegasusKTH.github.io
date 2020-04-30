@@ -7,6 +7,7 @@ function searching(data){ // Originally Erik/Celine
   var requiredCourse = "";
   var preqArray = [];
   var courseName;
+  var courseCredits;
   var finalResultArray = [];
 
   // this one finds the eligibility courses (REQUIRED COURSES)
@@ -17,6 +18,9 @@ function searching(data){ // Originally Erik/Celine
     if (eligArray == null){
       eligArray = [];
     }
+  }
+  if(data.course.credits){
+    courseCredits = data.course.credits;
   }
 
   //this one finds the prerequisites (recommended courses)
@@ -31,7 +35,7 @@ function searching(data){ // Originally Erik/Celine
   }
 
   courseName = new String(data.course.title);
-  finalResultArray = [courseName, eligArray, preqArray];
+  finalResultArray = [courseName, eligArray, preqArray, courseCredits];
 
   return finalResultArray;
 }

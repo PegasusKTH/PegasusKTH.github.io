@@ -1,112 +1,38 @@
-
-    var chart_config = {
-        chart: {
-            container: "#collapsable-example",
-
-            animateOnInit: true,
-            
-            node: {
-                collapsable: true
-            },
-            animation: {
-                nodeAnimation: "easeOutBounce",
-                nodeSpeed: 700,
-                connectorsAnimation: "bounce",
-                connectorsSpeed: 700
-            }
-        },
-        nodeStructure: {
-            image: "img/malory.png",
-            children: [
-                {
-                    image: "img/lana.png",
-                    collapsed: true,
-                    children: [
-                        {
-                            image: "img/figgs.png"
-                        }
-                    ]
-                },
-                {
-                    image: "img/sterling.png",
-                    childrenDropLevel: 1,
-                    children: [
-                        {
-                            image: "img/woodhouse.png"
-                        }
-                    ]
-                },
-                {
-                    pseudo: true,
-                    children: [
-                        {
-                            image: "img/cheryl.png"
-                        },
-                        {
-                            image: "img/pam.png"
-                        }
-                    ]
-                }
-            ]
-        }
-    };
-
-/* Array approach
-    var config = {
-        container: "#collapsable-example",
-
-        animateOnInit: true,
-        
-        node: {
-            collapsable: true
-        },
-        animation: {
-            nodeAnimation: "easeOutBounce",
-            nodeSpeed: 700,
-            connectorsAnimation: "bounce",
-            connectorsSpeed: 700
-        }
+const treetop = "ID1206";
+let TREANT = {
+  chart: {
+    container: "#chart",
+    node: {collapsable: true},
+    connectors: {type: 'step'},
+  }, 
+  nodeStructure: {
+    text: {
+      id: treetop,
+      name: undefined,
+      credits: undefined,
     },
-    malory = {
-        image: "img/malory.png"
-    },
+    children: [],
+  } 
+}
 
-    lana = {
-        parent: malory,
-        image: "img/lana.png"
-    }
+let lookups = [TREANT.nodeStructure] //list of ids to look up. also using the TREANT structure instead of making a new one and then transplanting. 
 
-    figgs = {
-        parent: lana,
-        image: "img/figgs.png"
-    }
 
-    sterling = {
-        parent: malory,
-        childrenDropLevel: 1,
-        image: "img/sterling.png"
-    },
+while(lookups.length > 0) { //we iterate until there are nothing left to look up
+  let active = lookups[0]; //defining the current object
+  lookups.shift();//removing the current object from future lookups
+ 
+  let result = lookup(active.text.id);
 
-    woodhouse = {
-        parent: sterling,
-        image: "img/woodhouse.png"
-    },
+  let children = result[1];
+  active.text.name = ""+result[0]; // gotta coerce the "string" to act like a proper string
+  active.text.credits = result[3]+" hp";
 
-    pseudo = {
-        parent: malory,
-        pseudo: true
-    },
+  for(i=0; i<children.length;i++) {
+    //babymakin'. we figure out the undefined parts when we lookup that specific course. 
+    active.children[i] = {text:{id:children[i],name:undefined,credits:undefined,},parent:active,children:[]}
+    lookups.push(active.children[i]) //pushing the children to the list of IDs to look up
+  }
+}
 
-    cheryl = {
-        parent: pseudo,
-        image: "img/cheryl.png"
-    },
-
-    pam = {
-        parent: pseudo,
-        image: "img/pam.png"
-    },
-
-    chart_config = [config, malory, lana, figgs, sterling, woodhouse, pseudo, pam, cheryl];
-
-*/
+let TREE = new Treant(TREANT, $); //making the tre yo
