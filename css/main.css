@@ -18,12 +18,10 @@ body, html {
   position: relative;
 }
 
-#pegasus {
-  /* height: 120px; */
-  margin-top: 1%;
-  margin-left: center;
-  height: 15%;
-  width: 15%;
+#pegasus{
+  max-width: 200px;
+  height: 30%;
+  width: 30%;
 }
 
 h1{
@@ -102,7 +100,8 @@ li{
 }
 
 a:link {
-  color: #333333;
+  color: white;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
   background-color: transparent;
   text-decoration: none;
   font-size: 90%;
@@ -110,7 +109,8 @@ a:link {
 }
 
 a{
-  color: black;
+  color: white;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
 }
 
 
