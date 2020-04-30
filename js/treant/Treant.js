@@ -2102,7 +2102,7 @@
                     var node = nodes[i];
                     if(node.parent && (node.parent._json_id === parentId)) { // skip config and root nodes
 
-                        node._json_id = this.getID();
+                        //node._json_id = this.getID();
 
                         delete node.parent;
 

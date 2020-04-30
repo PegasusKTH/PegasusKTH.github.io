@@ -1,3 +1,7 @@
+/*
+  This file contains the structure of the tree and nodes. It also contains functions to recursivly
+  build the tree and export it to Treant library. 
+*/
 
 globalIDcount = 0;
 class Node {
@@ -7,7 +11,6 @@ class Node {
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = null;
-        console.log("creating node: " + courseCode + " jsonID " + this._json_id);
     }
 
     // formats singular node to array format for Treant.js
@@ -35,33 +38,19 @@ class Node {
     }
     // BFS to assing _json_id
     assignIdentifiers(queue) {
-      console.log(this.courseCode)
-      console.log(globalIDcount);
       this.prerequisites.forEach(element => {
         queue.push(element);        
       });
       this._json_id = globalIDcount++;
       
-      var nextNode = queue.shift();
+      var nextNode = queue.shift(); // 1520 queue empty
 
-      if (queue.length > 0) {
+      if (queue.length > 0 || nextNode.prerequisites.length > 0) {
         nextNode.assignIdentifiers(queue);
       } else {
-        nextNode._json_id = globalIDcount++;
+        nextNode._json_id = globalIDcount;
       }
     }
-
-    /*
-    assignIdentifiersUsingQueue(queue) {
-      this.prerequisites.forEach(element => {
-        queue.push(element);        
-      });
-      this._json_id = globalIDcount++;
-      var nextnode = queue[0];
-      queue.shift();
-      this.assignIdentifiersUsingQueue(queue);
-    }
-    */
 
     // converts all nodes to treant array format and return array with all converted nodes
     exportTree() {
@@ -75,7 +64,6 @@ class Node {
       return arr;
     }
 
-    // temp function to represent patrik&jing and erik&celine features
     // input course code
     // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
@@ -108,10 +96,7 @@ class Node {
 
 
 }
-
+// Node creation
 function nodifyLookupMAIN(courseCode) {
   return new Node(courseCode);
 }
-
-// temp1 = new Node("II1305");
-// temp2 = new Node("II1305");
