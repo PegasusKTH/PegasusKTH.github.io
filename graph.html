@@ -6,43 +6,55 @@
     <script type="text/javascript" src="js/main.js"></script>
     <title> Task main </title>
     <link href="css/graph.css" rel="stylesheet">
+    <!-- fonts from google api for the headers -->
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Audiowide&family=Days+One&family=Fredoka+One&family=Shrikhand&display=swap" rel="stylesheet">
+    <!-- fonts from google api for the content text -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Manrope&family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
   </head>
+
   <body>
-    <div id="title">
-    <h1><img src = "image/pegasus.jpg" id="pegasus">Prerequisites of course xxx</h1>
-     </div>
+  <div id="container">
+    <div id="content-wrap">
+      <div id="title" >
+        <img src = "image/logo.png" id="pegasus" class="center">
+        <h1 class="center">Prerequisites for course xxx</h1>
+      </div>
 
-    <div id="graphnlist">
-      <section class="graphnlist">
-    <!-- Section 1 -->
-        <section id="section1">
-          <div>List representation of prerequisites</div>
-          <div>
-            <img src="image/list.jpg" id="list">
-          </div>
+      <div id="graphnlist">
+        <section class="graphnlist">
+          <!-- Section 1 -->
+          <section id="section1">
+            <div>List representation of prerequisites</div>
+              <div>
+                ...
+              </div>
+          </section>
+
+          <!-- Section 2 -->
+          <section id="section2">
+            <div>Tree representation of prerequisites</div>
+              <div>
+                ...
+             </div>
+          </section>
         </section>
-
-        <div class="vr">&nbsp;</div>
-
-    <!-- Section 2 -->
-        <section id="section2">
-          <div>Tree representation of prerequisites</div>
-          <div>
-            <img src="image/tree.jpg" id="tree">
-          </div>
-        </section>
-      </section>
+      </div>
     </div>
 
-
-     <div class="footer" id="footer">
-       <ul id="footeritem">
-         <li><a href="index.html">Home</a></li>
-         <li><a href="about.html">About</a></li>
-         <li><a href="help.html">Help/FAQ</a></li>
-         <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
-         <li><a href="mailto:rasham@kth.se">Contact: rasham@kth.se</a></li>
-         </ul>
-       </div>
+    <footer id="footer">
+      <!-- <ul id="footeritem">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" >About</a></li>
+      <li><a href="help.html">Help/FAQ</a></li>
+      <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
+      <li><a href="mailto:rasham@kth.se" >Contact: rasham@kth.se</a></li>
+      </ul> -->
+    <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
+    <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
+    <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
+    <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website &nbsp</a>
+    <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
+  </footer>
+  </div>
   </body>
 </html>

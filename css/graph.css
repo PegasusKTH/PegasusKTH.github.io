@@ -1,12 +1,14 @@
 h1{
-  color: black;
-  text-align: left;
-  font-size: 40px;
+  color: #333333;
+  text-align: center;
+  font-family: 'Audiowide';
+
 }
 
 #pegasus{
-  height: 72px;
-  width: 84px;
+  max-width: 200px;
+  height: 30%;
+  width: 30%;
 }
 
 #list{
@@ -22,6 +24,7 @@ h1{
 #graphnlist{
   color: black;
   font-size: 25px;
+  font-family: 'Manrope';
   text-align: center;
 }
 
@@ -30,26 +33,35 @@ h1{
   width: 50%; float: left;
 }
 
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 section{
   height: 100%;
   width: 100%;
   display:inline-block;
 }
 
-.vr {
-    width:5px;
-    background-color: gray;
-    position:absolute;
-    top:140px;
-    bottom:50px;
-    left:50%;
+#container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;
 }
 
 #footer{
+  position: absolute;
   bottom:0;
   width:100%;
   height:80px;
-  background:#298fca;
+  background:transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,9 +73,12 @@ ul#footeritem li {
 
 li{
    margin: 50px;
-   color: white;
+   color: black;
+   font-size: 20px;
 }
 
 a{
   color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }

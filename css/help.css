@@ -1,29 +1,62 @@
 h1{
-  color: black;
-  text-align: left;
-  font-size: 40px;
+  color: #333333;
+  text-align: center;
+  font-family: 'Audiowide';
+  max-width: 400px;
+}
+
+h2{
+
+  color: #333333;
+  text-align: center;
+  font-size: 28px;
+  font-family: 'Audiowide';
 }
 
 #pegasus{
-  height: 72px;
-  width: 84px;
+  max-width: 200px;
+  height: 30%;
+  width: 30%;
 }
 
 .textarea{
-  color: black;
-  font-size: 20px;
+  max-width: 1000px;
+  color: #333333;
+  font-size: 22px;
+  margin: auto;
+  width: 80%;
+  font-family: 'Manrope'
+
 }
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 
 #search{
   height: 100px;
   width: 295px;
 }
 
+
+#container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 7rem;
+}
+
 #footer{
+  position: absolute;
   bottom:0;
   width:100%;
   height:80px;
-  background:#298fca;
+  background:transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,13 +68,26 @@ ul#footeritem li {
 
 li{
    margin: 50px;
-   color: white;
+   color: #ebb0d6;
+   font-size: 20px;
+   font-family: 'Manrope';
+
+}
+
+a:link {
+  color: #ebb0d6;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Manrope';
 }
 
 a{
-  color: white;
+  color: #ebb0d6;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
 }
 
 #graylink{
-  color: gray;
+  color: #ebb0d6;
 }
