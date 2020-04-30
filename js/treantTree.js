@@ -22,9 +22,10 @@ let TREANT = {
 let lookups = [TREANT.nodeStructure] //list of ids to look up. also using the TREANT structure instead of making a new one and then transplanting.
 
 
-while(lookups.length > 0) { //we iterate until there are nothing left to look up
-  let active = lookups[0]; //defining the current object
-  lookups.shift();//removing the current object from future lookups
+listIntegration.assignIdentifiers([]);
+
+// sets up nodes in the right format for the Treant
+var nodeStructure = listIntegration.exportTree();
 
   let result = lookup(active.text.id);
 

@@ -7,7 +7,7 @@ class Node {
         this.prerequisites = [];
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
-        this._json_id = globalIDcount++;
+        this._json_id = null;
         console.log("creating node: " + courseCode + " jsonID " + this._json_id);
     }
 
@@ -38,6 +38,35 @@ class Node {
 
       }
     }
+    // BFS to assing _json_id
+    assignIdentifiers(queue) {
+      console.log(this.courseCode)
+      console.log(globalIDcount);
+      this.prerequisites.forEach(element => {
+        queue.push(element);
+      });
+      this._json_id = globalIDcount++;
+
+      var nextNode = queue.shift();
+
+      if (queue.length > 0) {
+        nextNode.assignIdentifiers(queue);
+      } else {
+        nextNode._json_id = globalIDcount++;
+      }
+    }
+
+    /*
+    assignIdentifiersUsingQueue(queue) {
+      this.prerequisites.forEach(element => {
+        queue.push(element);
+      });
+      this._json_id = globalIDcount++;
+      var nextnode = queue[0];
+      queue.shift();
+      this.assignIdentifiersUsingQueue(queue);
+    }
+    */
 
     // converts all nodes to treant array format and return array with all converted nodes
     exportTree() {
