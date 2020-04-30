@@ -1,3 +1,8 @@
+/*
+  This file contains the structure of the tree and nodes. It also contains functions to recursivly
+  build the tree and export it to Treant library. 
+*/
+
 globalIDcount = 0;
 class Node {
     constructor(courseCode){
@@ -7,7 +12,6 @@ class Node {
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = null;
-        console.log("creating node: " + courseCode + " jsonID " + this._json_id);
     }
 
     setName(name) {
@@ -39,8 +43,6 @@ class Node {
     }
     // BFS to assing _json_id
     assignIdentifiers(queue) {
-      console.log(this.courseCode)
-      console.log(globalIDcount);
       this.prerequisites.forEach(element => {
         queue.push(element);
       });
@@ -48,10 +50,10 @@ class Node {
 
       var nextNode = queue.shift();
 
-      if (queue.length > 0) {
+      if (queue.length > 0 || nextNode.prerequisites.length > 0) {
         nextNode.assignIdentifiers(queue);
       } else {
-        nextNode._json_id = globalIDcount++;
+        nextNode._json_id = globalIDcount;
       }
     }
 
@@ -67,20 +69,13 @@ class Node {
       return arr;
     }
 
-    // temp function to represent patrik&jing and erik&celine features
     // input course code
     // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
       var courseCode = this.courseCode;
+      var resArr = lookup(courseCode);
 
-        var resArr = lookup(courseCode);
-        // var resName = lookup(courseCode)[0];
-
-        console.log("Lookup for " + courseCode + " gave results:");
-        console.log(resArr[1]);
-
-        return resArr;
-
+      return resArr;
     }
 
     // adds child node to parent node prerequisites array
@@ -109,27 +104,7 @@ class Node {
     }
 
 }
-
+// Node creation
 function nodifyLookupMAIN(courseCode) {
   return new Node(courseCode);
-}
-
-function getCorrectNodeArr(nodeCourseCode) {
-
-  console.log("looking for " + nodeCourseCode);
-  console.log("gloabal arr: ");
-  console.log(allPraiseTheArrGods);
-  console.log(instanceCounter);
-
-  for (var i=0; i < allPraiseTheArrGods.length; i++) {
-    if(allPraiseTheArrGods[i][1] == nodeCourseCode) {
-      console.log("found; " + nodeCourseCode);
-      return allPraiseTheArrGods[i];
-      break;
-    }
-  }
-
-  console.log("getCorrectNodeArr error when looking for: " + nodeCourseCode);
-  console.log(allPraiseTheArrGods);
-
 }
