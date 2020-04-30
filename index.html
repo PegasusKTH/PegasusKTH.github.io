@@ -1,49 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
 
-    <script type="text/javascript" src="js/main.js"></script>
+    <meta charset="utf-8">
+    <style>
+    ul, #prereqUL {
+      list-style-type: none;
+    }
+
+    #prereqUL {
+      margin: 0;
+      padding: 0;
+    }
+
+    .caret {
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari 3.1+ */
+      -moz-user-select: none; /* Firefox 2+ */
+      -ms-user-select: none; /* IE 10+ */
+      user-select: none;
+    }
+
+    .caret::before {
+      content: "\25B6";
+      color: black;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .caret-down::before {
+      -ms-transform: rotate(90deg); /* IE 9 */
+      -webkit-transform: rotate(90deg); /* Safari */
+      transform: rotate(90deg);
+    }
+
+    .nested {
+      display: block;
+    }
+
+    .active {
+      display: none;
+    }
+    </style>
+
 
     <title> Task main </title>
-    <link href="css/main.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/lookup.js"></script>
+    <!-- <script type="text/javascript" src="js/node.js"></script> -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- <script type="text/javascript" src="js/treantTree.js"></script> -->
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+
+    <link rel="stylesheet" href="js/treant/Treant.css">
+
   </head>
-  <body style="background-image: url('image/background.jpg');">
 
-      <div class="topnav">
-        <img src = "image/logo.png" id="pegasus" class="center">
-        <h1>PEGASEARCH</h1>
-        </div>
+  <body style="padding: 20px; padding-top: 50px;">
 
-      <div class="searchbar" id="search" class="center">
-          <input type="text" placeholder="Enter course code.." id="coursecode">
-           <a href="graph.html"><button onclick="searching()" id="button1"><img src="image/magnifying2.png"></button></a>
-          <!-- <a href="graph.html"><input type="image" src="image/plz.png" onclick="searching()" id="button1" alt="Submit"></input></a> -->
-        </div>
+    <div class="chart" id="chart" style="width:50%; float:right;">
+    </div>
 
-        <script>
-        var input = document.getElementById("coursecode");
-        input.addEventListener("keyup", function(event) {
-          if (event.keyCode === 13) {
-           event.preventDefault();
-           document.getElementById("button1").click();
-          }
-        });
-        </script>
+    <script src="js/treant/Treant.js"></script>
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/raphael.js"></script>
 
-      <div class="line"></div>
+    <script type="text/javascript" src="js/treantTree.js"></script>
+    <script type="text/javascript">
+      console.log("index build");
+      tree = new Treant( simple_chart_config, $ );
+    </script>
 
-      <div class="footer" id="footer">
-        <ul id="footeritem">
-          <li><a href="about.html">About</a></li>
-          <li><a href="help.html">Help/FAQ</a></li>
-          <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
-          <li><a href="mailto:rasham@kth.se">Contact: rasham@kth.se</a></li>
-          </ul>
-        </div>
-
-
-
+    <div>
+      <!-- <script type="text/javascript" src="js/prereqList.js"></script> -->
+    </div>
 
   </body>
 </html>
