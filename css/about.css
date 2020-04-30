@@ -33,13 +33,14 @@ h1{
   width: 295px;
 }
 
-#page-container {
+
+#container {
   position: relative;
   min-height: 100vh;
 }
 
 #content-wrap {
-  padding-bottom: 80px;    /* Footer height */
+  padding-bottom: 7rem;
 }
 
 #footer{

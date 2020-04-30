@@ -41,13 +41,14 @@ h2{
   width: 295px;
 }
 
-#page-container {
+
+#container {
   position: relative;
   min-height: 100vh;
 }
 
 #content-wrap {
-  padding-bottom: 80px;    /* Footer height */
+  padding-bottom: 7rem;
 }
 
 #footer{
@@ -67,16 +68,26 @@ ul#footeritem li {
 
 li{
    margin: 50px;
-   color: black;
+   color: #ebb0d6;
    font-size: 20px;
-   font-family: 'Audiowide';
+   font-family: 'Manrope';
 
+}
+
+a:link {
+  color: #ebb0d6;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Manrope';
 }
 
 a{
-  color: black;
+  color: #ebb0d6;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
 }
 
 #graylink{
-  color: gray;
+  color: #ebb0d6;
 }
