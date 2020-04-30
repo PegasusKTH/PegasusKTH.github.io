@@ -1,6 +1,6 @@
 // config for tree container div
 // see html
-const treetop = "ID1206";
+const treetop = "ID1020";
 
 let TREANT = {
 	chart: {

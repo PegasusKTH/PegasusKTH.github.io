@@ -55,18 +55,6 @@ class Node {
       }
     }
 
-    /*
-    assignIdentifiersUsingQueue(queue) {
-      this.prerequisites.forEach(element => {
-        queue.push(element);
-      });
-      this._json_id = globalIDcount++;
-      var nextnode = queue[0];
-      queue.shift();
-      this.assignIdentifiersUsingQueue(queue);
-    }
-    */
-
     // converts all nodes to treant array format and return array with all converted nodes
     exportTree() {
 
@@ -120,7 +108,6 @@ class Node {
       return this;
     }
 
-
 }
 
 function nodifyLookupMAIN(courseCode) {
@@ -149,29 +136,6 @@ function getCorrectNodeArr(nodeCourseCode) {
 
 
 // temp global for debug. declare in chopTreeInverse
-var root = null;
+// var root = null;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-temp1 = new Node("II1305");
-<<<<<<< HEAD
-
->>>>>>> feature-webdesign
-=======
 // temp1 = new Node("II1305");
-// temp2 = new Node("II1305");
->>>>>>> feature-tree-datastructure
