@@ -1,5 +1,5 @@
-// TODO: SearchBox intergration needed in var listIntegration. @param courseCode for nodifyLookupMAIN
-// TODO: get rid of ID:s in visulized tree
+// TODO: SearchBox intergration needed on line 18. @param courseCode for nodifyLookupMAIN
+
 /*
 	This file takes a Course Code from index.html searching functionality and builds a tree
 
@@ -13,7 +13,7 @@
 			_json_id
 	3.	The tree in listIntegration is traversed row by row with BFS and gets assigned
 		and unique ID for each node in the tree. That is needed for the Treant library.
-	4.	nodestructure is a jsonObject used by Treant and is created and formated
+	4.	nodestructure is a jsonObject useb by Treant and is created and formated
 		by exportTree.
 	5.	Treant uses simple_chart_config that is the "config" concatenated with the
 		"nodestructure" and visually shows the tree.
@@ -30,20 +30,12 @@ var config = {
 	},
 	connectors: {
 		type: 'step'
-	},
-	nodeAlign: 'top',
+	}
 
 };
 
-
-var courseCode;
-
-function searching(){
-  courseCode = document.getElementById("coursecode").value;
-}
-
 // listIntegration has taken jsonObject and converted it into a tree of nodes
-var listIntegration = nodifyLookupMAIN(courseCode).buildTree(); // SearchBox integration needed.
+var listIntegration = nodifyLookupMAIN("dd2420").buildTree(); // SearchBox integration needed.
 
 listIntegration.assignIdentifiers([]);
 
@@ -52,6 +44,3 @@ var nodeStructure = listIntegration.exportTree();
 
 // combine config with tree for treant graph generation
 var simple_chart_config = [config].concat(nodeStructure);
-
-
-tree = new Treant( simple_chart_config, $ );
