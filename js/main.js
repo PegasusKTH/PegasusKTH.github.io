@@ -3,11 +3,16 @@ globalIDcount = 0;
 class Node {
     constructor(courseCode){
         this.courseCode = courseCode;
+        this.courseName = null;
         this.prerequisites = [];
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = globalIDcount++;
         console.log("creating node: " + courseCode + " jsonID " + this._json_id);
+    }
+
+    setName(name) {
+      this.courseName = name;
     }
 
     // formats singular node to array format for Treant.js
@@ -17,7 +22,7 @@ class Node {
       if (this.parentNode == null) {
         var arr = {
           _json_id: this._json_id,
-          text: { name: this.courseCode }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), id:"ID: " + this._json_id}
         };
 
         return arr;
@@ -26,7 +31,7 @@ class Node {
         var arr = {
           _json_id: this._json_id,
           parent: this.parentNode,
-          text: { name: this.courseCode }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), id:"ID: " + this._json_id}
         };
 
         return arr;
@@ -52,10 +57,11 @@ class Node {
     jsonToArray(){
       var courseCode = this.courseCode;
 
-        var resArr = lookup(courseCode)[1];
+        var resArr = lookup(courseCode);
+        // var resName = lookup(courseCode)[0];
 
         console.log("Lookup for " + courseCode + " gave results:");
-        console.log(resArr);
+        console.log(resArr[1]);
 
         return resArr;
 
@@ -70,13 +76,17 @@ class Node {
     // fully constructs tree object for later export
     buildTree() {
 
-      var reqArr = this.jsonToArray();
+      var lookup = this.jsonToArray();
+      var reqArr = lookup[1];
+      this.setName(lookup[0]);
 
       for (var i = 0; i < reqArr.length; i++){
         var temp = new Node(reqArr[i]);
-
         temp.parentNode = this;
         this.addChild(temp);
+        console.log("adding child: " + temp.courseCode + " to " + this.courseCode);
+
+
         temp.buildTree();
       }
       return this;
