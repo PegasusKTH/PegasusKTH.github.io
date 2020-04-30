@@ -6,17 +6,19 @@ h1{
 }
 
 #pegasus{
-  max-width: 250px;
+  max-width: 200px;
   height: 30%;
   width: 30%;
 }
 
 .textarea{
+  max-width: 1000px;
   color: #333333;
   font-size: 22px;
-  margin-left: 10%;
+  margin: auto;
   width: 80%;
   font-family: 'Manrope'
+
 }
 
 .center{
