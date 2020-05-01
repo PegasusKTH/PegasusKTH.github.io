@@ -35,6 +35,11 @@ var config = {
 
 };
 
+// exports node tree to prereqList.js
+function getRootNode() {
+	return listIntegration;
+}
+
 // listIntegration has taken jsonObject and converted it into a tree of nodes
 var listIntegration = nodifyLookupMAIN("ID1206").buildTree(); // SearchBox integration needed.
 
