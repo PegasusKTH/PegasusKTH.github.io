@@ -1,16 +1,34 @@
+#container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 10rem;
+}
+
 h1{
   color: #333333;
   text-align: center;
   font-family: 'Audiowide';
+
   max-width: 400px;
 }
 
 h2{
-
+  padding-top: 1rem;
   color: #333333;
   text-align: center;
   font-size: 28px;
   font-family: 'Audiowide';
+}
+
+#background {
+  background-position: 50%  30%;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  position: relative;
 }
 
 #pegasus{
@@ -19,15 +37,6 @@ h2{
   width: 30%;
 }
 
-.textarea{
-  max-width: 1000px;
-  color: #333333;
-  font-size: 22px;
-  margin: auto;
-  width: 80%;
-  font-family: 'Manrope'
-
-}
 .center{
   display: block;
   margin-left: auto;
@@ -35,28 +44,30 @@ h2{
 
 }
 
+.textarea{
+
+  max-width: 1000px;
+  color: #333333;
+  font-size: 22px;
+  margin: auto;
+  width: 80%;
+  font-family: 'Manrope';
+
+}
 
 #search{
-  height: 100px;
+  padding-top: 2rem;
+  height: auto;
   width: 295px;
 }
 
-
-#container {
-  position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 7rem;
-}
-
 #footer{
+  
   position: absolute;
   bottom:0;
   width:100%;
-  height:80px;
-  background:transparent;
+  height:70px;
+  background-color: rgba(200,200,200,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,14 +75,18 @@ h2{
 
 ul#footeritem li {
   display:inline;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 2%;
+  font-family: 'Manrope';
 }
 
 li{
-   margin: 50px;
-   color: #ebb0d6;
-   font-size: 20px;
-   font-family: 'Manrope';
-
+  margin: 50px;
+  color: #ebb0d6;
+  font-size: 20px;
+  font-family: 'Manrope';
+  font-weight: bold;
 }
 
 a:link {
@@ -79,12 +94,17 @@ a:link {
   text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
   background-color: transparent;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'Manrope';
+  font-weight: bold;
+ }
+ a:hover{
+  color: #298fca;
 }
 
-a{
+ a{
   color: #ebb0d6;
+  font-weight: bold;
   text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
 }
 
