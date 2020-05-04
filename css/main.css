@@ -21,10 +21,11 @@ h1{
 }
 
 h2{
+  padding-top: 1rem;
   color: #333333;
   text-align: center;
-  margin-top: 0;
-  font-size: 130%;
+  font-size: 25px;
+  font-family: 'Audiowide';
 }
 
 
