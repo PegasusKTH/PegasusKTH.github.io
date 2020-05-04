@@ -35,13 +35,19 @@ var config = {
 
 };
 
+// exports node tree to prereqList.js
+function getRootNode() {
+	return listIntegration;
+}
+
 // listIntegration has taken jsonObject and converted it into a tree of nodes
 var listIntegration = nodifyLookupMAIN("DD2430").buildTree(); // SearchBox integration needed.
 
+// assigns a unique ID to every node in the tree
 listIntegration.assignIdentifiers([]);
 
 // sets up nodes in the right format for the Treant
 var nodeStructure = listIntegration.exportTree();
 
-// combine config with tree for treant graph generation
+// combine config with tree for Treant graph generation
 var simple_chart_config = [config].concat(nodeStructure);

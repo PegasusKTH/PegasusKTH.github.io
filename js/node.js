@@ -19,7 +19,7 @@ class Node {
     }
 
     // formats singular node to array format for Treant.js
-    // format according to chart simple_chart_config, see treantTree.js and treant docs
+    // format according to chart simple_chart_config, see main.js and treant docs
     formatNode() {
 
       if (this.parentNode == null) {
