@@ -97,24 +97,35 @@ class Node {
       //
       // console.log("reqArr:");
       // console.log(reqArr);
+      console.log("original reqArr");
+      console.log(reqArr);
+
       for (var i = 0; i < reqArr.length; i++) {
         // console.log("reqArr: "+ i);
         // console.log(reqArr[i]);
-        if (typeof reqArr[i] == "object" && reqArr.length > 0) {
+        console.log("loop reqArr");
+        console.log(reqArr);
+
+        console.log("into if");
+        console.log(reqArr[i]);
+
+        if (typeof reqArr[i] == "object" & reqArr[i].length > 0) {
+          console.log("is an array");
+          console.log(reqArr[i]);
 
           var temp = new Node(reqArr[i].shift());
-          // console.log("Created node: "+ temp.courseCode);
-          // console.log(temp);
 
 
-          // reqArr[i].shift();
+
           // make lookup for all equivalents to provide additional info in node objects
           // atm additional info kept for later use?
+          // TODO: the code below should be the one running. Error has a "ghost element" in equivalent array
           // reqArr[i].forEach(element => {
           //
           //   temp.equivalent.push(new Node(element).buildTree());
           // });
 
+          // TODO: change row below to code above
           temp.equivalent = reqArr[i];
 
           temp.parentNode = this;
@@ -123,6 +134,9 @@ class Node {
           temp.buildTree();
 
         } else if (typeof reqArr[i] == "string") {
+          console.log("is string");
+          console.log(reqArr[i]);
+
           var temp = new Node(reqArr[i]);
           temp.parentNode = this;
           this.addChild(temp);
@@ -138,5 +152,3 @@ class Node {
 function nodifyLookupMAIN(courseCode) {
   return new Node(courseCode);
 }
-
-var globalDegub;
