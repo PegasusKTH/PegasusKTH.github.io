@@ -18,7 +18,10 @@ function searching(data){ // Originally Erik/Celine
 
 
   var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
-  eligArray.push(equivalentResult[0]);
+
+  equivalentResult[0].forEach(element => {
+    eligArray.push(element);
+  });
 
   // writes over data string with manipulated datastring to prevent duplicates
   data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
