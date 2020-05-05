@@ -50,7 +50,6 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
     jsonObject = JSON.parse(request.responseText);
     return searching(jsonObject);
   }
-
 } else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
   var request = new XMLHttpRequest();
  request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
@@ -70,5 +69,4 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
     document.write('<a href="graph.html"><button type="button" onclick="buildtree() function">'  + courseArr[i] + '</button></a>'); 
   }
 }
-
 }
