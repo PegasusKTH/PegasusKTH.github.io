@@ -1,6 +1,6 @@
 /*
   This file contains the structure of the tree and nodes. It also contains functions to recursivly
-  build the tree and export it to Treant library. 
+  build the tree and export it to Treant library.
 */
 
 globalIDcount = 0;
