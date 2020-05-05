@@ -37,17 +37,49 @@ function searching(data){ // Originally Erik/Celine
   return finalResultArray;
 }
 
-// first function called, takes a course ID as argument and calls for 'searching' function with JSON object from KOPPS api
-// returns result: passes JSON object as argument to 'searching' and returns result
-function lookup(courseID){ // Originally Patrick/Jing group
-  var jsonObject;
-  var request = new XMLHttpRequest();
-  request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseID +  '/detailedinformation', false);  // `false` makes the request synchronous
-  request.send(null);
 
-  if (request.status === 200) {// That's HTTP for 'ok'
-    jsonObject = JSON.parse(request.responseText);
-    return searching(jsonObject);
+//first function called, eitehr takes a course ID as argument or a course code
+//1. input: a valid course ID     output: pass JSON object as an argument to searching(data) and returns the prerequisites of the input course
+//2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
+//3. to be filled
+function lookup(courseIDorName){ // Originally Patrick/Jing group
+  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)) { //If input is a courseID search directly and build the tree
+    var jsonObject;
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseIDorName +  '/detailedinformation', false);  // `false` makes the request synchronous
+    request.send(null)
+
+    if (request.status === 200) {// That's HTTP for 'ok'
+      jsonObject = JSON.parse(request.responseText);
+        return searching(jsonObject);
+    }
+    else{
+      window.location.href = "CourseNotFound.html";//if HTTP 404 then the there's not such api available for the given course, the course does not exist
+    }
+  } 
+  else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
+    var request = new XMLHttpRequest();
+    request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
+    request.send(null);
+
+    if (request.status === 200) {// That's HTTP for 'ok'
+      jsonOBJ = JSON.parse(request.responseText);
+      var temp;
+      var courseArr = [];
+      for(i=0; i<jsonOBJ.searchHits.length; i++){
+        temp = jsonOBJ.searchHits[i].course;
+        courseArr[i] = temp.courseCode;
+      }
+    }
+  //If there're relavant courses found, generate one button for each course code
+    if(courseArr.length>0){
+     for(i = 0; i < courseArr.length; i++){
+        document.write('<a href="graph.html"><button type="button" onclick="buildtree() function">'  + courseArr[i] + '</button></a>'); 
+      }
+    }
+    //if there is no such course, go to the Course Not Found Page
+    else{
+      window.location.href = "CourseNotFound.html";
+    }
   }
-
 }
