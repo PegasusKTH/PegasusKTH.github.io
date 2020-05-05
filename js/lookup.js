@@ -74,7 +74,7 @@ function getEquivalents(dataString) {
 
     var slicedData = dataString.slice(startIndex, endIndex);
 
-    equivalents.push([slicedData.split("/")]);
+    equivalents.push(slicedData.split("/"));
 
     dataString = dataString.replace(slicedData, "");
 
@@ -87,11 +87,6 @@ function getEquivalents(dataString) {
 
 
 
-
-
-// "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
-
-//"<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
 
 
 
