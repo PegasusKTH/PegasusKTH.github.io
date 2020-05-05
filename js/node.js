@@ -87,6 +87,7 @@ class Node {
     // fully constructs tree object for later export
     buildTree() {
 
+      console.log(this.courseCode);
       var lookup = this.jsonToArray();
       var reqArr = lookup[1];
       this.setName(lookup[0]);
@@ -97,6 +98,7 @@ class Node {
           var temp = new Node(reqArr[i][0]);
 
           temp.equivalent = reqArr[i].shift();
+          this.addChild(temp);
 
         } else {
           var temp = new Node(reqArr[i]);

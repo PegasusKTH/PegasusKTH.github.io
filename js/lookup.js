@@ -10,19 +10,18 @@ function searching(data){ // Originally Erik/Celine
   var courseName;
   var finalResultArray = [];
 
-
-  var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
-
-  equivalentResult[0].forEach(element => {
-    eligArray.push(element);
-  });
-
-  // writes over data string with manipulated datastring to prevent duplicates
-  data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
-
-  // this one finds the eligibility courses (REQUIRED COURSES)
-  // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
   if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
+    var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
+
+    equivalentResult[0].forEach(element => {
+      eligArray.push(element);
+    });
+
+    // writes over data string with manipulated datastring to prevent duplicates
+    data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
+
+    // this one finds the eligibility courses (REQUIRED COURSES)
+    // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
     requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
     eligArray = eligArray.concat(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
     if (eligArray == null){
@@ -69,6 +68,7 @@ function getEquivalents(dataString) {
 
   var equivalents = [];
 
+  console.log(dataString);
   //TODO: perhaps look into time comp? dataString is called in while condition without use
   while(dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g) != -1) {
 
