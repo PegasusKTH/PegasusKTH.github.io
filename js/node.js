@@ -12,6 +12,7 @@ class Node {
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = null;
+        this.equivalent = [];
     }
 
     setName(name) {
@@ -91,11 +92,19 @@ class Node {
       this.setName(lookup[0]);
 
       for (var i = 0; i < reqArr.length; i++){
-        var temp = new Node(reqArr[i]);
-        temp.parentNode = this;
-        this.addChild(temp);
+        
+        if (typeof reqArr[i] == "object") {
+          var temp = new Node(reqArr[i][0]);
 
-        temp.buildTree();
+          temp.equivalent = reqArr[i].shift();
+
+        } else {
+          var temp = new Node(reqArr[i]);
+          temp.parentNode = this;
+          this.addChild(temp);
+
+          temp.buildTree();
+        }
       }
       return this;
     }
