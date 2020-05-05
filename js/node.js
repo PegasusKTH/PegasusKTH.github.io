@@ -110,22 +110,44 @@ class Node {
     // fully constructs tree object for later export
     buildTree() {
 
-      console.log(this.courseCode);
+      // console.log(this.courseCode);
       var lookup = this.jsonToArray();
       var reqArr = lookup[1];
       this.setName(lookup[0]);
       this.addHp(lookup[3]);
       this.addPeriod(lookup[4]);
 
-      for (var i = 0; i < reqArr.length; i++){
-        
-        if (typeof reqArr[i] == "object") {
-          var temp = new Node(reqArr[i][0]);
+      // console.log("lookup");
+      // console.log(lookup);
+      //
+      // console.log("reqArr:");
+      // console.log(reqArr);
+      for (var i = 0; i < reqArr.length; i++) {
+        // console.log("reqArr: "+ i);
+        // console.log(reqArr[i]);
+        if (typeof reqArr[i] == "object" && reqArr.length > 0) {
 
-          temp.equivalent = reqArr[i].shift();
+          var temp = new Node(reqArr[i].shift());
+          // console.log("Created node: "+ temp.courseCode);
+          // console.log(temp);
+
+
+          // reqArr[i].shift();
+          // make lookup for all equivalents to provide additional info in node objects
+          // atm additional info kept for later use?
+          // reqArr[i].forEach(element => {
+          //
+          //   temp.equivalent.push(new Node(element).buildTree());
+          // });
+
+          temp.equivalent = reqArr[i];
+
+          temp.parentNode = this;
+
           this.addChild(temp);
+          temp.buildTree();
 
-        } else {
+        } else if (typeof reqArr[i] == "string") {
           var temp = new Node(reqArr[i]);
           temp.parentNode = this;
           this.addChild(temp);
@@ -141,3 +163,5 @@ class Node {
 function nodifyLookupMAIN(courseCode) {
   return new Node(courseCode);
 }
+
+var globalDegub;
