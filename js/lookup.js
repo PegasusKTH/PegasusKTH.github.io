@@ -13,9 +13,9 @@ function searching(data){ // Originally Erik/Celine
   if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
     var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
 
-    equivalentResult[0].forEach(element => {
-      eligArray.push(element);
-    });
+    for(var i = 0; i < equivalentResult[0].length; i++) {
+      eligArray.push(equivalentResult[0][i]);
+    }
 
     // writes over data string with manipulated datastring to prevent duplicates
     data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
@@ -68,7 +68,6 @@ function getEquivalents(dataString) {
 
   var equivalents = [];
 
-  console.log(dataString);
   //TODO: perhaps look into time comp? dataString is called in while condition without use
   while(dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g) != -1) {
 
@@ -78,7 +77,6 @@ function getEquivalents(dataString) {
     var slicedData = dataString.slice(startIndex, endIndex);
 
     equivalents.push(slicedData.split("/"));
-
     dataString = dataString.replace(slicedData, "");
 
   }
