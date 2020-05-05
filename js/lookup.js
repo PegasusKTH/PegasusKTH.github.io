@@ -94,6 +94,39 @@ function lookup(courseID){ // Originally Patrick/Jing group
 
 }
 
+
+/*
+Get Equivalents
+DESC:
+Looks for certain patterns in a string, corresponding to KoppsAPI course-formatting,
+to look for required courses equivalent to eachother. Returns these equivalent courses
+and the taken input but with the equivalent courses removed. Modified datastring can
+be used to look for courses which lack equivalents.
+
+INPUT:
+string of data from API json file.
+json object expected is "data.publicSyllabusVersions[0].courseSyllabus.eligibility"
+
+OUTPUT:
+Array containing the array "equivalents" and the modified datastring "dataString".
+"dataString" is the string provided as input but without any coursecode sequences
+representing the equivalents managed by the function. The names for these sequences remain.
+
+"equivalents" is and array containing arrays of equivalent courses. To clearify:
+If two courses are equivalent to eachother their coursecodes in string-format are
+placed in the same array. This array is then placed in the array "equivalents" which
+is returned. This is to allow for multiple courses to have equivalents. See examples.
+
+EXAMPLES:
+ARGUMENT: "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
+RETURNS: [[[IX1500, SF1601]], "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li> Diskret matematik&#160;</li></ul>"]
+
+ARGUMENT: "<ul><li>ID1018 Programmering I&#160;</li><li>AA0000/BB1111/CC2222 Biodling avancerad&#160;</li></ul></li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
+RETURNS: [[[AA0000,BB1111,CC2222], [IX1500, SF1601]], "<ul><li>ID1018 Programmering I&#160;</li><li> Biodling avancerad&#160;</li></ul></li><li> Diskret matematik&#160;</li></ul>"]
+
+ARGUMENT: "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160"
+RETURNS: [[], "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160"]
+*/
 function getEquivalents(dataString) {
 
   var startIndex;
