@@ -39,15 +39,34 @@ function searching(data){ // Originally Erik/Celine
 
 // first function called, takes a course ID as argument and calls for 'searching' function with JSON object from KOPPS api
 // returns result: passes JSON object as argument to 'searching' and returns result
-function lookup(courseID){ // Originally Patrick/Jing group
+function lookup(courseIDorName){ // Originally Patrick/Jing group
+  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)) { //If input is a courseID search directly and build the tree
   var jsonObject;
   var request = new XMLHttpRequest();
-  request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseID +  '/detailedinformation', false);  // `false` makes the request synchronous
-  request.send(null);
+  request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseIDorName +  '/detailedinformation', false);  // `false` makes the request synchronous
+  request.send(null)
 
   if (request.status === 200) {// That's HTTP for 'ok'
     jsonObject = JSON.parse(request.responseText);
     return searching(jsonObject);
   }
+} else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
+  var request = new XMLHttpRequest();
+ request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
+ request.send(null);
 
+ if (request.status === 200) {// That's HTTP for 'ok'
+  jsonOBJ = JSON.parse(request.responseText);
+ var temp;
+ var courseArr = [];
+ for(i=0; i<jsonOBJ.searchHits.length; i++){
+     temp = jsonOBJ.searchHits[i].course;
+     courseArr[i] = temp.courseCode;
+   }
+  }
+  //Generate one button for each course code
+  for(i = 0; i < courseArr.length; i++){
+    document.write('<a href="graph.html"><button type="button" onclick="buildtree() function">'  + courseArr[i] + '</button></a>'); 
+  }
+}
 }
