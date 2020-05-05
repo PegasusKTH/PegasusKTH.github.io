@@ -74,7 +74,7 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
   //If there're relavant courses found, generate one button for each course code
     if(courseArr.length>0){
      for(i = 0; i < courseArr.length; i++){
-        document.write('<a href="graph.html"><button type="button" onclick="buildtree() function">'  + courseArr[i] + '</button></a>'); 
+        document.write('<a href="graph.html"><button type="button" onclick="firstall(courseArr[i])">'  + courseArr[i] + '</button></a>'); 
       }
     }
     //if there is no such course, go to the Course Not Found Page
