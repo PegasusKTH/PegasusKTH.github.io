@@ -57,7 +57,6 @@ function searching(data){ // Originally Erik/Celine
       }
 
     }
-    console.log(periodArray);
   }
 
 
@@ -65,7 +64,7 @@ function searching(data){ // Originally Erik/Celine
 
 
   courseName = new String(data.course.title);
-  finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.toString()];
+  finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.join(", ")];
   console.log(finalResultArray);
 
   return finalResultArray;
