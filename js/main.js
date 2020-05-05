@@ -4,7 +4,7 @@
 	This file takes a Course Code from index.html searching functionality and builds a tree
 
 	1.	NodifyLookupMAIN takes a course code and returns all information in a jsonObject
-	2.	A tree is recursivly built with buildTree and saved in listintegration where 
+	2.	A tree is recursivly built with buildTree and saved in listintegration where
 		each node has information about:
 			courseCode
 			prerequisites
@@ -13,10 +13,10 @@
 			_json_id
 	3.	The tree in listIntegration is traversed row by row with BFS and gets assigned
 		and unique ID for each node in the tree. That is needed for the Treant library.
-	4.	nodestructure is a jsonObject used by Treant and is created and formated 
+	4.	nodestructure is a jsonObject used by Treant and is created and formated
 		by exportTree.
-	5.	Treant uses simple_chart_config that is the "config" concatenated with the 
-		"nodestructure" and visually shows the tree. 
+	5.	Treant uses simple_chart_config that is the "config" concatenated with the
+		"nodestructure" and visually shows the tree.
 
 
 */
