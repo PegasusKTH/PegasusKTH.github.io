@@ -4,12 +4,15 @@
 }
 
 #content-wrap {
+  padding-top: 2rem;
   padding-bottom: 7rem;
+  
 }
 
 h1{
   color: #333333;
   text-align: center;
+
   font-family: 'Audiowide';
 
   font-size: 5vmax;
@@ -18,10 +21,11 @@ h1{
 }
 
 h2{
+  padding-top: 1rem;
   color: #333333;
   text-align: center;
-  margin-top: 0;
-  font-size: 130%;
+  font-size: 25px;
+  font-family: 'Audiowide';
 }
 
 
@@ -183,22 +187,23 @@ a{
     outline: 0;
     font-size: 20px;
     background:transparent;
-    min-width: 200px;
-    /* margin-left: 20%; */
+    min-width: 220px;
+
   }
 
   #magnifying-glass{
-
+    min-width: 25px;
+    max-width: 40px;
   }
   .search {
     text-align: center;
     margin-left: auto;
     margin-top: 4%;
-    width: 40%;
+    width: 60%;
   }
 
   h1{
-    font-size: 380%;
+    font-size: 300%;
     line-height: 100%;
   }
 
@@ -207,11 +212,29 @@ a{
     font-size: 20px;
   }
   .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     /* width: 50%; */
     /* margin-top: 50px; */
   }
+  a:link {
+    color: #ebb0d6;
+    text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Manrope';
+    font-weight: bold;
+   }
+   a:hover{
+     color: #298fca;
+   }
+   
+   a{
+     color: #ebb0d6;
+     font-weight: bold;
+     text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+   }
+
 }

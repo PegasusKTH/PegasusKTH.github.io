@@ -16,6 +16,7 @@ h1{
 }
 
 h2{
+
   padding-top: 1rem;
   color: #333333;
   text-align: center;
@@ -110,4 +111,72 @@ a:link {
 
 #graylink{
   color: #ebb0d6;
+}
+
+/* smaller handhelds */
+@media (max-width: 750px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #coursecode{
+    border: 0;
+    border-bottom: 1.5px solid #333333;
+    outline: 0;
+    font-size: 20px;
+    background:transparent;
+    min-width: 220px;
+
+  }
+
+  #magnifying-glass{
+    min-width: 25px;
+    max-width: 40px;
+  }
+  .search {
+    text-align: center;
+    margin-left: auto;
+    margin-top: 4%;
+    width: 60%;
+  }
+
+  h1{
+    font-size: 300%;
+    line-height: 100%;
+  }
+
+  .item {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+    /* margin-top: 50px; */
+  }
+  a:link {
+    color: #ebb0d6;
+    text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Manrope';
+    font-weight: bold;
+   }
+   a:hover{
+     color: #298fca;
+   }
+   
+   a{
+     color: #ebb0d6;
+     font-weight: bold;
+     text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+   }
+
 }
