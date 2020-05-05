@@ -876,7 +876,7 @@
             } // else this.CONFIG.scrollbar == 'None'
 
             return this;
-        },
+        },        
         /**
          * @param {TreeNode} treeNode
          * @param {boolean} hidePoint
@@ -1854,9 +1854,9 @@
                 if (key.startsWith("data-")) {
                     node.setAttribute(key, this.text[key]);
                 } else {
-
+                    
                     var textElement = document.createElement(this.text[key].href ? 'a' : 'p');
-
+                    
                     // make an <a> element if required
                     if (this.text[key].href) {
                         textElement.href = this.text[key].href;
@@ -1864,14 +1864,14 @@
                             textElement.target = this.text[key].target;
                         }
                     }
-
+                    
                     textElement.className =  "node-"+key;
                     textElement.appendChild(document.createTextNode(
                         this.text[key].val ? this.text[key].val :
                         this.text[key] instanceof Object ? "'val' param missing!" : this.text[key]
                     )
                     );
-
+                    
                     node.appendChild(textElement);
                 }
             }
@@ -2102,6 +2102,7 @@
                     var node = nodes[i];
                     if(node.parent && (node.parent._json_id === parentId)) { // skip config and root nodes
 
+                        // This reassign ID's that we have set. Keep commented out.
                         //node._json_id = this.getID();
 
                         delete node.parent;

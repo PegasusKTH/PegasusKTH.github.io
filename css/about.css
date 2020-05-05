@@ -1,17 +1,31 @@
 h1{
-  color: black;
-  text-align: left;
-  font-size: 40px;
+  color: #333333;
+  text-align: center;
+  font-family: 'Audiowide';
+  max-width: 400px;
 }
 
-#logo{
-  height: 125px;
-  width: 140px;
+#pegasus{
+  max-width: 200px;
+  height: 30%;
+  width: 30%;
 }
 
 .textarea{
-  color: black;
-  font-size: 20px;
+  max-width: 1000px;
+  color: #333333;
+  font-size: 22px;
+  margin: auto;
+  width: 80%;
+  font-family: 'Manrope'
+
+}
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 #search{
@@ -19,13 +33,14 @@ h1{
   width: 295px;
 }
 
-#page-container {
+
+#container {
   position: relative;
   min-height: 100vh;
 }
 
 #content-wrap {
-  padding-bottom: 80px;    /* Footer height */
+  padding-bottom: 7rem;
 }
 
 #footer{
@@ -50,5 +65,7 @@ li{
 }
 
 a{
-  color: black;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }

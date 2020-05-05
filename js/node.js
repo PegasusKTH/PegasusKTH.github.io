@@ -1,80 +1,107 @@
+/*
+  This file contains the structure of the tree and nodes. It also contains functions to recursivly
+  build the tree and export it to Treant library. 
+*/
 
-var globalIDCounter = 0;
-
-class Node { // Originally Edvin/Alex
-  constructor(courseCode){
-    this.courseName;
-    this.courseCode = courseCode;
-    this.prerequisites = [];  // good for you
-    this.eligibility = [];    // REQUIRED
-    this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
-    this.parentNode = null;
-    this._json_id = globalIDCounter++;
-    console.log("creating node:" + this.courseCode + " with ID: " + this._json_id);
-  }
-
-  // Build tree from rootnode with prerequisite-list and eligibility-list
-  // Not implemented yet, takes first root node and recursively builds a tree
-  buildTree() {
-    //console.log(globalIDcount);
-    console.log(this._json_id);
-
-    // replaces string children array with node child array for all index
-    for(var i = 0; i < this.eligibility.length; i++){
-      this.eligibility[i] = nodifyLookup(this.eligibility[i]);
+globalIDcount = 0;
+class Node {
+    constructor(courseCode){
+        this.courseCode = courseCode;
+        this.courseName = null;
+        this.prerequisites = [];
+        this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
+        this.parentNode = null;
+        this._json_id = null;
     }
 
-    for(var i = 0; i < this.eligibility.length; i++){
-      this.eligibility[i].parentNode = this;
-      this.eligibility[i].buildTree();
+    setName(name) {
+      this.courseName = name;
     }
 
-    return this;
-  }
+    // formats singular node to array format for Treant.js
+    // format according to chart simple_chart_config, see main.js and treant docs
+    formatNode() {
 
+      if (this.parentNode == null) {
+        var arr = {
+          _json_id: this._json_id,
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " ") }
+        };
 
+        return arr;
+      } else {
 
-  // formats singular node to array format for Treant.js
-  // format according to chart simple_chart_config, see treantTree.js and treant docs
-  formatNode() {
-    if (this.parentNode == null) {
-      var nodeStructure = {
-        _json_id: this._json_id,
-        text: { name: this.courseCode }
-      };
+        var arr = {
+          _json_id: this._json_id,
+          parent: this.parentNode,
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " ") }
+        };
 
-      return nodeStructure;
-    } else {
-      var nodeStructure = {
-        _json_id: this._json_id,
-        text: { courseID: this.courseCode },
-        parent: { parent: this.parentNode },
+        return arr;
       }
-    };
-
-    return nodeStructure;
-  }
-
-  exportTree() {
-    var nodeStructure = [this.formatNode()];
-
-    for (let i = 0; i < this.eligibility.length; i++) {
-      nodeStructure = nodeStructure.concat(this.eligibility[i].exportTree());
     }
-    return nodeStructure;
-  }
+    // BFS to assing _json_id
+    assignIdentifiers(queue) {
+      this.prerequisites.forEach(element => {
+        queue.push(element);
+      });
+      this._json_id = globalIDcount++;
+
+      var nextNode = queue.shift();
+
+      if (queue.length > 0 || nextNode.prerequisites.length > 0) {
+        nextNode.assignIdentifiers(queue);
+      } else {
+        nextNode._json_id = globalIDcount;
+      }
+    }
+
+    // converts all nodes to treant array format and return array with all converted nodes
+    exportTree() {
+
+      // add current node to array
+      var arr = [this.formatNode()];
+      for (var i = 0; i < this.prerequisites.length; i++) {
+        arr = arr.concat(this.prerequisites[i].exportTree());
+      }
+
+      return arr;
+    }
+
+    // input course code
+    // expected output is string array of required courses course codes. empty array if none exist
+    jsonToArray(){
+      var courseCode = this.courseCode;
+      var resArr = lookup(courseCode);
+
+      return resArr;
+    }
+
+    // adds child node to parent node prerequisites array
+    addChild(node){
+        this.prerequisites.push(node);
+    }
+
+    // recursively goes through all prerequisites according to json files.
+    // fully constructs tree object for later export
+    buildTree() {
+
+      var lookup = this.jsonToArray();
+      var reqArr = lookup[1];
+      this.setName(lookup[0]);
+
+      for (var i = 0; i < reqArr.length; i++){
+        var temp = new Node(reqArr[i]);
+        temp.parentNode = this;
+        this.addChild(temp);
+
+        temp.buildTree();
+      }
+      return this;
+    }
 
 }
-
-// Takes the array with course information and
-// creates a Node to be root node in the graph
-function nodifyLookup(courseCode){
-  var temp = lookup(courseCode); //here we have a JSON obj
-  var rootNode = new Node(courseCode);
-
-  rootNode.courseName = temp[0];
-  rootNode.eligibility = temp[1];
-  rootNode.prerequisites = temp[2];
-
-  return rootNode;
+// Node creation
+function nodifyLookupMAIN(courseCode) {
+  return new Node(courseCode);
 }

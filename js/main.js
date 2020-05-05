@@ -1,105 +1,53 @@
+// TODO: SearchBox intergration needed in var listIntegration. @param courseCode for nodifyLookupMAIN
+// TODO: get rid of ID:s in visulized tree
+/*
+	This file takes a Course Code from index.html searching functionality and builds a tree
 
-globalIDcount = 0;
-class Node {
-    constructor(courseCode){
-        this.courseCode = courseCode;
-        this.prerequisites = [];
-        this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
-        this.parentNode = null;
-        this._json_id = null;
-        console.log("creating node: " + courseCode + " jsonID " + this._json_id);
-    }
-
-    // formats singular node to array format for Treant.js
-    // format according to chart simple_chart_config, see treantTree.js and treant docs
-    formatNode() {
-
-      if (this.parentNode == null) {
-        var arr = {
-          _json_id: this._json_id,
-          text: { name: this.courseCode + " " + this._json_id }
-        };
-
-        return arr;
-      } else {
-
-        var arr = {
-          _json_id: this._json_id,
-          parent: this.parentNode,
-          text: { name: this.courseCode + " " + this._json_id }
-        };
-
-        return arr;
-
-      }
-    }
-    // BFS to assing _json_id
-    assignIdentifiers(queue) {
-      console.log(this.courseCode)
-      console.log(globalIDcount);
-      this.prerequisites.forEach(element => {
-        queue.push(element);
-      });
-      this._json_id = globalIDcount++;
-
-      var nextNode = queue.shift();
-
-      if (queue.length > 0) {
-        nextNode.assignIdentifiers(queue);
-      } else {
-        nextNode._json_id = globalIDcount++;
-      }
-    }
-
-    // converts all nodes to treant array format and return array with all converted nodes
-    exportTree() {
-
-      // add current node to array
-      var arr = [this.formatNode()];
-      for (var i = 0; i < this.prerequisites.length; i++) {
-        arr = arr.concat(this.prerequisites[i].exportTree());
-      }
-
-      return arr;
-    }
-
-    // temp function to represent patrik&jing and erik&celine features
-    // input course code
-    // expected output is string array of required courses course codes. empty array if none exist
-    jsonToArray(){
-      var courseCode = this.courseCode;
-
-        return lookup(courseCode)[1];
-
-    }
-
-    // adds child node to parent node prerequisites array
-    addChild(node){
-        this.prerequisites.push(node);
-    }
-
-    // recursively goes through all prerequisites according to json files.
-    // fully constructs tree object for later export
-    buildTree() {
-
-      var reqArr = this.jsonToArray();
-
-      for (var i = 0; i < reqArr.length; i++){
-        var temp = new Node(reqArr[i]);
-
-        temp.parentNode = this;
-        this.addChild(temp);
-        temp.buildTree();
-      }
-      return this;
-    }
+	1.	NodifyLookupMAIN takes a course code and returns all information in a jsonObject
+	2.	A tree is recursivly built with buildTree and saved in listintegration where
+		each node has information about:
+			courseCode
+			prerequisites
+			courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
+			parentNode
+			_json_id
+	3.	The tree in listIntegration is traversed row by row with BFS and gets assigned
+		and unique ID for each node in the tree. That is needed for the Treant library.
+	4.	nodestructure is a jsonObject used by Treant and is created and formated
+		by exportTree.
+	5.	Treant uses simple_chart_config that is the "config" concatenated with the
+		"nodestructure" and visually shows the tree.
 
 
+*/
+// config for tree container div
+// see html
+var config = {
+	container: "#chart",
+
+	node: {
+		collapsable: true
+	},
+	connectors: {
+		type: 'step'
+	},
+	nodeAlign: 'top',
+
+};
+
+// exports node tree to prereqList.js
+function getRootNode() {
+	return listIntegration;
 }
 
-function nodifyLookupMAIN(courseCode) {
-  return new Node(courseCode);
-}
+// listIntegration has taken jsonObject and converted it into a tree of nodes
+var listIntegration = nodifyLookupMAIN("II1305").buildTree(); // SearchBox integration needed.
 
-// temp1 = new Node("II1305");
-// temp2 = new Node("II1305");
+// assigns a unique ID to every node in the tree
+listIntegration.assignIdentifiers([]);
+
+// sets up nodes in the right format for the Treant
+var nodeStructure = listIntegration.exportTree();
+
+// combine config with tree for Treant graph generation
+var simple_chart_config = [config].concat(nodeStructure);

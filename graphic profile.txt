@@ -1,0 +1,15 @@
+colors:
+pink - #ebb0d6
+azure blue - #298fca
+dark purple - #0a1029
+dark grey - #333333
+
+fonts:
+headers - Audiowide
+body text - Manrope
+
+header:
+tba
+
+footer:
+tba
