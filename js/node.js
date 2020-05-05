@@ -12,6 +12,8 @@ class Node {
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = null;
+        this.period = null;
+        this.hp = null;
     }
 
     setName(name) {
@@ -25,7 +27,7 @@ class Node {
       if (this.parentNode == null) {
         var arr = {
           _json_id: this._json_id,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " ") }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
         };
 
         return arr;
@@ -34,7 +36,7 @@ class Node {
         var arr = {
           _json_id: this._json_id,
           parent: this.parentNode,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " ") }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
         };
 
         return arr;
@@ -82,6 +84,15 @@ class Node {
         this.prerequisites.push(node);
     }
 
+    // adds the couse hp to node
+    addHp(hp){
+      this.hp = hp
+    }
+    // adds the periodes in an array the course is given in
+    addPeriod(period){
+      this.period = period
+    }
+
     // recursively goes through all prerequisites according to json files.
     // fully constructs tree object for later export
     buildTree() {
@@ -89,6 +100,8 @@ class Node {
       var lookup = this.jsonToArray();
       var reqArr = lookup[1];
       this.setName(lookup[0]);
+      this.addHp(lookup[3]);
+      this.addPeriod(lookup[4]);
 
       for (var i = 0; i < reqArr.length; i++){
         var temp = new Node(reqArr[i]);

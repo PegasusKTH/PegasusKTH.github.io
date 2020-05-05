@@ -10,10 +10,10 @@ function searching(data){ // Originally Erik/Celine
   var courseName;
   var finalResultArray = [];
   var hp = null;
-  var periodArray = []; 
+  var periodArray = [];
   var courseInPeriod = [false, false, false, false];
    //represents which period is available in, if true then the course is given in that period of the (index+1) in the array. Ex. [false, false, true, false] gives course in p3.
-  
+
 
 
   // this one finds the eligibility courses (REQUIRED COURSES)
@@ -36,7 +36,7 @@ function searching(data){ // Originally Erik/Celine
       preqArray = [];
     }
   }
-
+  //find hp
   if(data.course.credits){
     hp = data.course.credits;
   }
@@ -44,16 +44,16 @@ function searching(data){ // Originally Erik/Celine
   //find period in format "PX (xx hp)"
   if(data.roundInfos[0]){
     var place = 0;
-    
+
     for(var i = 0; i < data.roundInfos.length; i++){
       var s = data.roundInfos[i].round.courseRoundTerms[0].formattedPeriodsAndCredits; //potential bug if courseroundTerms[0] has more indexes and it does NOT mean version of course
-      courseInPeriod[s[1]-1] = true;        
-      
+      courseInPeriod[s[1]-1] = true;
+
     }
-    console.log(courseInPeriod) 
+    console.log(courseInPeriod)
     for(var i = 0; i < courseInPeriod.length; i++){
       if(courseInPeriod[i] == true){
-        periodArray.push("P"+ (i+1))        
+        periodArray.push("P"+ (i+1))
       }
 
     }
@@ -65,7 +65,7 @@ function searching(data){ // Originally Erik/Celine
 
 
   courseName = new String(data.course.title);
-  finalResultArray = [courseName, eligArray, preqArray, hp, periodArray];
+  finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.toString()];
   console.log(finalResultArray);
 
   return finalResultArray;
