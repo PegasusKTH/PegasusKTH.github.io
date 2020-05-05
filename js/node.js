@@ -12,9 +12,9 @@ class Node {
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = null;
-        this.equivalent = [];
         this.period = null;
         this.hp = null;
+        this.equivalent = [];
     }
 
     setName(name) {
