@@ -2,7 +2,7 @@
 
 // takes JSON object as argument and browses for requirements, eligibility and names, and returns them in an array
 // OBSERVE: prerequisites does not mean REQUIREMENTS, only recommendations
-// return example: ["name", ["course eligibilities"], ["course prerequisites"]]
+// return example: ["name", ["course eligibilities"], ["course prerequisites"], "hp", ["periods"]]
 function searching(data){ // Originally Erik/Celine
   var eligArray = [];
   var requiredCourse = "";
@@ -50,7 +50,7 @@ function searching(data){ // Originally Erik/Celine
       courseInPeriod[s[1]-1] = true;
 
     }
-    console.log(courseInPeriod)
+
     for(var i = 0; i < courseInPeriod.length; i++){
       if(courseInPeriod[i] == true){
         periodArray.push("P"+ (i+1))
@@ -65,7 +65,7 @@ function searching(data){ // Originally Erik/Celine
 
   courseName = new String(data.course.title);
   finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.join(", ")];
-  console.log(finalResultArray);
+
 
   return finalResultArray;
 }

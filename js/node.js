@@ -42,19 +42,28 @@ class Node {
         return arr;
       }
     }
+
+
     // BFS to assing _json_id
+    //queue is empty on first call
+    //no children and no parent means single node, then the recursive step is skipped
     assignIdentifiers(queue) {
-      this.prerequisites.forEach(element => {
-        queue.push(element);
-      });
-      this._json_id = globalIDcount++;
 
-      var nextNode = queue.shift();
-
-      if (queue.length > 0 || nextNode.prerequisites.length > 0) {
-        nextNode.assignIdentifiers(queue);
+      if(this.prerequisites.length == 0 && this.parentNode == null){
+        this._json_id = globalIDcount++;
       } else {
-        nextNode._json_id = globalIDcount;
+        this.prerequisites.forEach(element => {
+          queue.push(element);
+        });
+        this._json_id = globalIDcount++;
+    
+        var nextNode = queue.shift();
+  
+        if (queue.length > 0 || nextNode.prerequisites.length > 0) {
+          nextNode.assignIdentifiers(queue);
+        } else {
+          nextNode._json_id = globalIDcount;
+        }
       }
     }
 
