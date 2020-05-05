@@ -9,6 +9,8 @@ function searching(data){ // Originally Erik/Celine
   var preqArray = [];
   var courseName;
   var finalResultArray = [];
+  var hp = null;
+
 
   // this one finds the eligibility courses (REQUIRED COURSES)
   // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
@@ -31,8 +33,17 @@ function searching(data){ // Originally Erik/Celine
     }
   }
 
+  if(data.course.credits){
+    hp = data.course.credits;
+  }
+
+
+
+
+
   courseName = new String(data.course.title);
-  finalResultArray = [courseName, eligArray, preqArray];
+  finalResultArray = [courseName, eligArray, preqArray, hp];
+  console.log(finalResultArray);
 
   return finalResultArray;
 }

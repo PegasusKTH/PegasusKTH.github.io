@@ -41,7 +41,7 @@ function getRootNode() {
 }
 
 // listIntegration has taken jsonObject and converted it into a tree of nodes
-var listIntegration = nodifyLookupMAIN("DD2430").buildTree(); // SearchBox integration needed.
+var listIntegration = nodifyLookupMAIN("ID1206").buildTree(); // SearchBox integration needed.
 
 // assigns a unique ID to every node in the tree
 listIntegration.assignIdentifiers([]);
