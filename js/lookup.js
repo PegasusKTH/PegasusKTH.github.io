@@ -10,11 +10,18 @@ function searching(data){ // Originally Erik/Celine
   var courseName;
   var finalResultArray = [];
 
+
+  var equivalentResult = getEquivalents(); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
+  eligArray.push(equivalentResult[0]);
+
+  // writes over data string with manipulated datastring to prevent duplicates
+  data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
+
   // this one finds the eligibility courses (REQUIRED COURSES)
   // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
   if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
     requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
-    eligArray = requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)
+    eligArray = eligArray.concat(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
     if (eligArray == null){
       eligArray = [];
     }
@@ -51,3 +58,65 @@ function lookup(courseID){ // Originally Patrick/Jing group
   }
 
 }
+
+function getEquivalents(dataString) {
+
+  var startIndex;
+  var endIndex;
+
+  var equivalents = [];
+
+  //TODO: perhaps look into time comp? dataString is called in while condition without use
+  while(dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g) != -1) {
+
+    startIndex = dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g);
+    endIndex = startIndex + dataString.slice(startIndex, dataString.length).search(" ");
+
+    var slicedData = dataString.slice(startIndex, endIndex);
+
+    equivalents.push([slicedData.split("/")]);
+
+    dataString = dataString.replace(slicedData, "");
+
+  }
+
+  return [equivalents, dataString];
+}
+
+
+
+
+
+
+
+// "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
+
+//"<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
