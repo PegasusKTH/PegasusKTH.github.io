@@ -12,12 +12,9 @@ class Node {
         this.courseURL = "https://www.kth.se/student/kurser/kurs/" + courseCode;
         this.parentNode = null;
         this._json_id = null;
-<<<<<<< HEAD
         this.period = null;
         this.hp = null;
-=======
         this.equivalent = [];
->>>>>>> f4e83b0... started integration of getEquivalents()
     }
 
     setName(name) {
