@@ -16,7 +16,7 @@
   transition: all 0.5s; cursor: pointer;
   font-family: "Helvetica";
   font-size: 10px;
-  color: #ffffff;
+  color: #333333;
 }
 
 .Treant > .pseudo { position: absolute; display: block; visibility: hidden;}

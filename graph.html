@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="image/tab-logo.png">
+    <script type="text/javascript" src="js/lookup.js"></script>
+    <script type="text/javascript" src="js/node.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="js/treant/Treant.css">
     <title> Prerequisites </title>
     <link href="css/graph.css" rel="stylesheet">
     <!-- fonts from google api for the headers -->
@@ -37,9 +40,27 @@
             <!-- Section 2 -->
             <section id="section2">
               <div>Tree representation of prerequisites</div>
-                <div>
-                  ...
+
+              <!-- div for the tree -->
+              <div class="chart" id="chart" style="width:80%; float:right;">
               </div>
+
+                  <!-- Code handling the import of coursecode from URL tag -->
+                <script>
+                  courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/);
+                  var searchedCode = courseArray[0];
+                  var simplConfig = firstCall(searchedCode);
+                </script>
+
+                <!-- Libraries and creating the tree itself -->
+                <script src="js/treant/Treant.js"></script>
+                <script src="js/jquery-3.5.0.min.js"></script>
+                <script src="js/raphael.js"></script>
+
+                <script type="text/javascript" src="js/main.js"></script>
+                <script type="text/javascript">
+                  tree = new Treant( simplConfig, $ );
+                </script>   
             </section>
           </section>
         </div>

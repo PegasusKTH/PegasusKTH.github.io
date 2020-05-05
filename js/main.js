@@ -40,14 +40,20 @@ function getRootNode() {
 	return listIntegration;
 }
 
-// listIntegration has taken jsonObject and converted it into a tree of nodes
-var listIntegration = nodifyLookupMAIN("ID1206").buildTree(); // SearchBox integration needed.
+// function is called in graph.html
+function firstCall(courseArgument){
+	
+	// listIntegration has taken jsonObject and converted it into a tree of nodes
+	var listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
 
-// assigns a unique ID to every node in the tree
-listIntegration.assignIdentifiers([]);
+	// assigns a unique ID to every node in the tree
+	listIntegration.assignIdentifiers([]);
 
-// sets up nodes in the right format for the Treant
-var nodeStructure = listIntegration.exportTree();
+	// sets up nodes in the right format for the Treant
+	var nodeStructure = listIntegration.exportTree();
 
-// combine config with tree for Treant graph generation
-var simple_chart_config = [config].concat(nodeStructure);
+	// combine config with tree for Treant graph generation
+	var simple_chart_config = [config].concat(nodeStructure);
+	
+	return simple_chart_config;
+}
