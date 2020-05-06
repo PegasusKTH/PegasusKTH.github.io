@@ -1,9 +1,34 @@
+
+body{
+  margin: 0;
+}
+
 h1{
   color: #333333;
   text-align: center;
   font-family: 'Audiowide';
 
 }
+
+#loading-image{
+  margin-left: 37.5%;
+  margin-top: 8%;
+  margin-right: 37.5%;
+}
+
+#loading-image-bar{
+  margin-left: 45.8%;
+}
+
+
+#loadingContainer{
+  height: 100%;
+  width: 100%;
+  background-color:#38aa6b;
+  position: absolute;
+  z-index: 99 !important;
+}
+
 
 #pegasus{
   max-width: 200px;
