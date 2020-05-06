@@ -2,24 +2,12 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-
-    <script src="js/treant/Treant.js"></script>
-    <script src="js/jquery-3.5.0.min.js"></script>
-    <script src="js/raphael.js"></script>
-
-    <script type="text/javascript" src="js/lookup.js"></script>
-    <script type="text/javascript" src="js/node.js"></script>
-
-    <script type="text/javascript" src="js/main.js"></script>
-
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-    <script type="text/javascript" src="js/main.js"></script>
-    <title> Task main </title>
+    <link rel="icon" href="image/tab-logo.png">
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+    <title> Pegasearch </title>
     <link href="css/main.css" rel="stylesheet">
     <!-- fonts from google api for the headers -->
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Audiowide&family=Days+One&family=Fredoka+One&family=Shrikhand&display=swap" rel="stylesheet">
@@ -27,25 +15,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Manrope&family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
   </head>
 
-  <body style="background-image: url('image/background.jpg');" id="background" >
 
+  <body style="background-image: url('image/background.jpg');" id="background" >
+    
     <div id="container">
       <div id="content-wrap">
-        <img src = "image/logo.png" id="pegasus" class="center">
-        <h1 class="title" > Pegasearch </h1>
+        <div id="title">
+          <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
+          <h1 class="center">PEGASEARCH</h1>
+          <h2 class="center">KTH Prerequisite Finder</h2>
+        </div>
         <!-- <h2 class="title col-lg-12 col-md-12 col-sm-12 col-xs-12"> KTH Course Prerequisites Visualiser</h2> -->
+      
 
+        <!-- UTKOMMENTERAD KOD, sparas i avsikt att Celine ska se HTML inställningar -->
 
         <!-- <div id="search" class="center col-lg-2 col-md-2 col-sm-6 col-xs-8"> -->
-        <div id="search" class="center">
+        <!-- <div id="search" class="center">
           <input type="text" placeholder="Enter course code..." id="coursecode" class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
             <a href="graph.html" class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-              <button onclick="searching()" id="button1">
+              <button onclick="lookup()" id="button1">
                 <img src="image/magnifying.png" id="magnifying-glass">
               </button>
             </a>
-        </div>
+        </div> -->
 
+        <!-- Handles the searchbox, input is sent as a URL tag "... ?courseCode=II1305" to the next html page -->
+        <div id="search" class="center">
+          <form action="graph.html" method="GET">
+            <input type="text" name="courseCode" />
+            <input type="submit" value="Submit" />
+          </form>        
+        </div>
+      
 
 
 
@@ -83,7 +85,7 @@
               <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
               <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
               <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
-              <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website &nbsp</a>
+              <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website</a>
               <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
             </footer>
     </div>

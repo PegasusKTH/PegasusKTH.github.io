@@ -2,20 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- <script type="text/javascript" src="js/main.js"></script> -->
-    <script src="js/treant/Treant.js"></script>
-    <script src="js/jquery-3.5.0.min.js"></script>
-    <script src="js/raphael.js"></script>
+    <link rel="icon" href="image/tab-logo.png">
     <script type="text/javascript" src="js/lookup.js"></script>
+    <script type="text/javascript" src="js/node.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <link href="js/treant/Treant.css" rel="stylesheet">
-
-
-    <title> Task main </title>
+    <link rel="stylesheet" href="js/treant/Treant.css">
+    <title> Prerequisites </title>
     <link href="css/graph.css" rel="stylesheet">
     <!-- fonts from google api for the headers -->
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Audiowide&family=Days+One&family=Fredoka+One&family=Shrikhand&display=swap" rel="stylesheet">
@@ -23,57 +17,91 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Manrope&family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-  <div id = "loadingContainer" >
-    <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-image" src = "https://media1.giphy.com/media/ToMjGpS93NgehRQhLgc/giphy.gif" />
-    <img class= "col-lg-1 col-md-1 col-sm-1 col-xs-1"  id = "loading-image-bar" src = "https://static.wixstatic.com/media/e5ea6d_17a12cee3dff472c9d40e01e419ce5e7~mv2.gif"/>
- 
-  </div>
-
-
-  <div id="container">
-    <div id="content-wrap">
-      <div id="title" >
-        <img src = "image/logo.png" id="pegasus" class="center">
-        <h1 class="center">Prerequisites for course xxx</h1>
+  <body style="background-image: url('image/background3-version2.jpg');" id="background" >
+  
+      <div id = "loadingContainer" >
+        <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-image" src = "https://media1.giphy.com/media/ToMjGpS93NgehRQhLgc/giphy.gif" />
+        <img class= "col-lg-1 col-md-1 col-sm-1 col-xs-1"  id = "loading-image-bar" src = "https://static.wixstatic.com/media/e5ea6d_17a12cee3dff472c9d40e01e419ce5e7~mv2.gif"/>
+     
       </div>
+    <div id="container">
+      <div id="content-wrap">
+        <div id="title" >
+          <a href="index.html">
+            <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
+          </a>
+          <h1 id="prereqHeder" class="center"></h1>
+          <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/)[0]; </script>
+        </div>
 
-      <div id="graphnlist">
-        <section class="graphnlist">
-          <!-- Section 1 -->
-          <section id="section1">
-            <div>List representation of prerequisites</div>
-              <div>
-                ...
+        <div id="graphnlist">
+          <section class="graphnlist">
+            <!-- Section 1 -->
+            <section id="section1">
+              <div>List representation of prerequisites</div>
+                <div>
+                  ...
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section2">
+              <div>Tree representation of prerequisites</div>
+
+              <!-- div for the tree -->
+              <div class="chart" id="chart" style="width:80%; float:right;">
               </div>
-          </section>
 
-          <!-- Section 2 -->
-          <section id="section2">
-            <div>Tree representation of prerequisites</div>
-              <div id="chart" class="chart">
+                  <!-- Code handling the import of coursecode from URL tag -->
+                <script>
+                  courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/);
+                  if(courseArray!=null){
+                    var searchedCode = courseArray[0];
+                    var simplConfig = firstCall(searchedCode);
+                  }
+
+
+                  else{
+                      var path = "" + window.location.href;
+                      //console.log(path);
+                      nameStr=[];
+                      nameStr = path.split("=");
+                      var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
+
+                      var simplConfig = firstCall(searchedCourseName);
+                  }
+
+                </script>
+
+                <!-- Libraries and creating the tree itself -->
+                <script src="js/treant/Treant.js"></script>
+                <script src="js/jquery-3.5.0.min.js"></script>
+                <script src="js/raphael.js"></script>
+
                 <script type="text/javascript" src="js/main.js"></script>
-
-             </div>
+                <script type="text/javascript">
+                  tree = new Treant( simplConfig, $ );
+                </script>
+            </section>
           </section>
-        </section>
-      </div>
-    </div>
+        </div>
 
-    <footer id="footer">
-      <!-- <ul id="footeritem">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" >About</a></li>
-      <li><a href="help.html">Help/FAQ</a></li>
-      <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
-      <li><a href="mailto:rasham@kth.se" >Contact: rasham@kth.se</a></li>
-      </ul> -->
-    <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
-    <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
-    <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
-    <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website &nbsp</a>
-    <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
-  </footer>
-  </div>
+      </div>
+
+      <footer id="footer">
+        <!-- <ul id="footeritem">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" >About</a></li>
+        <li><a href="help.html">Help/FAQ</a></li>
+        <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
+        <li><a href="mailto:rasham@kth.se" >Contact: rasham@kth.se</a></li>
+        </ul> -->
+      <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
+      <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
+      <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
+      <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website</a>
+      <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
+      </footer>
+    </div>
   </body>
 </html>
