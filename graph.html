@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="image/tab-logo.png">
-    <script type="text/javascript" src="js/lookup.js"></script>
+    <!-- <script type="text/javascript" src="js/lookup.js"></script>
     <script type="text/javascript" src="js/node.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script> -->
     <link rel="stylesheet" href="js/treant/Treant.css">
     <title> Prerequisites </title>
     <link href="css/graph.css" rel="stylesheet">
@@ -18,12 +18,17 @@
   </head>
 
   <body style="background-image: url('image/background3-version2.jpg');" id="background" >
-  
+
       <div id = "loadingContainer" >
         <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-image" src = "https://media1.giphy.com/media/ToMjGpS93NgehRQhLgc/giphy.gif" />
         <img class= "col-lg-1 col-md-1 col-sm-1 col-xs-1"  id = "loading-image-bar" src = "https://static.wixstatic.com/media/e5ea6d_17a12cee3dff472c9d40e01e419ce5e7~mv2.gif"/>
-     
+
       </div>
+
+      <script type="text/javascript" src="js/lookup.js"></script>
+      <script type="text/javascript" src="js/node.js"></script>
+      <script type="text/javascript" src="js/main.js"></script>
+
     <div id="container">
       <div id="content-wrap">
         <div id="title" >
@@ -81,7 +86,10 @@
                 <script type="text/javascript" src="js/main.js"></script>
                 <script type="text/javascript">
                   tree = new Treant( simplConfig, $ );
+                  document.getElementById("loadingContainer").style.display ="none";
                 </script>
+
+
             </section>
           </section>
         </div>
