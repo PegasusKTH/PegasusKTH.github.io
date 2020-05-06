@@ -6,7 +6,7 @@
 #content-wrap {
   padding-top: 2rem;
   padding-bottom: 7rem;
-  
+
 }
 
 h1{
@@ -17,14 +17,14 @@ h1{
 
   font-size: 5vmax;
   line-height: 100%;
-  
+
 }
 
 h2{
   padding-top: 1rem;
   color: #333333;
   text-align: center;
-  font-size: 25px;
+  font-size: 2vmax;
   font-family: 'Audiowide';
 }
 
@@ -41,6 +41,12 @@ h2{
   max-width: 200px;
   height: 30%;
   width: 30%;
+}
+
+#search2 {
+  height: 40px;
+  width: 40px;
+  padding-top: 5px;
 }
 
 .center {
@@ -60,6 +66,7 @@ body, html {
   margin-left: auto;
   margin-top: 4%;
   width: 40%;
+
 
 }
 
@@ -230,7 +237,7 @@ a{
    a:hover{
      color: #298fca;
    }
-   
+
    a{
      color: #ebb0d6;
      font-weight: bold;
