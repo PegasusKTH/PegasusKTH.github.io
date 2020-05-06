@@ -1,5 +1,4 @@
 // TODO: SearchBox intergration needed in var listIntegration. @param courseCode for nodifyLookupMAIN
-// TODO: get rid of ID:s in visulized tree
 /*
 	This file takes a Course Code from index.html searching functionality and builds a tree
 
