@@ -45,7 +45,7 @@ function searching(data){ // Originally Erik/Celine
   }
   //find hp
   if(data.course.credits){
-    hp = data.course.credits;
+    hp = data.course.credits + " hp";
   }
 
   //find period in format "PX (xx hp)"
