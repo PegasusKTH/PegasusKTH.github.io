@@ -14,8 +14,6 @@ function searching(data){ // Originally Erik/Celine
   var courseInPeriod = [false, false, false, false];
    //represents which period is available in, if true then the course is given in that period of the (index+1) in the array. Ex. [false, false, true, false] gives course in p3.
 
-
-
   if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
     var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
 
@@ -68,14 +66,9 @@ function searching(data){ // Originally Erik/Celine
     }
   }
 
-
-
-
-
   courseName = new String(data.course.title);
   finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.join(", ")];
-
-
+  
   return finalResultArray;
 }
 
@@ -138,7 +131,7 @@ function getEquivalents(dataString) {
   while(dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g) != -1) {
 
     startIndex = dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g);
-    endIndex = startIndex + dataString.slice(startIndex, dataString.length).search(" ");
+    endIndex = startIndex + dataString.slice(startIndex, dataString.length).search(/[, .]/g);
 
     var slicedData = dataString.slice(startIndex, endIndex);
 
@@ -146,7 +139,6 @@ function getEquivalents(dataString) {
     dataString = dataString.replace(slicedData, "");
 
   }
-
   return [equivalents, dataString];
 }
 

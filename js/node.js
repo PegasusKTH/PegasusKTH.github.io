@@ -104,60 +104,48 @@ class Node {
     }
 
     // recursively goes through all prerequisites according to json files.
-    // fully constructs tree object for later export
+    // fully constructs tree object for later export.
+    /* 
+      The function handles equivalent courses by checking if a required course in
+      reqArr is an array. If it's an array the function uses the first element in 
+      the equivalent array as the node to be displayed in the tree and puts the rest
+      of equivalents into a node attribute array, "equivalent", where all of them 
+      also have had their tree structure made.
+    */
     buildTree() {
 
-      // console.log(this.courseCode);
       var lookup = this.jsonToArray();
-      var reqArr = lookup[1];
+      // reqArr can have the dataformat: ["IS1206", "ID1019"] or [["IX1500", "IS1610"], ID1018]
+      var reqArr = lookup[1]; 
       this.setName(lookup[0]);
       this.addHp(lookup[3]);
       this.addPeriod(lookup[4]);
 
-      // console.log("lookup");
-      // console.log(lookup);
-      //
-      // console.log("reqArr:");
-      // console.log(reqArr);
-      console.log("original reqArr");
-      console.log(reqArr);
-
+      // iterates through all required courses
       for (var i = 0; i < reqArr.length; i++) {
-        // console.log("reqArr: "+ i);
-        // console.log(reqArr[i]);
-        console.log("loop reqArr");
-        console.log(reqArr);
-
-        console.log("into if");
-        console.log(reqArr[i]);
-
-        if (typeof reqArr[i] == "object" & reqArr[i].length > 0) {
-          console.log("is an array");
-          console.log(reqArr[i]);
-
+        
+        // if the required course is represented by and array of courses those are
+        // seen as equivalent courses.
+        if (typeof reqArr[i] == "object" && reqArr[i] != null) {
+          
+          // the first index of the equivalent courses array is taken as the node to
+          // be represented in the tree
           var temp = new Node(reqArr[i].shift());
-
-
-
-          // make lookup for all equivalents to provide additional info in node objects
-          // atm additional info kept for later use?
-          // TODO: the code below should be the one running. Error has a "ghost element" in equivalent array
-          // reqArr[i].forEach(element => {
-          //
-          //   temp.equivalent.push(new Node(element).buildTree());
-          // });
-
-          // TODO: change row below to code above
-          temp.equivalent = reqArr[i];
-
           temp.parentNode = this;
-
           this.addChild(temp);
+
+                    
+          // make lookup for all equivalents to provide additional info in node objects
+          for (let j = 0; j < reqArr[i].length; j++) {
+            temp.equivalent.push(new Node(reqArr[i][j]).buildTree());
+          }
+
+          // when the equivalent trees are built the recursive build of the tree continues
           temp.buildTree();
 
-        } else if (typeof reqArr[i] == "string") {
-          console.log("is string");
-          console.log(reqArr[i]);
+          // if there's no equivalent courses the tree continues to build from the 
+          // courseID string in reqArr.
+        } else if (typeof reqArr[i] == "string") { 
 
           var temp = new Node(reqArr[i]);
           temp.parentNode = this;
@@ -168,7 +156,6 @@ class Node {
       }
       return this;
     }
-
 }
 // Node creation
 function nodifyLookupMAIN(courseCode) {
