@@ -1,3 +1,10 @@
+
+body{
+  margin: 0;
+
+}
+
+/* incoming from serchingbar, check what it does */
 #container {
   position: relative;
   min-height: 100vh;
@@ -14,6 +21,34 @@ h1{
 
 }
 
+#loading-image {
+  margin-left: 37.5%;
+  margin-top: 8%;
+  margin-right: 37.5%;
+}
+
+#loading-image-bar {
+  margin-left: 45.8%;
+  margin-right: 45.8%;
+}
+
+
+#loadingContainer {
+  height: 100%;
+  width: 100%;
+  /* background-color:#ffffff; */
+  background-image: url("../image/background-loadpage-evening-shade.gif");
+  position: absolute;
+  z-index: 99 !important;
+}
+
+#loadingText {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2em;
+}
+
+/* blehbleh */
 #background {
   background-position: 50%  30%;
   background-repeat: no-repeat;
@@ -177,7 +212,7 @@ a:link {
    a:hover{
      color: #298fca;
    }
-   
+
    a{
      color: #ebb0d6;
      font-weight: bold;
