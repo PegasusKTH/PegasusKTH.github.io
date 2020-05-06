@@ -3,6 +3,16 @@ body{
   margin: 0;
 }
 
+/* incoming from serchingbar, check what it does */
+#container { 
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 1rem;
+}
+
 h1{
   color: #333333;
   text-align: center;
@@ -29,11 +39,19 @@ h1{
   z-index: 99 !important;
 }
 
+/* blehbleh */
+#background {
+  background-position: 50%  30%;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  position: relative;
+}
 
 #pegasus{
-  max-width: 200px;
-  height: 30%;
-  width: 30%;
+  max-width: 150px;
+  height: 15%;
+  width: 15%;
 }
 
 #list{
@@ -47,7 +65,9 @@ h1{
 }
 
 #graphnlist{
-  color: black;
+  color: #333333;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+
   font-size: 25px;
   font-family: 'Manrope';
   text-align: center;
@@ -72,21 +92,14 @@ section{
   display:inline-block;
 }
 
-#container {
-  position: relative;
-  min-height: 100vh;
-}
 
-#content-wrap {
-  padding-bottom: 2.5rem;
-}
 
 #footer{
   position: absolute;
   bottom:0;
   width:100%;
-  height:80px;
-  background:transparent;
+  height:70px;
+  background-color: rgba(200,200,200,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,16 +107,107 @@ section{
 
 ul#footeritem li {
   display:inline;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 2%;
+  font-family: 'Manrope';
 }
 
 li{
-   margin: 50px;
-   color: black;
-   font-size: 20px;
+  margin: 50px;
+  color: #ebb0d6;
+  font-size: 20px;
+  font-family: 'Manrope';
+  font-weight: bold;
 }
 
-a{
-  color: white;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+a:link {
+  color: #ebb0d6;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Manrope';
+  font-weight: bold;
+ }
+ a:hover{
+  color: #298fca;
+}
+
+ a{
+  color: #ebb0d6;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+}
+
+#graylink{
+  color: #ebb0d6;
+}
+
+/* smaller handhelds */
+@media (max-width: 750px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #coursecode{
+    border: 0;
+    border-bottom: 1.5px solid #333333;
+    outline: 0;
+    font-size: 20px;
+    background:transparent;
+    min-width: 220px;
+
+  }
+
+  #magnifying-glass{
+    min-width: 25px;
+    max-width: 40px;
+  }
+  .search {
+    text-align: center;
+    margin-left: auto;
+    margin-top: 4%;
+    width: 60%;
+  }
+
+  h1{
+    font-size: 300%;
+    line-height: 100%;
+  }
+
+  .item {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+    /* margin-top: 50px; */
+  }
+  a:link {
+    color: #ebb0d6;
+    text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Manrope';
+    font-weight: bold;
+   }
+   a:hover{
+     color: #298fca;
+   }
+   
+   a{
+     color: #ebb0d6;
+     font-weight: bold;
+     text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+   }
+
 }
