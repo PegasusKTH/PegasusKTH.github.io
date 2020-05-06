@@ -117,14 +117,8 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       url[2] = courseArr[i];
       finalUrl = url[0] + url[1] + url[2];
       //console.log(finalURL[0]+finalURL[1]+finalURL[2]);
-<<<<<<< HEAD
-      
-      document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>'); 
-
-=======
 
       document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>');
->>>>>>> b7b75e83a9220597a6949664c94576e1609c6f09
       }
     }
     //if there is no such course, go to the Course Not Found Page
