@@ -6,6 +6,11 @@
   padding: 0 !important;
 }
 
+.chart {
+  float:left !important;
+  width: 100% !important;
+}
+
 .Treant > .node {
   position: absolute;
   background-color: #298fca;
@@ -15,8 +20,10 @@
   /* box-shadow: 5px 5px 5px #333333;  */
   transition: all 0.5s; cursor: pointer;
   font-family: "Helvetica";
-  font-size: 10px;
-  color: #333333;
+  font-size: 13px;
+  color: #ffffff;
+  text-shadow: 0px 0px 0 white, 0px 0px 0 white, 0px 0px 0 white, 0px 0px 0 white;
+
 }
 
 .Treant > .pseudo { position: absolute; display: block; visibility: hidden;}
