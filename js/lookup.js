@@ -107,8 +107,8 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       }
     }
     console.log(courseArr);
-    document.write("Here are the courses that are relevant to your searching: ");
-  //If there're relavant courses found, generate one button for each course code
+    //document.write("Here are the courses that are relevant to your searching: ");
+    //If there're relavant courses found, generate one button for each course code
     if(courseArr.length>0){
      for(i = 0; i < courseArr.length; i++){
       var path = "" + window.location.href;
