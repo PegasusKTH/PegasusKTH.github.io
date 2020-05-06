@@ -45,7 +45,7 @@ function searching(data){ // Originally Erik/Celine
   }
   //find hp
   if(data.course.credits){
-    hp = data.course.credits;
+    hp = data.course.credits + " hp";
   }
 
   //find period in format "PX (xx hp)"
@@ -68,7 +68,7 @@ function searching(data){ // Originally Erik/Celine
 
   courseName = new String(data.course.title);
   finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.join(", ")];
-  
+
   return finalResultArray;
 }
 
