@@ -37,7 +37,8 @@
             <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
           </a>
           <h1 id="prereqHeder" class="center"></h1>
-          <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/)[0]; </script>
+          <!-- writes Prerequisites for course: XXXX. XXXX is replest vid coures code  -->
+          <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)[0]; </script>
         </div>
 
         <div id="graphnlist">
@@ -60,7 +61,7 @@
 
                   <!-- Code handling the import of coursecode from URL tag -->
                 <script>
-                  courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/);
+                  courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
                   if(courseArray!=null){
                     var searchedCode = courseArray[0];
                     var simplConfig = firstCall(searchedCode);
@@ -104,13 +105,6 @@
       </div>
 
       <footer id="footer">
-        <!-- <ul id="footeritem">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" >About</a></li>
-        <li><a href="help.html">Help/FAQ</a></li>
-        <li><a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/">Project Website</a></li>
-        <li><a href="mailto:rasham@kth.se" >Contact: rasham@kth.se</a></li>
-        </ul> -->
       <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
       <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
       <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
