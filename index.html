@@ -17,7 +17,7 @@
 
 
   <body style="background-image: url('image/background.jpg');" id="background" >
-    
+
     <div id="container">
       <div id="content-wrap">
         <div id="title">
@@ -26,7 +26,7 @@
           <h2 class="center">KTH Prerequisite Finder</h2>
         </div>
         <!-- <h2 class="title col-lg-12 col-md-12 col-sm-12 col-xs-12"> KTH Course Prerequisites Visualiser</h2> -->
-      
+
 
         <!-- UTKOMMENTERAD KOD, sparas i avsikt att Celine ska se HTML inställningar -->
 
@@ -45,23 +45,8 @@
           <form action="graph.html" method="GET">
             <input type="text" name="courseCode" />
             <input type="submit" value="Submit" />
-          </form>        
+          </form>
         </div>
-      
-
-
-
-        <script>
-          var input = document.getElementById("coursecode");
-          input.addEventListener("keyup", function(event) {
-          if (event.keyCode === 13) {
-          event.preventDefault();
-          // console.log("hej");
-          document.getElementById("button1").click();
-          // console.log("hej");
-          }
-          });
-        </script>
 
         <div class="line"></div>
 

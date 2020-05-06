@@ -43,7 +43,7 @@ function searching(data){ // Originally Erik/Celine
 //2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
 //3. to be filled
 function lookup(courseIDorName){ // Originally Patrick/Jing group
-  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)) { //If input is a courseID search directly and build the tree
+  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)) { //If input is a courseID search directly and build the tree
     var jsonObject;
     var request = new XMLHttpRequest();
     request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseIDorName +  '/detailedinformation', false);  // `false` makes the request synchronous
@@ -56,7 +56,7 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
     else{
       window.location.href = "CourseNotFound.html";//if HTTP 404 then the there's not such api available for the given course, the course does not exist
     }
-  } 
+  }
   else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
     var request = new XMLHttpRequest();
     request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
@@ -84,8 +84,8 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       url[2] = courseArr[i];
       finalUrl = url[0] + url[1] + url[2];
       //console.log(finalURL[0]+finalURL[1]+finalURL[2]);
-      
-      document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>'); 
+
+      document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>');
       }
     }
     //if there is no such course, go to the Course Not Found Page

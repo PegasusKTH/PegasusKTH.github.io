@@ -25,7 +25,7 @@
             <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
           </a>
           <h1 id="prereqHeder" class="center"></h1>
-          <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/)[0]; </script>
+          <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)[0]; </script>
         </div>
 
         <div id="graphnlist">
@@ -48,7 +48,7 @@
 
                   <!-- Code handling the import of coursecode from URL tag -->
                 <script>
-                  courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/);
+                  courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
                   if(courseArray!=null){
                     var searchedCode = courseArray[0];
                     var simplConfig = firstCall(searchedCode);
