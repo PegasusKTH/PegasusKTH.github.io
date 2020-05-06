@@ -2,7 +2,7 @@
 
 // takes JSON object as argument and browses for requirements, eligibility and names, and returns them in an array
 // OBSERVE: prerequisites does not mean REQUIREMENTS, only recommendations
-// return example: ["name", ["course eligibilities"], ["course prerequisites"]]
+// return example: ["name", ["course eligibilities"], ["course prerequisites"], "hp", ["periods"]]
 function searching(data){ // Originally Erik/Celine
   var eligArray = [];
   var requiredCourse = "";
@@ -14,13 +14,20 @@ function searching(data){ // Originally Erik/Celine
   var courseInPeriod = [false, false, false, false];
    //represents which period is available in, if true then the course is given in that period of the (index+1) in the array. Ex. [false, false, true, false] gives course in p3.
 
-
-
-  // this one finds the eligibility courses (REQUIRED COURSES)
-  // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
   if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
+    var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
+
+    for(var i = 0; i < equivalentResult[0].length; i++) {
+      eligArray.push(equivalentResult[0][i]);
+    }
+
+    // writes over data string with manipulated datastring to prevent duplicates
+    data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
+
+    // this one finds the eligibility courses (REQUIRED COURSES)
+    // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
     requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
-    eligArray = requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)
+    eligArray = eligArray.concat(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
     if (eligArray == null){
       eligArray = [];
     }
@@ -50,7 +57,7 @@ function searching(data){ // Originally Erik/Celine
       courseInPeriod[s[1]-1] = true;
 
     }
-    console.log(courseInPeriod)
+
     for(var i = 0; i < courseInPeriod.length; i++){
       if(courseInPeriod[i] == true){
         periodArray.push("P"+ (i+1))
@@ -59,28 +66,154 @@ function searching(data){ // Originally Erik/Celine
     }
   }
 
-
-
-
-
   courseName = new String(data.course.title);
   finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.join(", ")];
-  console.log(finalResultArray);
 
   return finalResultArray;
 }
 
-// first function called, takes a course ID as argument and calls for 'searching' function with JSON object from KOPPS api
-// returns result: passes JSON object as argument to 'searching' and returns result
-function lookup(courseID){ // Originally Patrick/Jing group
-  var jsonObject;
-  var request = new XMLHttpRequest();
-  request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseID +  '/detailedinformation', false);  // `false` makes the request synchronous
-  request.send(null);
 
-  if (request.status === 200) {// That's HTTP for 'ok'
-    jsonObject = JSON.parse(request.responseText);
-    return searching(jsonObject);
+//first function called, eitehr takes a course ID as argument or a course code
+//1. input: a valid course ID     output: pass JSON object as an argument to searching(data) and returns the prerequisites of the input course
+//2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
+//3. input: an invalid courseID/course name    output: lead you to course not found page
+function lookup(courseIDorName){ // Originally Patrick/Jing group
+  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)) { //If input is a courseID search directly and build the tree
+    var jsonObject;
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseIDorName +  '/detailedinformation', false);  // `false` makes the request synchronous
+    request.send(null)
+
+    if (request.status === 200) {// That's HTTP for 'ok'
+      jsonObject = JSON.parse(request.responseText);
+        return searching(jsonObject);
+    }
+    else{
+      window.location.href = "CourseNotFound.html";//if HTTP 404 then the there's not such api available for the given course, the course does not exist
+    }
   }
+  else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
+    var request = new XMLHttpRequest();
+    request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
+    request.send(null);
 
+    if (request.status === 200) {// That's HTTP for 'ok'
+      jsonOBJ = JSON.parse(request.responseText);
+      var temp;
+      var courseArr = [];
+      for(i=0; i<jsonOBJ.searchHits.length; i++){
+        temp = jsonOBJ.searchHits[i].course;
+        courseArr[i] = temp.courseCode;
+      }
+    }
+    console.log(courseArr);
+    document.write("Here are the courses that are relevant to your searching: ");
+  //If there're relavant courses found, generate one button for each course code
+    if(courseArr.length>0){
+     for(i = 0; i < courseArr.length; i++){
+      var path = "" + window.location.href;
+      //console.log(path);
+      url=[];
+      url = path.split("=");
+      url[1] = "=";
+      url[2] = courseArr[i];
+      finalUrl = url[0] + url[1] + url[2];
+      //console.log(finalURL[0]+finalURL[1]+finalURL[2]);
+
+      document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>');
+      }
+    }
+    //if there is no such course, go to the Course Not Found Page
+    else{
+      window.location.href = "CourseNotFound.html";
+    }
+  }
 }
+
+
+/*
+Get Equivalents
+DESC:
+Looks for certain patterns in a string, corresponding to KoppsAPI course-formatting,
+to look for required courses equivalent to eachother. Returns these equivalent courses
+and the taken input but with the equivalent courses removed. Modified datastring can
+be used to look for courses which lack equivalents.
+
+INPUT:
+string of data from API json file.
+json object expected is "data.publicSyllabusVersions[0].courseSyllabus.eligibility"
+
+OUTPUT:
+Array containing the array "equivalents" and the modified datastring "dataString".
+"dataString" is the string provided as input but without any coursecode sequences
+representing the equivalents managed by the function. The names for these sequences remain.
+
+"equivalents" is and array containing arrays of equivalent courses. To clearify:
+If two courses are equivalent to eachother their coursecodes in string-format are
+placed in the same array. This array is then placed in the array "equivalents" which
+is returned. This is to allow for multiple courses to have equivalents. See examples.
+
+EXAMPLES:
+ARGUMENT: "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
+RETURNS: [[[IX1500, SF1601]], "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160;</li><li> Diskret matematik&#160;</li></ul>"]
+
+ARGUMENT: "<ul><li>ID1018 Programmering I&#160;</li><li>AA0000/BB1111/CC2222 Biodling avancerad&#160;</li></ul></li><li>IX1500/SF1610 Diskret matematik&#160;</li></ul>"
+RETURNS: [[[AA0000,BB1111,CC2222], [IX1500, SF1601]], "<ul><li>ID1018 Programmering I&#160;</li><li> Biodling avancerad&#160;</li></ul></li><li> Diskret matematik&#160;</li></ul>"]
+
+ARGUMENT: "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160"
+RETURNS: [[], "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer och datastrukturer&#160"]
+*/
+function getEquivalents(dataString) {
+
+  var startIndex;
+  var endIndex;
+
+  var equivalents = [];
+
+  //TODO: perhaps look into time comp? dataString is called in while condition without use
+  while(dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g) != -1) {
+
+    startIndex = dataString.search(/[A-Z][A-Z][0-9][0-9][0-9][0-9]\//g);
+    endIndex = startIndex + dataString.slice(startIndex, dataString.length).search(/[, .]/g);
+
+    var slicedData = dataString.slice(startIndex, endIndex);
+
+    equivalents.push(slicedData.split("/"));
+    dataString = dataString.replace(slicedData, "");
+
+  }
+  return [equivalents, dataString];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
