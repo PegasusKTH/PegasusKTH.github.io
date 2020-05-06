@@ -2,13 +2,19 @@
 
 // takes JSON object as argument and browses for requirements, eligibility and names, and returns them in an array
 // OBSERVE: prerequisites does not mean REQUIREMENTS, only recommendations
-// return example: ["name", ["course eligibilities"], ["course prerequisites"]]
+// return example: ["name", ["course eligibilities"], ["course prerequisites"], "hp", ["periods"]]
 function searching(data){ // Originally Erik/Celine
   var eligArray = [];
   var requiredCourse = "";
   var preqArray = [];
   var courseName;
   var finalResultArray = [];
+  var hp = null;
+  var periodArray = [];
+  var courseInPeriod = [false, false, false, false];
+   //represents which period is available in, if true then the course is given in that period of the (index+1) in the array. Ex. [false, false, true, false] gives course in p3.
+
+
 
   // this one finds the eligibility courses (REQUIRED COURSES)
   // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
@@ -30,9 +36,36 @@ function searching(data){ // Originally Erik/Celine
       preqArray = [];
     }
   }
+  //find hp
+  if(data.course.credits){
+    hp = data.course.credits;
+  }
+
+  //find period in format "PX (xx hp)"
+  if(data.roundInfos[0]){
+    var place = 0;
+
+    for(var i = 0; i < data.roundInfos.length; i++){
+      var s = data.roundInfos[i].round.courseRoundTerms[0].formattedPeriodsAndCredits; //potential bug if courseroundTerms[0] has more indexes and it does NOT mean version of course
+      courseInPeriod[s[1]-1] = true;
+
+    }
+
+    for(var i = 0; i < courseInPeriod.length; i++){
+      if(courseInPeriod[i] == true){
+        periodArray.push("P"+ (i+1))
+      }
+
+    }
+  }
+
+
+
+
 
   courseName = new String(data.course.title);
-  finalResultArray = [courseName, eligArray, preqArray];
+  finalResultArray = [courseName, eligArray, preqArray, hp, periodArray.join(", ")];
+
 
   return finalResultArray;
 }
@@ -41,9 +74,9 @@ function searching(data){ // Originally Erik/Celine
 //first function called, eitehr takes a course ID as argument or a course code
 //1. input: a valid course ID     output: pass JSON object as an argument to searching(data) and returns the prerequisites of the input course
 //2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
-//3. to be filled
+//3. input: an invalid courseID/course name    output: lead you to course not found page
 function lookup(courseIDorName){ // Originally Patrick/Jing group
-  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g)) { //If input is a courseID search directly and build the tree
+  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)) { //If input is a courseID search directly and build the tree
     var jsonObject;
     var request = new XMLHttpRequest();
     request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseIDorName +  '/detailedinformation', false);  // `false` makes the request synchronous
@@ -56,7 +89,7 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
     else{
       window.location.href = "CourseNotFound.html";//if HTTP 404 then the there's not such api available for the given course, the course does not exist
     }
-  } 
+  }
   else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
     var request = new XMLHttpRequest();
     request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
@@ -84,9 +117,14 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       url[2] = courseArr[i];
       finalUrl = url[0] + url[1] + url[2];
       //console.log(finalURL[0]+finalURL[1]+finalURL[2]);
+<<<<<<< HEAD
       
       document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>'); 
 
+=======
+
+      document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>');
+>>>>>>> b7b75e83a9220597a6949664c94576e1609c6f09
       }
     }
     //if there is no such course, go to the Course Not Found Page

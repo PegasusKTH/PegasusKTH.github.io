@@ -46,6 +46,7 @@ function firstCall(courseArgument){
 	// listIntegration has taken jsonObject and converted it into a tree of nodes
 	var listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
 
+
 	// assigns a unique ID to every node in the tree
 	listIntegration.assignIdentifiers([]);
 
