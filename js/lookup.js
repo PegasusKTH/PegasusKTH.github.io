@@ -177,7 +177,7 @@ function getEquivalents(dataString) {
     endIndex = startIndex + dataString.slice(startIndex, dataString.length).search(/[, .]/g);
 
     var slicedData = dataString.slice(startIndex, endIndex);
-    equivalents = slicedData.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g);
+    equivalents.push(slicedData.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
     dataString = dataString.replace(slicedData, "");
 
   }

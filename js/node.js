@@ -32,7 +32,17 @@ class Node {
         };
 
         return arr;
-      } else {
+      } else if(this.equivalent.length) {
+
+        var arr = {
+          _json_id: this._json_id,
+          parent: this.parentNode,
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period, equivalent:"has equivalent" }
+        };
+
+        return arr;
+      }
+       else {
 
         var arr = {
           _json_id: this._json_id,
@@ -103,6 +113,14 @@ class Node {
       this.period = period
     }
 
+    setEquivalent(){
+      if(this.equivalent.length) {
+
+      }
+    }
+    // addDup(){
+    // }
+
     // recursively goes through all prerequisites according to json files.
     // fully constructs tree object for later export.
     /*
@@ -120,6 +138,8 @@ class Node {
       this.setName(lookup[0]);
       this.addHp(lookup[3]);
       this.addPeriod(lookup[4]);
+
+
 
       // iterates through all required courses
       for (var i = 0; i < reqArr.length; i++) {
