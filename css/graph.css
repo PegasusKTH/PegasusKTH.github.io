@@ -1,6 +1,7 @@
 
 body{
   margin: 0;
+
 }
 
 /* incoming from serchingbar, check what it does */
@@ -35,13 +36,16 @@ h1{
 #loadingContainer {
   height: 100%;
   width: 100%;
-  background-color:#ffffff;
+  /* background-color:#ffffff; */
+  background-image: url("../image/background-loadpage-evening-shade.gif");
   position: absolute;
   z-index: 99 !important;
 }
 
 #loadingText {
   text-align: center;
+  color: #ffffff;
+  font-size: 2em;
 }
 
 /* blehbleh */

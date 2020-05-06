@@ -1,5 +1,4 @@
 // TODO: SearchBox intergration needed in var listIntegration. @param courseCode for nodifyLookupMAIN
-// TODO: get rid of ID:s in visulized tree
 /*
 	This file takes a Course Code from index.html searching functionality and builds a tree
 
@@ -42,9 +41,10 @@ function getRootNode() {
 
 // function is called in graph.html
 function firstCall(courseArgument){
-	
+
 	// listIntegration has taken jsonObject and converted it into a tree of nodes
 	var listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
+
 
 	// assigns a unique ID to every node in the tree
 	listIntegration.assignIdentifiers([]);
@@ -54,6 +54,6 @@ function firstCall(courseArgument){
 
 	// combine config with tree for Treant graph generation
 	var simple_chart_config = [config].concat(nodeStructure);
-	
+
 	return simple_chart_config;
 }

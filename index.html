@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +18,7 @@
 
 
   <body style="background-image: url('image/background.jpg');" id="background" >
-    
+
     <div id="container">
       <div id="content-wrap">
         <div id="title">
@@ -26,7 +27,7 @@
           <h2 class="center">KTH Prerequisite Finder</h2>
         </div>
         <!-- <h2 class="title col-lg-12 col-md-12 col-sm-12 col-xs-12"> KTH Course Prerequisites Visualiser</h2> -->
-      
+
 
         <!-- UTKOMMENTERAD KOD, sparas i avsikt att Celine ska se HTML inställningar -->
 
@@ -45,23 +46,8 @@
           <form action="graph.html" method="GET">
             <input type="text" name="courseCode" />
             <input type="submit" value="Submit" />
-          </form>        
+          </form>
         </div>
-      
-
-
-
-        <script>
-          var input = document.getElementById("coursecode");
-          input.addEventListener("keyup", function(event) {
-          if (event.keyCode === 13) {
-          event.preventDefault();
-          // console.log("hej");
-          document.getElementById("button1").click();
-          // console.log("hej");
-          }
-          });
-        </script>
 
         <div class="line"></div>
 
