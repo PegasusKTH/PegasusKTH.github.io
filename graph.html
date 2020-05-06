@@ -86,8 +86,15 @@
                 <script type="text/javascript" src="js/main.js"></script>
                 <script type="text/javascript">
                   tree = new Treant( simplConfig, $ );
-                  document.getElementById("loadingContainer").style.display ="none";
+                  // document.getElementById("loadingContainer").style.display = "none";
                 </script>
+                <script>
+                  $(document).ready(function(){
+                      console.log("hej");
+                      $("#loadingContainer").fadeOut();
+                  });
+                </script>
+
 
 
             </section>
