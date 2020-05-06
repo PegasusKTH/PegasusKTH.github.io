@@ -24,7 +24,8 @@
           <a href="index.html">
             <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
           </a>
-          <h1 class="center">Prerequisites for course xxx</h1>
+          <h1 id="prereqHeder" class="center"></h1>
+          <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/)[0]; </script>
         </div>
 
         <div id="graphnlist">
@@ -53,8 +54,8 @@
                     var simplConfig = firstCall(searchedCode);
                   }
 
-                 
-                  else{  
+
+                  else{
                       var path = "" + window.location.href;
                       //console.log(path);
                       nameStr=[];
@@ -63,7 +64,7 @@
 
                       var simplConfig = firstCall(searchedCourseName);
                   }
-                
+
                 </script>
 
                 <!-- Libraries and creating the tree itself -->
@@ -74,7 +75,7 @@
                 <script type="text/javascript" src="js/main.js"></script>
                 <script type="text/javascript">
                   tree = new Treant( simplConfig, $ );
-                </script>   
+                </script>
             </section>
           </section>
         </div>
