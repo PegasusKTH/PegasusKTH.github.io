@@ -23,6 +23,45 @@ function listElementWithChild(node) {
 function traverseGraph(node) {
     // Write outs the parent
     // Displayed as: Hyperlink(CourseCode) - courseName
+    if (node.equivalent.length > 0 || node.prerequisites.length > 0) {
+        document.writeln(
+            '<li><span class="caret">'
+                + "<a href=" + node.courseURL + ">" + node.courseCode + "</a>"
+                + " - "
+                + node.courseName
+                + "</span>"
+        );
+        document.write('<ul class="nested">'); // creates nested list of children
+                node.prerequisites.forEach(element => { //adding children to list
+                    traverseGraph(element);
+                });
+            
+                if (node.equivalent.length > 0) {
+                    document.write('<li><span class="caret"> Equivalent Courses</span>'); 
+                    document.write('<ul class="nested">'); 
+                        document.write(
+                            node.equivalent.forEach(element => {
+                                console.log(element);
+                                
+                                document.write(
+                                
+                                "<li>"
+                                    + "<a href=" + element.courseURL + ">" + element.courseCode + "</a>"
+                                    + " - "
+                                    + element.courseName
+                                +"</li>"
+                                );        
+                            })
+                        );
+                        document.write("</li>");
+                    document.write('</ul>'); 
+                }
+            document.write("</ul>");
+        document.write("</li>");
+    } else {
+        listElementNoChild(node);
+    }
+/*
     if (node.prerequisites.length == 0) {
         listElementNoChild(node);
     } else {
@@ -31,9 +70,11 @@ function traverseGraph(node) {
                 node.prerequisites.forEach(element => { //adding children to list
                     traverseGraph(element);
                 });
+            
             document.write("</ul>");
         document.write("</li>");
     }
+*/
 }
 
 document.write('<ul id="prereqUL">');
@@ -49,3 +90,30 @@ for (i = 0; i < toggler.length; i++) {
     this.classList.toggle("caret-down");
   });
 }
+
+/*
+    IS1206 - Operativsystem     (expandable)
+        ID1018
+        IS1200
+        ID1020                  (expandable)
+            ID1018
+        ID1019                  (expandable)
+            IX1500              (expandable equivalents) // needs check for already expandable?
+                SF1610
+            ID1018
+            ID1020              (expandable)
+                ID1018
+
+
+parent with equivalents no child    (expandable) check
+
+parent with equivalents with child  (expandable) check
+
+parent with no child                (not expandable)
+
+parent with child                   (expandable) check
+
+
+
+                
+*/ 
