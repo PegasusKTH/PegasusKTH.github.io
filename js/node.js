@@ -119,21 +119,22 @@ class Node {
       //
       // console.log("reqArr:");
       // console.log(reqArr);
-      console.log("original reqArr");
-      console.log(reqArr);
+      // console.log("original reqArr");
+      // console.log(reqArr);
 
       for (var i = 0; i < reqArr.length; i++) {
         // console.log("reqArr: "+ i);
         // console.log(reqArr[i]);
-        console.log("loop reqArr");
-        console.log(reqArr);
+        // console.log("loop reqArr");
+        // console.log(reqArr);
 
         console.log("into if");
         console.log(reqArr[i]);
+        document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
 
         if (typeof reqArr[i] == "object" & reqArr[i].length > 0) {
-          console.log("is an array");
-          console.log(reqArr[i]);
+          // console.log("is an array");
+          // console.log(reqArr[i]);
 
           var temp = new Node(reqArr[i].shift());
 
@@ -156,8 +157,8 @@ class Node {
           temp.buildTree();
 
         } else if (typeof reqArr[i] == "string") {
-          console.log("is string");
-          console.log(reqArr[i]);
+          // console.log("is string");
+          // console.log(reqArr[i]);
 
           var temp = new Node(reqArr[i]);
           temp.parentNode = this;

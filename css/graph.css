@@ -4,7 +4,7 @@ body{
 }
 
 /* incoming from serchingbar, check what it does */
-#container { 
+#container {
   position: relative;
   min-height: 100vh;
 }
@@ -20,23 +20,28 @@ h1{
 
 }
 
-#loading-image{
+#loading-image {
   margin-left: 37.5%;
   margin-top: 8%;
   margin-right: 37.5%;
 }
 
-#loading-image-bar{
+#loading-image-bar {
   margin-left: 45.8%;
+  margin-right: 45.8%;
 }
 
 
-#loadingContainer{
+#loadingContainer {
   height: 100%;
   width: 100%;
-  background-color:#38aa6b;
+  background-color:#ffffff;
   position: absolute;
   z-index: 99 !important;
+}
+
+#loadingText {
+  text-align: center;
 }
 
 /* blehbleh */
@@ -203,7 +208,7 @@ a:link {
    a:hover{
      color: #298fca;
    }
-   
+
    a{
      color: #ebb0d6;
      font-weight: bold;
