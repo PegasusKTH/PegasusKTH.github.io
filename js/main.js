@@ -34,11 +34,15 @@ var config = {
 
 };
 
+<<<<<<< HEAD
 var listIntegration;
 
 // exports node tree to prereqList.js
+=======
+// exports node tree to prereqList.js..... is this used somewhere? decrepit?
+>>>>>>> 8dc2583211656deb3f4a484170ffa033f6df5b97
 function getRootNode() {
-	return listIntegration;
+	return nodifyLookupMAIN("DD2420").buildTree();
 }
 
 // function is called in graph.html
@@ -55,6 +59,5 @@ function firstCall(courseArgument){
 
 	// combine config with tree for Treant graph generation
 	var simple_chart_config = [config].concat(nodeStructure);
-
 	return simple_chart_config;
 }

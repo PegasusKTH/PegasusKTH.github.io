@@ -231,3 +231,26 @@ a:link {
    }
 
 }
+
+/* This is for search Button in searchButton.html */
+.searchLink {
+  color: #1a0dab !important;
+  font-family: Arial, sans-serif !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 20px !important;
+  text-align: left !important;
+}
+
+.searchLink:hover {
+  text-decoration: underline !important;
+}
+
+.searchLinkWrapper {
+  margin-left: 33%;
+  margin-right: 33%;
+}
+
+.searchLinkContainer {
+  padding-left: 5%;
+}
