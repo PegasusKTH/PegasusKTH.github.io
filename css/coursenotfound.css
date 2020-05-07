@@ -63,3 +63,44 @@ a{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
+
+/* error page specific css */
+
+.errorHeader {
+  font-size: 500% !important;
+  margin-top: 30%;
+}
+
+.errorSubHeader {
+  font-size: 300% !important;
+
+}
+
+.errorMainText {
+  text-align: center;
+  color: #ffffff;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  */
