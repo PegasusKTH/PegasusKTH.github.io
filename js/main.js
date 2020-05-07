@@ -36,7 +36,7 @@ var config = {
 
 // exports node tree to prereqList.js
 function getRootNode() {
-	return nodifyLookupMAIN("ID1206").buildTree();
+	return nodifyLookupMAIN("DD2420").buildTree();
 }
 
 // function is called in graph.html

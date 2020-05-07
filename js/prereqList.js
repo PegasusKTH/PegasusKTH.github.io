@@ -16,7 +16,6 @@ function listElementWithChild(node) {
         + " - "
         + node.courseName
         + "</span>");
-
 }
 
 // Writes a nested list of the root parent and it's children
@@ -35,26 +34,21 @@ function traverseGraph(node) {
                 node.prerequisites.forEach(element => { //adding children to list
                     traverseGraph(element);
                 });
-            
+
                 if (node.equivalent.length > 0) {
-                    document.write('<li><span class="caret"> Equivalent Courses</span>'); 
-                    document.write('<ul class="nested">'); 
-                        document.write(
-                            node.equivalent.forEach(element => {
-                                console.log(element);
-                                
+                    document.write('<li><span class="caret"> Equivalent Courses</span>'); //Creates nested list of equivalent courses
+                    document.write('<ul class="nested">');
+                            node.equivalent.forEach(element => { //Adding equivalent courses to list
                                 document.write(
-                                
                                 "<li>"
                                     + "<a href=" + element.courseURL + ">" + element.courseCode + "</a>"
                                     + " - "
                                     + element.courseName
                                 +"</li>"
-                                );        
+                                );
                             })
-                        );
                         document.write("</li>");
-                    document.write('</ul>'); 
+                    document.write('</ul>');
                 }
             document.write("</ul>");
         document.write("</li>");
@@ -70,7 +64,7 @@ function traverseGraph(node) {
                 node.prerequisites.forEach(element => { //adding children to list
                     traverseGraph(element);
                 });
-            
+
             document.write("</ul>");
         document.write("</li>");
     }
@@ -115,5 +109,5 @@ parent with child                   (expandable) check
 
 
 
-                
-*/ 
+
+*/
