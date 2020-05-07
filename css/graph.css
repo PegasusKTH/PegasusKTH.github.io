@@ -37,7 +37,7 @@ h1{
   height: 100%;
   width: 100%;
   /* background-color:#ffffff; */
-  background-image: url("../image/background-loadpage-evening-shade.gif");
+  background-image: url("../image/background-load-screen-optimized.gif");
   position: absolute;
   z-index: 99 !important;
 }
