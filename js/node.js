@@ -28,7 +28,7 @@ class Node {
       if (this.parentNode == null) {
         var arr = {
           _json_id: this._json_id,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
+          text: { code: this.courseCode.toUpperCase(), name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
         };
 
         return arr;
@@ -152,7 +152,7 @@ class Node {
       for (var i = 0; i < reqArr.length; i++) {
 
         // displays whats loading on loading page :)
-        document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
+        // document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
 
         // if the required course is represented by and array of courses those are
         // seen as equivalent courses.
