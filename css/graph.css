@@ -14,6 +14,10 @@ body{
   padding-bottom: 1rem;
 }
 
+.listRepresentation{
+  color: #333333;
+}
+
 h1{
   color: #333333;
   text-align: center;
