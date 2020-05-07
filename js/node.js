@@ -145,7 +145,7 @@ class Node {
       for (var i = 0; i < reqArr.length; i++) {
 
         // displays whats loading on loading page :)
-        document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
+        // document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
 
         // if the required course is represented by and array of courses those are
         // seen as equivalent courses.
