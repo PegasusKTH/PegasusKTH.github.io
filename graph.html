@@ -5,9 +5,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="image/tab-logo.png">
-    <!-- <script type="text/javascript" src="js/lookup.js"></script>
-    <script type="text/javascript" src="js/node.js"></script>
-    <script type="text/javascript" src="js/main.js"></script> -->
     <link rel="stylesheet" href="js/treant/Treant.css">
     <title> Prerequisites </title>
     <link href="css/graph.css" rel="stylesheet">
@@ -58,7 +55,7 @@
 
             <!-- Section 2 -->
             <section id="section2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="graphnlista">Tree representation of prerequisites</div>
+              <div class="graphnlist">Tree representation of prerequisites</div>
 
               <!-- div for the tree -->
               <div class="chart" id="chart" style="width:80%; float:right;">
@@ -71,6 +68,10 @@
                     var searchedCode = courseArray[0];
                     var simplConfig = firstCall(searchedCode);
                   } else {
+
+                    
+
+
                       var path = "" + window.location.href;
                       console.log(path);
                       nameStr=[];
@@ -78,7 +79,7 @@
                       var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
                       console.log(path);
 
-                      var simplConfig = firstCall(searchedCourseName);
+                      //var simplConfig = firstCall(searchedCourseName);
                   }
 
                 </script>
