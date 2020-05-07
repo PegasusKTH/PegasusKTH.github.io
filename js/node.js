@@ -134,6 +134,7 @@ class Node {
 
       var lookup = this.jsonToArray();
       // reqArr can have the dataformat: ["IS1206", "ID1019"] or [["IX1500", "IS1610"], ID1018]
+
       var reqArr = lookup[1];
       this.setName(lookup[0]);
       this.addHp(lookup[3]);

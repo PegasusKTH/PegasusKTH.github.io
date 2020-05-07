@@ -106,8 +106,8 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
         courseArr[i] = temp.courseCode;
       }
     }
-    console.log(courseArr);
-    document.write("Here are the courses that are relevant to your searching: ");
+    //console.log(courseArr);
+    //document.write("Here are the courses that are relevant to your searching: ");
   //If there're relavant courses found, generate one button for each course code
     if(courseArr.length>0){
      for(i = 0; i < courseArr.length; i++){
