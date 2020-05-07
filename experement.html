@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Prerequisites </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/experement.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- imports javascripts -->
+    <script type="text/javascript" src="js/lookup.js"></script>
+    <script type="text/javascript" src="js/node.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/prereqList.js"></script>
+
+    <script>
+      courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+      if(courseArray!=null){
+        var searchedCode = courseArray[0];
+        var simplConfig = firstCall(searchedCode);
+      }
+
+
+      else{
+          var path = "" + window.location.href;
+          //console.log(path);
+          nameStr=[];
+          nameStr = path.split("=");
+          var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
+
+          var simplConfig = firstCall(searchedCourseName);
+      }
+
+    </script>
+
+
+    <div class="header">
+      <a href="index.html">
+        <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
+      </a>
+      <h1 id="prereqHeder" class="center"></h1>
+      <!-- writes Prerequisites for course: XXXX. XXXX is replest vid coures code  -->
+      <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: "; </script>
+
+    </div>
+
+    <div class="row">
+      <!-- Left colum contains prereqList -->
+      <div class="column" style="background-color:#aaa;">
+        <h2>List representation of prerequisites</h2>
+      </div>
+      <!-- right colum contains tree -->
+      <div class="column" style="background-color:#bbb;">
+        <h2>Tree representation of prerequisites</h2>
+          <div id="tree">
+            <script type="text/javascript">
+              tree = new Treant( simplConfig, $ );
+            </script>
+          </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <footer id="footer">
+        <!-- Navigation -->
+        <nav class="footer links">
+          <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
+          <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
+          <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
+          <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website</a>
+          <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
+        </nav>
+      </footer>
+    </div>
+
+  </body>
+</html>

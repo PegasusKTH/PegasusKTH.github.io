@@ -4,6 +4,10 @@ body{
 
 }
 
+#prereqList*{
+  color: #333333 !important;
+}
+
 /* incoming from serchingbar, check what it does */
 #container {
   position: relative;
@@ -73,8 +77,10 @@ h1{
   width: 378px;
 }
 
+
+
 .graphnlist{
-  
+
   color: #333333;
   /* text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
 
