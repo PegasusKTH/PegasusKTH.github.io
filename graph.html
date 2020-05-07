@@ -35,11 +35,11 @@
           </a>
           <h1 id="prereqHeader" class="center"></h1>
           <!-- writes Prerequisites for course: XXXX. XXXX is replaced with course code  -->
-          <script> 
-          // var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi); 
-          // if (urlCourse != null){
-          //   document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0];
-          // }
+          <script>
+            var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+            if (urlCourse != null){
+              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0];
+            }
           </script>
         </div>
 
@@ -64,6 +64,7 @@
                   <!-- Code handling the import of coursecode from URL tag -->
                 <script>
                   courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+                  var isthereTree = 0;
                   if(courseArray!=null){
                     var searchedCode = courseArray[0];
                     var simplConfig = firstCall(searchedCode);
@@ -73,7 +74,7 @@
                       console.log(path);
                       nameStr=[];
                       nameStr = path.split("=");
-                      
+
                       // var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
                       // console.log(path);
 
@@ -91,17 +92,16 @@
 
                 <script type="text/javascript" src="js/main.js"></script>
                 <script type="text/javascript">
-                  tree = new Treant( simplConfig, $ );
-                  // document.getElementById("loadingContainer").style.display = "none";
+
+                tree = new Treant( simplConfig, $ );
+
+                // document.getElementById("loadingContainer").style.display = "none";
                 </script>
                 <script>
                   $(document).ready(function(){
                       $("#loadingContainer").fadeOut();
                   });
                 </script>
-
-
-
             </section>
           </section>
         </div>

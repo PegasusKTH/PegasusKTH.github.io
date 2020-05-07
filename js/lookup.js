@@ -15,25 +15,24 @@ function searching(data){ // Originally Erik/Celine
    //represents which period is available in, if true then the course is given in that period of the (index+1) in the array. Ex. [false, false, true, false] gives course in p3.
 
 
-   if(data.publicSyllabusVersions.length > 0 ){     
+   if(data.publicSyllabusVersions.length > 0 ){
      if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
+
        var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
-   
+
        for(var i = 0; i < equivalentResult[0].length; i++) {
          eligArray.push(equivalentResult[0][i]);
        }
+       // writes over data string with manipulated datastring to prevent duplicates
+       data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
+       // this one finds the eligibility courses (REQUIRED COURSES)
+       // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
+       requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
+       eligArray = eligArray.concat(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
+       if (eligArray == null){
+         eligArray = [];
+       }
    }
-
-    // writes over data string with manipulated datastring to prevent duplicates
-    data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
-
-    // this one finds the eligibility courses (REQUIRED COURSES)
-    // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
-    requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
-    eligArray = eligArray.concat(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
-    if (eligArray == null){
-      eligArray = [];
-    }
   }
 
   //this one finds the prerequisites (recommended courses)
@@ -108,9 +107,7 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       for(i=0; i<jsonOBJ.searchHits.length; i++){
         temp = jsonOBJ.searchHits[i].course;
         courseArr[i] = temp.courseCode;
-        console.log("Coursecode: " + temp.courseCode);
         courseNames[i] = lookup(temp.courseCode)[0];
-        console.log("CourseName: " + courseNames);
       }
     }
     //console.log(courseArr);
@@ -124,7 +121,7 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       url = path.split("=");
       url[1] = "=";
       url[2] = courseArr[i];
-      finalUrl = url[0] + url[1] + url[2];
+      //finalUrl = url[0] + url[1] + url[2];
       //console.log(finalURL[0]+finalURL[1]+finalURL[2]);
 
       document.write('<a class="searchLink"  href = \"' + "graph.html?courseCode=" + courseArr[i] + '\" >'  + courseArr[i] + " - " +  courseNames[i] + '</a><br>');
@@ -172,6 +169,8 @@ RETURNS: [[], "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer oc
 */
 function getEquivalents(dataString) {
 
+
+
   var startIndex;
   var endIndex;
 
@@ -188,5 +187,6 @@ function getEquivalents(dataString) {
     dataString = dataString.replace(slicedData, "");
 
   }
+
   return [equivalents, dataString];
 }

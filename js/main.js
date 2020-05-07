@@ -34,9 +34,9 @@ var config = {
 
 };
 
-// exports node tree to prereqList.js
+// exports node tree to prereqList.js..... is this used somewhere? decrepit?
 function getRootNode() {
-	return listIntegration;
+	return nodifyLookupMAIN("DD2420").buildTree();
 }
 
 // function is called in graph.html
@@ -53,6 +53,5 @@ function firstCall(courseArgument){
 
 	// combine config with tree for Treant graph generation
 	var simple_chart_config = [config].concat(nodeStructure);
-
 	return simple_chart_config;
 }

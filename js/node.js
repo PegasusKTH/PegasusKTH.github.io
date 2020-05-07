@@ -28,7 +28,7 @@ class Node {
       if (this.parentNode == null) {
         var arr = {
           _json_id: this._json_id,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
+          text: { code: this.courseCode.toUpperCase(), name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
         };
 
         return arr;
@@ -94,13 +94,13 @@ class Node {
     // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
       var courseCode = this.courseCode;
-      try {
+      // try {
         var resArr = lookup(courseCode);
-      } catch (e) {
-        console.log("unexpected error. probably networking, redirecting");
-        // Simulate an HTTP redirect:
-        //window.location.replace("errorPage.html");
-      }
+      // } catch (e) {
+      //   console.log("unexpected error. probably networking, redirecting");
+      //   // Simulate an HTTP redirect:
+      //   //window.location.replace("errorPage.html");
+      // }
 
       return resArr;
     }
@@ -152,7 +152,7 @@ class Node {
       for (var i = 0; i < reqArr.length; i++) {
 
         // displays whats loading on loading page :)
-        document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
+        // document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
 
         // if the required course is represented by and array of courses those are
         // seen as equivalent courses.
