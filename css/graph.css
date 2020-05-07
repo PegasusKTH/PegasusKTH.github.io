@@ -1,0 +1,252 @@
+
+body{
+  margin: 0;
+
+}
+
+/* incoming from serchingbar, check what it does */
+#container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 1rem;
+}
+
+h1{
+  color: #333333;
+  text-align: center;
+  font-family: 'Audiowide';
+
+}
+
+#loading-image {
+  margin-left: 37.5%;
+  margin-top: 8%;
+  margin-right: 37.5%;
+}
+
+#loading-image-bar {
+  margin-left: 45.8%;
+  margin-right: 45.8%;
+}
+
+
+#loadingContainer {
+  height: 100%;
+  width: 100%;
+  /* background-color:#ffffff; */
+  background-image: url("../image/background-load-screen-optimized.gif");
+  position: absolute;
+  z-index: 99 !important;
+}
+
+#loadingText {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2em;
+}
+
+/* blehbleh */
+#background {
+  background-position: 50%  30%;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  position: relative;
+}
+
+#pegasus{
+  max-width: 150px;
+  height: 15%;
+  width: 15%;
+}
+
+#list{
+  height: 375px;
+  width: 378px;
+}
+
+#tree{
+  height: 375px;
+  width: 378px;
+}
+
+.graphnlist{
+  
+  color: #333333;
+  /* text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
+
+  font-size: 25px;
+  font-family: 'Manrope';
+  text-align: center;
+}
+
+
+.graphnlist section{
+  width: 50%; float: left;
+}
+
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+section{
+  height: 100%;
+  width: 100%;
+  display:inline-block;
+}
+
+#section1{
+
+}
+#section2{
+
+}
+
+
+#footer{
+  position: absolute;
+  bottom:0;
+  width:100%;
+  height:70px;
+  background-color: rgba(200,200,200,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul#footeritem li {
+  display:inline;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 2%;
+  font-family: 'Manrope';
+}
+
+li{
+  margin: 50px;
+  color: #ebb0d6;
+  font-size: 20px;
+  font-family: 'Manrope';
+  font-weight: bold;
+}
+
+a:link {
+  color: #ebb0d6;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Manrope';
+  font-weight: bold;
+ }
+ a:hover{
+  color: #298fca;
+}
+
+ a{
+  color: #ebb0d6;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+}
+
+#graylink{
+  color: #ebb0d6;
+}
+
+/* smaller handhelds */
+@media (max-width: 750px) {
+  #pegasus {
+    /* height: 120px; */
+    margin-top: 1%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #coursecode{
+    border: 0;
+    border-bottom: 1.5px solid #333333;
+    outline: 0;
+    font-size: 20px;
+    background:transparent;
+    min-width: 220px;
+
+  }
+
+  #magnifying-glass{
+    min-width: 25px;
+    max-width: 40px;
+  }
+  .search {
+    text-align: center;
+    margin-left: auto;
+    margin-top: 4%;
+    width: 60%;
+  }
+
+  h1{
+    font-size: 300%;
+    line-height: 100%;
+  }
+
+  .item {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+    /* margin-top: 50px; */
+  }
+  a:link {
+    color: #ebb0d6;
+    text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Manrope';
+    font-weight: bold;
+   }
+   a:hover{
+     color: #298fca;
+   }
+
+   a{
+     color: #ebb0d6;
+     font-weight: bold;
+     text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
+   }
+
+}
+
+/* This is for search Button in searchButton.html */
+.searchLink {
+  color: #1a0dab !important;
+  font-family: Arial, sans-serif !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+  font-size: 20px !important;
+  text-align: left !important;
+}
+
+.searchLink:hover {
+  text-decoration: underline !important;
+}
+
+.searchLinkWrapper {
+  margin-left: 33%;
+  margin-right: 33%;
+}
+
+.searchLinkContainer {
+  padding-left: 5%;
+}
