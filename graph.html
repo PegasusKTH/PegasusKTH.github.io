@@ -5,9 +5,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="image/tab-logo.png">
-    <!-- <script type="text/javascript" src="js/lookup.js"></script>
-    <script type="text/javascript" src="js/node.js"></script>
-    <script type="text/javascript" src="js/main.js"></script> -->
     <link rel="stylesheet" href="js/treant/Treant.css">
     <title> Prerequisites </title>
     <link href="css/graph.css" rel="stylesheet">
@@ -36,17 +33,13 @@
           <a href="index.html">
             <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
           </a>
-          <h1 id="prereqHeder" class="center"></h1>
-          <!-- writes Prerequisites for course: XXXX. XXXX is replest vid coures code  -->
-          <script> 
-
-          // Temporarily fixed, currently displays "" as course if there is no coursecode in graph.html URL, probably outdated by buttonPage.html
-          if(urlCourse != null){
-            var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)[0].toUpperCase();
-            document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + urlCourse;
-          } else {
-            document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + ""
-          }
+          <h1 id="prereqHeader" class="center"></h1>
+          <!-- writes Prerequisites for course: XXXX. XXXX is replaced with course code  -->
+          <script>
+            var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+            if (urlCourse != null){
+              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0];
+            }
           </script>
         </div>
 
@@ -75,14 +68,19 @@
                   if(courseArray!=null){
                     var searchedCode = courseArray[0];
                     var simplConfig = firstCall(searchedCode);
-                    isthereTree = 1;
                   } else {
-                      var path = "" + window.location.href;
 
+                      var path = "" + window.location.href;
+                      console.log(path);
                       nameStr=[];
                       nameStr = path.split("=");
 
+                      // var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
+                      // console.log(path);
+
                       window.location.href = "buttonPage.html?search=" + nameStr[1];
+
+                      // var simplConfig = firstCall(searchedCourseName);
                   }
 
                 </script>
@@ -94,10 +92,10 @@
 
                 <script type="text/javascript" src="js/main.js"></script>
                 <script type="text/javascript">
-                if(isthereTree == 1){
-                  tree = new Treant( simplConfig, $ );
-                }
-                  // document.getElementById("loadingContainer").style.display = "none";
+
+                tree = new Treant( simplConfig, $ );
+
+                // document.getElementById("loadingContainer").style.display = "none";
                 </script>
                 <script>
                   $(document).ready(function(){
