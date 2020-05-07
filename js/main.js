@@ -53,6 +53,6 @@ function firstCall(courseArgument){
 
 	// combine config with tree for Treant graph generation
 	var simple_chart_config = [config].concat(nodeStructure);
-
+	console.log("returning config");
 	return simple_chart_config;
 }

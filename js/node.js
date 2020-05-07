@@ -94,13 +94,13 @@ class Node {
     // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
       var courseCode = this.courseCode;
-      try {
+      // try {
         var resArr = lookup(courseCode);
-      } catch (e) {
-        console.log("unexpected error. probably networking, redirecting");
-        // Simulate an HTTP redirect:
-        window.location.replace("errorPage.html");
-      }
+      // } catch (e) {
+      //   console.log("unexpected error. probably networking, redirecting");
+      //   // Simulate an HTTP redirect:
+      //   //window.location.replace("errorPage.html");
+      // }
 
       return resArr;
     }
@@ -140,6 +140,7 @@ class Node {
 
       var lookup = this.jsonToArray();
       // reqArr can have the dataformat: ["IS1206", "ID1019"] or [["IX1500", "IS1610"], ID1018]
+
       var reqArr = lookup[1];
       this.setName(lookup[0]);
       this.addHp(lookup[3]);

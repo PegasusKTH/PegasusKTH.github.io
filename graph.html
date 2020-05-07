@@ -5,9 +5,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="image/tab-logo.png">
-    <!-- <script type="text/javascript" src="js/lookup.js"></script>
-    <script type="text/javascript" src="js/node.js"></script>
-    <script type="text/javascript" src="js/main.js"></script> -->
     <link rel="stylesheet" href="js/treant/Treant.css">
     <title> Prerequisites </title>
     <link href="css/graph.css" rel="stylesheet">
@@ -36,9 +33,14 @@
           <a href="index.html">
             <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
           </a>
-          <h1 id="prereqHeder" class="center"></h1>
-          <!-- writes Prerequisites for course: XXXX. XXXX is replest vid coures code  -->
-          <script> document.getElementById("prereqHeder").innerHTML = "Prerequisites for course: " + window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)[0]; </script>
+          <h1 id="prereqHeader" class="center"></h1>
+          <!-- writes Prerequisites for course: XXXX. XXXX is replaced with course code  -->
+          <script>
+            var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+            if (urlCourse != null){
+              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0];
+            }
+          </script>
         </div>
 
         <div>
@@ -53,7 +55,7 @@
 
             <!-- Section 2 -->
             <section id="section2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="graphnlista">Tree representation of prerequisites</div>
+              <div class="graphnlist">Tree representation of prerequisites</div>
 
               <!-- div for the tree -->
               <div class="chart" id="chart" style="width:80%; float:right;">
@@ -64,18 +66,24 @@
                   courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
                   if(courseArray!=null){
                     var searchedCode = courseArray[0];
+                    console.log(searchedCode);
+                    console.log("first call");
                     var simplConfig = firstCall(searchedCode);
-                  }
+                    console.log("first call done");
 
+                  } else {
 
-                  else{
                       var path = "" + window.location.href;
-                      //console.log(path);
+                      console.log(path);
                       nameStr=[];
                       nameStr = path.split("=");
-                      var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
 
-                      var simplConfig = firstCall(searchedCourseName);
+                      // var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
+                      // console.log(path);
+
+                      window.location.href = "buttonPage.html?search=" + nameStr[1];
+
+                      // var simplConfig = firstCall(searchedCourseName);
                   }
 
                 </script>
@@ -87,6 +95,8 @@
 
                 <script type="text/javascript" src="js/main.js"></script>
                 <script type="text/javascript">
+                console.log("building");
+                console.log(simplConfig);
                   tree = new Treant( simplConfig, $ );
                   // document.getElementById("loadingContainer").style.display = "none";
                 </script>
