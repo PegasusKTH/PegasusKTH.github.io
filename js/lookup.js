@@ -82,7 +82,7 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
     var jsonObject;
     var request = new XMLHttpRequest();
     request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseIDorName +  '/detailedinformation', false);  // `false` makes the request synchronous
-    request.send(null)
+    request.send(null);
 
     if (request.status === 200) {// That's HTTP for 'ok'
       jsonObject = JSON.parse(request.responseText);
@@ -183,36 +183,3 @@ function getEquivalents(dataString) {
   }
   return [equivalents, dataString];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//

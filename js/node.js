@@ -94,7 +94,13 @@ class Node {
     // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
       var courseCode = this.courseCode;
-      var resArr = lookup(courseCode);
+      try {
+        var resArr = lookup(courseCode);
+      } catch (e) {
+        console.log("unexpected error. probably networking, redirecting");
+        // Simulate an HTTP redirect:
+        window.location.replace("errorPage.html");
+      }
 
       return resArr;
     }
