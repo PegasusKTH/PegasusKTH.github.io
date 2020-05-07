@@ -34,6 +34,8 @@ var config = {
 
 };
 
+var listIntegration;
+
 // exports node tree to prereqList.js
 function getRootNode() {
 	return listIntegration;
@@ -43,7 +45,7 @@ function getRootNode() {
 function firstCall(courseArgument){
 
 	// listIntegration has taken jsonObject and converted it into a tree of nodes
-	var listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
+	listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
 
 	// assigns a unique ID to every node in the tree
 	listIntegration.assignIdentifiers([]);

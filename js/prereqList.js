@@ -36,9 +36,7 @@ function traverseGraph(node) {
     }
 }
 
-document.write('<ul id="prereqUL">');
-    traverseGraph(getRootNode());
-document.write("</ul>");
+
 
 var toggler = document.getElementsByClassName("caret");
 var i;

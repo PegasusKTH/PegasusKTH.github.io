@@ -29,6 +29,7 @@
       <script type="text/javascript" src="js/lookup.js"></script>
       <script type="text/javascript" src="js/node.js"></script>
       <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/prereqList.js"></script>
 
     <div id="container">
       <div id="content-wrap">
@@ -42,12 +43,33 @@
         </div>
 
         <div>
+          <script>
+            courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+            if(courseArray!=null){
+              var searchedCode = courseArray[0];
+              var simplConfig = firstCall(searchedCode);
+            }
+
+
+            else{
+                var path = "" + window.location.href;
+                //console.log(path);
+                nameStr=[];
+                nameStr = path.split("=");
+                var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
+
+                var simplConfig = firstCall(searchedCourseName);
+            }
+
+          </script>
           <section>
             <!-- Section 1 -->
             <section id="section1" class="graphnlist col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <div>List representation of prerequisites</div>
                 <div>
-                  ...
+                  <script>
+                  traverseGraph(getRootNode());
+                  </script>
                 </div>
             </section>
 
@@ -60,25 +82,7 @@
               </div>
 
                   <!-- Code handling the import of coursecode from URL tag -->
-                <script>
-                  courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
-                  if(courseArray!=null){
-                    var searchedCode = courseArray[0];
-                    var simplConfig = firstCall(searchedCode);
-                  }
 
-
-                  else{
-                      var path = "" + window.location.href;
-                      //console.log(path);
-                      nameStr=[];
-                      nameStr = path.split("=");
-                      var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
-
-                      var simplConfig = firstCall(searchedCourseName);
-                  }
-
-                </script>
 
                 <!-- Libraries and creating the tree itself -->
                 <script src="js/treant/Treant.js"></script>
