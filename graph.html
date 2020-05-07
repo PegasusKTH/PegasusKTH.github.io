@@ -69,17 +69,17 @@
                     var simplConfig = firstCall(searchedCode);
                   } else {
 
-                    
-
-
                       var path = "" + window.location.href;
                       console.log(path);
                       nameStr=[];
                       nameStr = path.split("=");
-                      var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
-                      console.log(path);
+                      
+                      // var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
+                      // console.log(path);
 
-                      //var simplConfig = firstCall(searchedCourseName);
+                      window.location.href = "buttonPage.html?search=" + nameStr[1];
+
+                      // var simplConfig = firstCall(searchedCourseName);
                   }
 
                 </script>

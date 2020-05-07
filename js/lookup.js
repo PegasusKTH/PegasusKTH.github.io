@@ -14,12 +14,15 @@ function searching(data){ // Originally Erik/Celine
   var courseInPeriod = [false, false, false, false];
    //represents which period is available in, if true then the course is given in that period of the (index+1) in the array. Ex. [false, false, true, false] gives course in p3.
 
-  if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
-    var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
 
-    for(var i = 0; i < equivalentResult[0].length; i++) {
-      eligArray.push(equivalentResult[0][i]);
-    }
+   if(data.publicSyllabusVersions.length > 0 ){     
+     if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
+       var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
+   
+       for(var i = 0; i < equivalentResult[0].length; i++) {
+         eligArray.push(equivalentResult[0][i]);
+       }
+   }
 
     // writes over data string with manipulated datastring to prevent duplicates
     data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
@@ -72,7 +75,6 @@ function searching(data){ // Originally Erik/Celine
   return finalResultArray;
 }
 
-
 //first function called, eitehr takes a course ID as argument or a course code
 //1. input: a valid course ID     output: pass JSON object as an argument to searching(data) and returns the prerequisites of the input course
 //2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
@@ -101,9 +103,14 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       jsonOBJ = JSON.parse(request.responseText);
       var temp;
       var courseArr = [];
+      var courseNames = [];
+
       for(i=0; i<jsonOBJ.searchHits.length; i++){
         temp = jsonOBJ.searchHits[i].course;
         courseArr[i] = temp.courseCode;
+        console.log("Coursecode: " + temp.courseCode);
+        courseNames[i] = lookup(temp.courseCode)[0];
+        console.log("CourseName: " + courseNames);
       }
     }
     //console.log(courseArr);
@@ -120,7 +127,7 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       finalUrl = url[0] + url[1] + url[2];
       //console.log(finalURL[0]+finalURL[1]+finalURL[2]);
 
-      document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>');
+      document.write('<a class="searchLink"  href = \"' + "graph.html?courseCode=" + courseArr[i] + '\" >'  + courseArr[i] + " - " +  courseNames[i] + '</a><br>');
       }
     }
     //if there is no such course, go to the Course Not Found Page

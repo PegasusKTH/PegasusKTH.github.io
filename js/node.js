@@ -99,7 +99,7 @@ class Node {
       } catch (e) {
         console.log("unexpected error. probably networking, redirecting");
         // Simulate an HTTP redirect:
-        window.location.replace("errorPage.html");
+        //window.location.replace("errorPage.html");
       }
 
       return resArr;
