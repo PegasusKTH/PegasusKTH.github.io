@@ -50,6 +50,7 @@ h1{
 
 .graphnlist section{
   width: 50%; float: left;
+  color: #333333;
 }
 
 
@@ -88,8 +89,7 @@ ul#footeritem li {
 }
 
 li{
-  margin: 50px;
-  color: #ebb0d6;
+  color: #333333;
   font-size: 20px;
   font-family: 'Manrope';
   font-weight: bold;

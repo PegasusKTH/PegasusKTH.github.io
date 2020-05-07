@@ -34,7 +34,7 @@ var config = {
 
 };
 
-var listintegration;
+var listIntegration;
 
 // exports node tree to prereqList.js
 function getRootNode() {
