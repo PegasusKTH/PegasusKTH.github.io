@@ -28,7 +28,7 @@ class Node {
       if (this.parentNode == null) {
         var arr = {
           _json_id: this._json_id,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
+          text: { code: this.courseCode.toUpperCase(), name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
         };
 
         return arr;
