@@ -38,7 +38,7 @@
           <script>
             var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
             if (urlCourse != null){
-              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0];
+              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0].toUpperCase();
             }
           </script>
         </div>
