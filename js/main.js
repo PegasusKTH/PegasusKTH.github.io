@@ -34,13 +34,7 @@ var config = {
 
 };
 
-<<<<<<< HEAD
-var listIntegration;
-
-// exports node tree to prereqList.js
-=======
 // exports node tree to prereqList.js..... is this used somewhere? decrepit?
->>>>>>> 8dc2583211656deb3f4a484170ffa033f6df5b97
 function getRootNode() {
 	return nodifyLookupMAIN("DD2420").buildTree();
 }
@@ -49,7 +43,7 @@ function getRootNode() {
 function firstCall(courseArgument){
 
 	// listIntegration has taken jsonObject and converted it into a tree of nodes
-	listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
+	var listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
 
 	// assigns a unique ID to every node in the tree
 	listIntegration.assignIdentifiers([]);

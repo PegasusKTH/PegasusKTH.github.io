@@ -71,11 +71,6 @@ function traverseGraph(node) {
 */
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 8dc2583211656deb3f4a484170ffa033f6df5b97
 var toggler = document.getElementsByClassName("caret");
 var i;
 
