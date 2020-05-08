@@ -37,7 +37,7 @@ class Node {
         var arr = {
           _json_id: this._json_id,
           parent: this.parentNode,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period, equivalent:"has equivalent" }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period, equivalent:"Has equivalent" }
         };
 
         return arr;
@@ -94,13 +94,12 @@ class Node {
     // expected output is string array of required courses course codes. empty array if none exist
     jsonToArray(){
       var courseCode = this.courseCode;
-      // try {
+      try {
         var resArr = lookup(courseCode);
-      // } catch (e) {
-      //   console.log("unexpected error. probably networking, redirecting");
-      //   // Simulate an HTTP redirect:
-      //   //window.location.replace("errorPage.html");
-      // }
+      } catch (e) {
+        // Simulate an HTTP redirect:
+        window.location.replace("errorPage.html");
+      }
 
       return resArr;
     }
@@ -124,8 +123,6 @@ class Node {
 
       }
     }
-    // addDup(){
-    // }
 
     // recursively goes through all prerequisites according to json files.
     // fully constructs tree object for later export.

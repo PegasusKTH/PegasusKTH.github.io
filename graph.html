@@ -38,12 +38,18 @@
           <script>
             var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
             if (urlCourse != null){
-              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0];
+              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0].toUpperCase();
             }
           </script>
         </div>
 
         <div>
+          <div class ="graphSearchBoxDiv col-lg-6 col-md-6 col-sm-6 col-xs-6" id="graphSearchBox">
+            <form action="graph.html" method="GET">
+              <input type="text" name="courseCode" required>
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
           <section>
             <!-- Section 1 -->
             <section id="section1" class="graphnlist col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -63,29 +69,33 @@
 
                   <!-- Code handling the import of coursecode from URL tag -->
                 <script>
-                  var tempPath = "" + window.location.href;
-                  var tempIDstr = [];
-                  tempIDstr = tempPath.split("=");
-                  var tempName = tempIDstr[1];
-                  //console.log(tempIDstr[1].length);
 
-                  if(courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempIDstr[1].length == 6){
+                //Get the string entered in searchbar to use for checking if input was okey
+                var tempPath = "" + window.location.href;
+                tempNameStr=[];
+                tempNameStr = tempPath.split("=")[1];
+
+                //Check if input of coursecode into searchbar was correct
+                //If correct proceed with building tree
+                if (tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 6) {
+
+                    courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
                     var isthereTree = 0;
                     if(courseArray!=null){
                       var searchedCode = courseArray[0];
                       var simplConfig = firstCall(searchedCode);
-                    } 
-                  }
-                  else {
-                      var path = "" + window.location.href;
-                      console.log(path);
-                      nameStr=[];
-                      nameStr = path.split("=");
+                    }
+                  } else { //If input was not a coursecode match with string to create buttons
+
+                    var path = "" + window.location.href;
+                    console.log(path);
+                    nameStr=[];
+                    nameStr = path.split("=");
 
                       // var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
                       //console.log(path);
 
-                      window.location.href = "buttonPage.html?search=" + nameStr[1];
+                    window.location.href = "buttonPage.html?search=" + nameStr[1];
 
                       // var simplConfig = firstCall(searchedCourseName);
                     }

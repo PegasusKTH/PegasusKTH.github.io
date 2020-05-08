@@ -74,7 +74,7 @@ h1{
 }
 
 .graphnlist{
-  
+
   color: #333333;
   /* text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
 
@@ -250,3 +250,13 @@ a:link {
 .searchLinkContainer {
   padding-left: 5%;
 }
+
+.graphSearchBoxDiv {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#graphSearchBox {
+  text-align: center;
+}
+
