@@ -1,3 +1,11 @@
+#search{
+  text-align: center;
+  margin-left: auto;
+  margin-top: 4%;
+  width: 40%;
+}
+
+/*
 #container {
   position: relative;
   min-height: 100vh;
@@ -8,7 +16,8 @@
   padding-bottom: 7rem;
   
 }
-
+*/
+/*
 h1{
   color: #333333;
   text-align: center;
@@ -27,8 +36,8 @@ h2{
   font-size: 25px;
   font-family: 'Audiowide';
 }
-
-
+*/
+/*
 #background {
   background-position: 50%  30%;
   background-repeat: no-repeat;
@@ -36,33 +45,29 @@ h2{
   background-size: cover;
   position: relative;
 }
-
+*/
+/*
 #pegasus{
   max-width: 200px;
   height: 30%;
   width: 30%;
 }
-
+*/
+/*
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   /* width: 50%; */
   /* margin-top: 50px; */
-}
-
+ /*}*/
+/*
 body, html {
   height: 100%;
 }
+*/
 
-#search{
-  text-align: center;
-  margin-left: auto;
-  margin-top: 4%;
-  width: 40%;
-
-}
-
+/*
 #button1{
   border: none;
   background-color: transparent;
@@ -79,7 +84,9 @@ body, html {
   height: 100%;
   width: 100%;
 }
+*/
 
+/*
 #coursecode{
   border: 0;
   border-bottom: 1.5px solid #333333;
@@ -87,10 +94,10 @@ body, html {
   font-size: 20px;
   background:transparent;
   /* margin-left: 20%; */
-}
+/*}*/
 
 
-
+/*
 #footer{
   position: absolute;
   bottom:0;
@@ -101,7 +108,8 @@ body, html {
   align-items: center;
   justify-content: center;
 }
-
+*/
+/*
 ul#footeritem li {
   display:inline;
   text-align: center;
@@ -109,7 +117,8 @@ ul#footeritem li {
   padding-bottom: 2%;
   font-family: 'Manrope';
 }
-
+*/
+/*
 li{
   margin: 50px;
   color: #ebb0d6;
@@ -117,7 +126,8 @@ li{
   font-family: 'Manrope';
   font-weight: bold;
 }
-
+*/
+/*
 a:link {
  color: #ebb0d6;
  text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
@@ -136,6 +146,7 @@ a{
   font-weight: bold;
   text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
 }
+*/
 
 
 

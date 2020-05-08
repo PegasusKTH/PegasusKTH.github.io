@@ -1,26 +1,4 @@
 
-body{
-  margin: 0;
-
-}
-
-/* incoming from serchingbar, check what it does */
-#container {
-  position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 1rem;
-}
-
-h1{
-  color: #333333;
-  text-align: center;
-  font-family: 'Audiowide';
-
-}
-
 #loading-image {
   margin-left: 37.5%;
   margin-top: 8%;
@@ -48,30 +26,6 @@ h1{
   font-size: 2em;
 }
 
-/* blehbleh */
-#background {
-  background-position: 50%  30%;
-  background-repeat: no-repeat;
-  height: 100%;
-  background-size: cover;
-  position: relative;
-}
-
-#pegasus{
-  max-width: 150px;
-  height: 15%;
-  width: 15%;
-}
-
-#list{
-  height: 375px;
-  width: 378px;
-}
-
-#tree{
-  height: 375px;
-  width: 378px;
-}
 
 .graphnlist{
 
@@ -89,27 +43,87 @@ h1{
 }
 
 
-.center{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-}
-
 section{
   height: 100%;
   width: 100%;
   display:inline-block;
 }
 
-#section1{
+
+/*
+body{
+  margin: 0;
 
 }
-#section2{
+/* incoming from serchingbar, check what it does */
+/*
+#container {
+  position: relative;
+  min-height: 100vh;
+}
+*/
 
+/*
+#content-wrap {
+  padding-bottom: 1rem;
+}
+*/
+
+/*
+h1{
+  color: #333333;
+  text-align: center;
+  font-family: 'Audiowide';
+}
+*/
+
+/*
+#background {
+  background-position: 50%  30%;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  position: relative;
 }
 
+#pegasus{
+  max-width: 150px;
+  height: 15%;
+  width: 15%;
+}
+*/
 
+/*
+#list{
+  height: 375px;
+  width: 378px;
+}
+
+#tree{
+  height: 375px;
+  width: 378px;
+}
+*/
+
+/*
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+*/
+
+/*
+#sectionList{
+
+}
+#sectionTree{
+
+}
+*/
+
+/*
 #footer{
   position: absolute;
   bottom:0;
@@ -128,7 +142,8 @@ ul#footeritem li {
   padding-bottom: 2%;
   font-family: 'Manrope';
 }
-
+*/
+/*
 li{
   margin: 50px;
   color: #ebb0d6;
@@ -159,7 +174,7 @@ a:link {
 #graylink{
   color: #ebb0d6;
 }
-
+*/
 /* smaller handhelds */
 @media (max-width: 750px) {
   #pegasus {
