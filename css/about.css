@@ -8,9 +8,11 @@
 }
 
 h1{
+/*
   color: #333333;
   text-align: center;
   font-family: 'Audiowide';
+*/
   max-width: 400px;
 }
 
@@ -20,6 +22,20 @@ p{
   text-align: center;
 }
 
+.textarea{
+  padding-top: 1rem;
+/*
+  max-width: 1000px;
+  color: #333333;
+  font-size: 22px;
+  margin: auto;
+  width: 80%;
+  font-family: 'Manrope'
+*/
+}
+
+
+/*
 #background {
   background-position: 50%  30%;
   background-repeat: no-repeat;
@@ -40,26 +56,10 @@ p{
   margin-right: auto;
 
 }
-
-.textarea{
-  padding-top: 1rem;
-  max-width: 1000px;
-  color: #333333;
-  font-size: 22px;
-  margin: auto;
-  width: 80%;
-  font-family: 'Manrope'
-
-}
+*/
 
 
-
-#search{
-  height: 100px;
-  width: 295px;
-}
-
-
+/*
 #footer{
   position: absolute;
   bottom:0;
@@ -108,7 +108,7 @@ a{
 #graylink{
   color: #ebb0d6;
 }
-
+*/
 /* smaller handhelds */
 @media (max-width: 750px) {
   #pegasus {

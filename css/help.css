@@ -30,6 +30,7 @@ p{
   font-family: 'Audiowide';
 }
 
+/*
 #background {
   background-position: 50%  30%;
   background-repeat: no-repeat;
@@ -118,6 +119,7 @@ a:link {
 #graylink{
   color: #ebb0d6;
 }
+*/
 
 /* smaller handhelds */
 @media (max-width: 750px) {

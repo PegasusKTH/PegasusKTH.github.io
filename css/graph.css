@@ -5,12 +5,6 @@
   margin-right: 37.5%;
 }
 
-#loading-image-bar {
-  margin-left: 45.8%;
-  margin-right: 45.8%;
-}
-
-
 #loadingContainer {
   height: 100%;
   width: 100%;
@@ -31,15 +25,18 @@
 
   color: #333333;
   /* text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
-
   font-size: 25px;
   font-family: 'Manrope';
   text-align: center;
 }
 
-
-.graphnlist section{
+/* previously graphnlist but only handled list */
+.list section{
   width: 50%; float: left;
+}
+
+.tree section{
+  /* not yet used */
 }
 
 

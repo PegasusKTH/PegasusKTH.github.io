@@ -1,9 +1,10 @@
 h1{
+  /*
   color: #333333;
   text-align: center;
   font-family: 'Audiowide';
+  */
   font-size: 50px;
-
 }
 
 #pegasus{
@@ -13,13 +14,14 @@ h1{
 }
 
 
-
+/*
 .center{
   display: block;
   margin-left: auto;
   margin-right: auto;
 
 }
+*/
 
 #maintext{
   color: black;
@@ -28,7 +30,7 @@ h1{
   text-align: center;
 }
 
-
+/*
 #container {
   position: relative;
   min-height: 100vh;
@@ -83,6 +85,8 @@ a:link {
   font-weight: bold;
   text-shadow: -1px -1px 0 #333333, 1px -1px 0 #333333, -1px 1px 0 #333333, 1px 1px 0 #333333;
 }
+*/
+
 /* error page specific css */
 
 .errorHeader {

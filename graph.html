@@ -19,8 +19,6 @@
 
       <div id = "loadingContainer">
         <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-image" src = "image/animation-big-glitter-dark-shadow.gif" />
-        <!-- RIP cat -->
-        <!-- <img class= "col-lg-1 col-md-1 col-sm-1 col-xs-1"  id = "loading-image-bar" src = "image/catSpin.gif"/> -->
         <p id="loadingText">Building treestructure</p>
       </div>
 
@@ -53,7 +51,7 @@
           </div>
           <section>
             <!-- Section left/up showing list -->
-            <section id="sectionList" class="graphnlist col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <section id="sectionList" class="list col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <h2>List representation of prerequisites</h2>
                 <div>
                   ...
@@ -65,20 +63,18 @@
               <h2>Tree representation of prerequisites</h2>
 
               <!-- div for the tree -->
-              <div class="chart" id="chart" style="width:80%; float:right;">
-              </div>
+              <div class="chart" id="chart" style="width:80%; float:right;"></div>
 
-                  <!-- Code handling the import of coursecode from URL tag -->
+                <!-- Code handling the import of coursecode from URL tag -->
                 <script>
+                  //Get the string entered in searchbar to use for checking if input was okey
+                  var tempPath = "" + window.location.href;
+                  tempNameStr=[];
+                  tempNameStr = tempPath.split("=")[1];
 
-                //Get the string entered in searchbar to use for checking if input was okey
-                var tempPath = "" + window.location.href;
-                tempNameStr=[];
-                tempNameStr = tempPath.split("=")[1];
-
-                //Check if input of coursecode into searchbar was correct
-                //If correct proceed with building tree
-                if (tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 6) {
+                  //Check if input of coursecode into searchbar was correct
+                  //If correct proceed with building tree
+                  if (tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 6) {
 
                     courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
                     var isthereTree = 0;
@@ -93,12 +89,8 @@
                     nameStr=[];
                     nameStr = path.split("=");
 
-                      // var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
-                      // console.log(path);
-
                     window.location.href = "buttonPage.html?search=" + nameStr[1];
 
-                      // var simplConfig = firstCall(searchedCourseName);
                   }
 
                 </script>
@@ -110,11 +102,9 @@
 
                 <script type="text/javascript" src="js/main.js"></script>
                 <script type="text/javascript">
-
-                tree = new Treant( simplConfig, $ );
-
-                // document.getElementById("loadingContainer").style.display = "none";
+                  tree = new Treant( simplConfig, $ );
                 </script>
+
                 <script>
                   $(document).ready(function(){
                       $("#loadingContainer").fadeOut();
@@ -123,7 +113,6 @@
             </section>
           </section>
         </div>
-
       </div>
 
       <footer>
@@ -133,6 +122,7 @@
         <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website</a>
         <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
       </footer>
+
     </div>
   </body>
 </html>
