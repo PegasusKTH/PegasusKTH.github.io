@@ -37,9 +37,9 @@
           <h1 id="prereqHeader" class="center"></h1>
           <!-- writes Prerequisites for course: XXXX. XXXX is replaced with course code  -->
           <script>
-            var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
-            if (urlCourse != null){
-              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0].toUpperCase();
+            var urlCourse = window.location.href.split('courseCode=');
+            if (urlCourse[1] != null){
+              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[1].toUpperCase();
             }
           </script>
         </div>
