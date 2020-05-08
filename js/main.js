@@ -34,16 +34,17 @@ var config = {
 
 };
 
+var listIntegration;
 // exports node tree to prereqList.js..... is this used somewhere? decrepit?
 function getRootNode() {
-	return nodifyLookupMAIN("DD2420").buildTree();
+	return listIntegration;
 }
 
 // function is called in graph.html
 function firstCall(courseArgument){
 
 	// listIntegration has taken jsonObject and converted it into a tree of nodes
-	var listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
+	listIntegration = nodifyLookupMAIN(courseArgument).buildTree(); // SearchBox integration needed.
 
 	// assigns a unique ID to every node in the tree
 	listIntegration.assignIdentifiers([]);
