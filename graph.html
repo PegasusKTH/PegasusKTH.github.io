@@ -26,6 +26,7 @@
       <script type="text/javascript" src="js/lookup.js"></script>
       <script type="text/javascript" src="js/node.js"></script>
       <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/prereqList.js"></script>
 
     <div id="container">
       <div id="content-wrap">
@@ -52,29 +53,17 @@
           </div>
           <section>
             <!-- Section 1 -->
-            <section id="section1" class="graphnlist col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div>List representation of prerequisites</div>
-                <div>
-                  ...
-                </div>
-            </section>
-
-            <!-- Section 2 -->
-            <section id="section2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="graphnlist">Tree representation of prerequisites</div>
-
-              <!-- div for the tree -->
-              <div class="chart" id="chart" style="width:80%; float:right;">
-              </div>
+            <section id="section1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="graphnlist">List representation of prerequisites</div>
+                <div id="prereqList">
 
                   <!-- Code handling the import of coursecode from URL tag -->
-                <script>
-
-                //Get the string entered in searchbar to use for checking if input was okey
-                var tempPath = "" + window.location.href;
-                tempNameStr=[];
-                tempNameStr = tempPath.split("=")[1];
-
+                  <script>
+                  //Get the string entered in searchbar to use for checking if input was okey
+                  var tempPath = "" + window.location.href;
+                  tempNameStr=[];
+                  tempNameStr = tempPath.split("=")[1];
+                    
                 //Check if input of coursecode into searchbar was correct
                 //If correct proceed with building tree
                 //Case1: the input course is in format like ID1020 (2 letters and 4 numbers)
@@ -86,8 +75,8 @@
                       var searchedCode = courseArray[0];
                       var simplConfig = firstCall(searchedCode);
                     }
-                  } 
-
+                  }
+                   
                   //Case2: the input course is in format like FEP3360 (3 letter and 4 numbers)
                   else if(tempNameStr.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 7){
                     courseArray = window.location.href.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
@@ -107,24 +96,37 @@
                       var simplConfig = firstCall(searchedCode);
                     }
                   }
+                  else { //If the input was not a coursecode but a course name instead, match with string to create buttons in a new pages
+ 
+                     var path = "" + window.location.href;
+                     console.log(path);
+                     nameStr=[];
+                     nameStr = path.split("=");
+                     window.location.href = "buttonPage.html?search=" + nameStr[1];
 
-                  //If the input was not a coursecode but a course name instead, match with string to create buttons in a new pages
-                  else { 
-
-                    var path = "" + window.location.href;
-                    console.log(path);
-                    nameStr=[];
-                    nameStr = path.split("=");
-
-                      // var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
-                      //console.log(path);
-
-                    window.location.href = "buttonPage.html?search=" + nameStr[1];
-
-                      // var simplConfig = firstCall(searchedCourseName);
                     }
 
-                </script>
+                  traverseGraph(getRootNode());
+
+                  var toggler = document.getElementsByClassName("caret2");
+                  var i;
+                  for (i = 0; i < toggler.length; i++) {
+                    toggler[i].addEventListener("click", function() {
+                      this.parentElement.querySelector(".nested2").classList.toggle("active");
+                      this.classList.toggle("caret2-down");
+                    });
+                  }
+                  </script>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="graphnlist">Tree representation of prerequisites</div>
+
+              <!-- div for the tree -->
+              <div class="chart" id="chart" style="width:80%; float:right;">
+              </div>
 
                 <!-- Libraries and creating the tree itself -->
                 <script src="js/treant/Treant.js"></script>
@@ -136,7 +138,6 @@
 
                 tree = new Treant( simplConfig, $ );
 
-                // document.getElementById("loadingContainer").style.display = "none";
                 </script>
                 <script>
                   $(document).ready(function(){
