@@ -63,33 +63,53 @@
                   var tempPath = "" + window.location.href;
                   tempNameStr=[];
                   tempNameStr = tempPath.split("=")[1];
+                    
+                //Check if input of coursecode into searchbar was correct
+                //If correct proceed with building tree
+                //Case1: the input course is in format like ID1020 (2 letters and 4 numbers)
+                if (tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 6) {
 
-                  //Check if input of coursecode into searchbar was correct
-                  //If correct proceed with building tree
-                  if (tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 6) {
+                    courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    }
+                  }
+                   
+                  //Case2: the input course is in format like FEP3360 (3 letter and 4 numbers)
+                  else if(tempNameStr.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 7){
+                    courseArray = window.location.href.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    } 
+                  }
 
-                      courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
-                      var isthereTree = 0;
-                      if(courseArray!=null){
-                        var searchedCode = courseArray[0];
-                        var simplConfig = firstCall(searchedCode);
-                      }
-                    } else { //If input was not a coursecode match with string to create buttons
-
-                      var path = "" + window.location.href;
-                      console.log(path);
-                      nameStr=[];
-                      nameStr = path.split("=");
-                      window.location.href = "buttonPage.html?search=" + nameStr[1];
+                  //Case3: the input course is in the format like AE212X (2 letters, 3 numbers and X/N in the end)
+                  else if(tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi) && tempNameStr.length == 6){
+                    courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    }
+                  }
+                  else { //If the input was not a coursecode but a course name instead, match with string to create buttons in a new pages
+ 
+                     var path = "" + window.location.href;
+                     console.log(path);
+                     nameStr=[];
+                     nameStr = path.split("=");
+                     window.location.href = "buttonPage.html?search=" + nameStr[1];
 
                     }
-
 
                   traverseGraph(getRootNode());
 
                   var toggler = document.getElementsByClassName("caret2");
                   var i;
-
                   for (i = 0; i < toggler.length; i++) {
                     toggler[i].addEventListener("click", function() {
                       this.parentElement.querySelector(".nested2").classList.toggle("active");
