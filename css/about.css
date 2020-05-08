@@ -14,6 +14,12 @@ h1{
   max-width: 400px;
 }
 
+p{
+  padding-top: 1rem;
+  color: #333333;
+  text-align: center;
+}
+
 #background {
   background-position: 50%  30%;
   background-repeat: no-repeat;
@@ -162,7 +168,7 @@ a{
    a:hover{
      color: #298fca;
    }
-   
+
    a{
      color: #ebb0d6;
      font-weight: bold;
