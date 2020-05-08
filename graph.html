@@ -39,7 +39,8 @@
           <script>
             var urlCourse = window.location.href.split('courseCode=');
             if (urlCourse[1] != null){
-              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[1].toUpperCase();
+              document.getElementById("prereqHeader").innerHTML = " Prerequisites for course: " + urlCourse[1].toUpperCase();
+
             }
           </script>
         </div>
@@ -47,8 +48,8 @@
         <div>
           <div class ="graphSearchBoxDiv col-lg-6 col-md-6 col-sm-6 col-xs-6" id="graphSearchBox">
             <form action="graph.html" method="GET">
-              <input type="text" name="courseCode" required>
-              <input type="submit" value="Submit" />
+              <input type="text" name="courseCode" placeholder="Enter a course.." id="placeholder">
+              <input type="submit" value="Pegasearch!" id="searchbutton"/>
             </form>
           </div>
           <section>
