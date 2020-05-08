@@ -14,22 +14,24 @@ function searching(data){ // Originally Erik/Celine
   var courseInPeriod = [false, false, false, false];
    //represents which period is available in, if true then the course is given in that period of the (index+1) in the array. Ex. [false, false, true, false] gives course in p3.
 
-  if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
-    var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
 
-    for(var i = 0; i < equivalentResult[0].length; i++) {
-      eligArray.push(equivalentResult[0][i]);
-    }
+   if(data.publicSyllabusVersions.length > 0 ){
+     if(data.publicSyllabusVersions[0].courseSyllabus.eligibility){
 
-    // writes over data string with manipulated datastring to prevent duplicates
-    data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
+       var equivalentResult = getEquivalents(data.publicSyllabusVersions[0].courseSyllabus.eligibility); // getEquivalents returns [equivalents, manipulatedDataString] see function docs for more details
 
-    // this one finds the eligibility courses (REQUIRED COURSES)
-    // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
-    requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
-    eligArray = eligArray.concat(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
-    if (eligArray == null){
-      eligArray = [];
+       for(var i = 0; i < equivalentResult[0].length; i++) {
+         eligArray.push(equivalentResult[0][i]);
+       }
+       // writes over data string with manipulated datastring to prevent duplicates
+       data.publicSyllabusVersions[0].courseSyllabus.eligibility = equivalentResult[1];
+       // this one finds the eligibility courses (REQUIRED COURSES)
+       // can be found in the KOPPS API under PublicSyllabusVersions 0 (recent)
+       requiredCourse = data.publicSyllabusVersions[0].courseSyllabus.eligibility;
+       eligArray = eligArray.concat(requiredCourse.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/g));
+       if (eligArray == null){
+         eligArray = [];
+       }
     }
   }
 
@@ -72,8 +74,7 @@ function searching(data){ // Originally Erik/Celine
   return finalResultArray;
 }
 
-
-//first function called, eitehr takes a course ID as argument or a course code
+// first function called, eitehr takes a course ID as argument or a course code or a course name
 //1. input: a valid course ID     output: pass JSON object as an argument to searching(data) and returns the prerequisites of the input course
 //2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
 //3. input: an invalid courseID/course name    output: lead you to course not found page
@@ -101,26 +102,24 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       jsonOBJ = JSON.parse(request.responseText);
       var temp;
       var courseArr = [];
+      var courseNames = [];
+
       for(i=0; i<jsonOBJ.searchHits.length; i++){
         temp = jsonOBJ.searchHits[i].course;
         courseArr[i] = temp.courseCode;
+        courseNames[i] = temp.title;
       }
     }
-    console.log(courseArr);
-    document.write("Here are the courses that are relevant to your searching: ");
-  //If there're relavant courses found, generate one button for each course code
+   //If there're relavant courses found, generate one button for each course code
     if(courseArr.length>0){
      for(i = 0; i < courseArr.length; i++){
       var path = "" + window.location.href;
-      //console.log(path);
       url=[];
       url = path.split("=");
       url[1] = "=";
       url[2] = courseArr[i];
-      finalUrl = url[0] + url[1] + url[2];
-      //console.log(finalURL[0]+finalURL[1]+finalURL[2]);
 
-      document.write('<a href = \"' +finalUrl + '\" ><button type="button">'  + courseArr[i] + '</button></a>');
+      document.write('<a class="searchLink"  href = \"' + "graph.html?courseCode=" + courseArr[i] + '\" >'  + courseArr[i] + " - " +  courseNames[i] + '</a><br>');
       }
     }
     //if there is no such course, go to the Course Not Found Page
@@ -165,6 +164,8 @@ RETURNS: [[], "<ul><li>ID1018 Programmering I&#160;</li><li>ID1020 Algoritmer oc
 */
 function getEquivalents(dataString) {
 
+
+
   var startIndex;
   var endIndex;
 
@@ -181,5 +182,6 @@ function getEquivalents(dataString) {
     dataString = dataString.replace(slicedData, "");
 
   }
+
   return [equivalents, dataString];
 }

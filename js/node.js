@@ -28,7 +28,7 @@ class Node {
       if (this.parentNode == null) {
         var arr = {
           _json_id: this._json_id,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
+          text: { code: this.courseCode.toUpperCase(), name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period }
         };
 
         return arr;
@@ -97,7 +97,6 @@ class Node {
       try {
         var resArr = lookup(courseCode);
       } catch (e) {
-        console.log("unexpected error. probably networking, redirecting");
         // Simulate an HTTP redirect:
         window.location.replace("errorPage.html");
       }
@@ -124,8 +123,6 @@ class Node {
 
       }
     }
-    // addDup(){
-    // }
 
     // recursively goes through all prerequisites according to json files.
     // fully constructs tree object for later export.
@@ -140,6 +137,7 @@ class Node {
 
       var lookup = this.jsonToArray();
       // reqArr can have the dataformat: ["IS1206", "ID1019"] or [["IX1500", "IS1610"], ID1018]
+
       var reqArr = lookup[1];
       this.setName(lookup[0]);
       this.addHp(lookup[3]);
@@ -151,7 +149,7 @@ class Node {
       for (var i = 0; i < reqArr.length; i++) {
 
         // displays whats loading on loading page :)
-        document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
+        // document.getElementById("loadingText").innerHTML = "Loading " + reqArr[i];
 
         // if the required course is represented by and array of courses those are
         // seen as equivalent courses.
