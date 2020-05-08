@@ -74,11 +74,12 @@ function searching(data){ // Originally Erik/Celine
   return finalResultArray;
 }
 
-//first function called, eitehr takes a course ID as argument or a course code
+// first function called, eitehr takes a course ID as argument or a course code or a course name
 //1. input: a valid course ID     output: pass JSON object as an argument to searching(data) and returns the prerequisites of the input course
 //2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
 //3. input: an invalid courseID/course name    output: lead you to course not found page
 function lookup(courseIDorName){ // Originally Patrick/Jing group
+  console.log(courseIDorName);
   if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)) { //If input is a courseID search directly and build the tree
     var jsonObject;
     var request = new XMLHttpRequest();
@@ -95,10 +96,12 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
   }
   else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
     var request = new XMLHttpRequest();
+    //console.log("Yes, this is an else thank you");
     request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
     request.send(null);
 
     if (request.status === 200) {// That's HTTP for 'ok'
+    //console.log("200 ok message");
       jsonOBJ = JSON.parse(request.responseText);
       var temp;
       var courseArr = [];
@@ -107,12 +110,12 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
       for(i=0; i<jsonOBJ.searchHits.length; i++){
         temp = jsonOBJ.searchHits[i].course;
         courseArr[i] = temp.courseCode;
-        courseNames[i] = lookup(temp.courseCode)[0];
+        courseNames[i] = temp.title;
       }
     }
     //console.log(courseArr);
     //document.write("Here are the courses that are relevant to your searching: ");
-  //If there're relavant courses found, generate one button for each course code
+   //If there're relavant courses found, generate one button for each course code
     if(courseArr.length>0){
      for(i = 0; i < courseArr.length; i++){
       var path = "" + window.location.href;
