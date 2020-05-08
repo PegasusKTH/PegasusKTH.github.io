@@ -26,6 +26,7 @@
       <script type="text/javascript" src="js/lookup.js"></script>
       <script type="text/javascript" src="js/node.js"></script>
       <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/prereqList.js"></script>
 
     <div id="container">
       <div id="content-wrap">
@@ -52,10 +53,22 @@
           </div>
           <section>
             <!-- Section 1 -->
-            <section id="section1" class="graphnlist col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div>List representation of prerequisites</div>
-                <div>
-                  ...
+            <section id="section1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="graphnlist">List representation of prerequisites</div>
+                <div id="prereqList">
+                  <script>
+                  traverseGraph(getRootNode());
+
+                  var toggler = document.getElementsByClassName("caret2");
+                  var i;
+
+                  for (i = 0; i < toggler.length; i++) {
+                    toggler[i].addEventListener("click", function() {
+                      this.parentElement.querySelector(".nested2").classList.toggle("active");
+                      this.classList.toggle("caret2-down");
+                    });
+                  }
+                  </script>
                 </div>
             </section>
 
