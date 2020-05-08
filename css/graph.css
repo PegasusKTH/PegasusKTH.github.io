@@ -32,15 +32,27 @@ h1{
   margin-right: 45.8%;
 }
 
+#loading-background{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  margin: 0 !important;
+  padding-left: 0px;
+  padding-right: 0px;
+  
+}
+
 
 #loadingContainer {
   height: 100%;
   width: 100%;
   /* background-color:#ffffff; */
-  background-image: url("../image/background-load-screen-optimized.gif");
-  position: absolute;
+    position: absolute;
   z-index: 99 !important;
+
 }
+
+
 
 #loadingText {
   text-align: center;
