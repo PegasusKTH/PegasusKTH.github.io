@@ -37,9 +37,21 @@
           <h1 id="prereqHeader" class="center"></h1>
           <!-- writes Prerequisites for course: XXXX. XXXX is replaced with course code  -->
           <script>
-            var urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
-            if (urlCourse != null){
-              document.getElementById("prereqHeader").innerHTML = " prerequisites for course: " + urlCourse[0].toUpperCase();
+            var urlCourse;
+            if(urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)){
+              if (urlCourse != null){
+                document.getElementById("prereqHeader").innerHTML = " Prerequisites for course: " + urlCourse[0].toUpperCase();
+              }
+            }
+            if(urlCourse = window.location.href.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)){
+              if (urlCourse != null){
+                document.getElementById("prereqHeader").innerHTML = " Prerequisites for course: " + urlCourse[0].toUpperCase();
+              }
+            }
+            if(urlCourse = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi)){
+              if (urlCourse != null){
+                document.getElementById("prereqHeader").innerHTML = " Prerequisites for course: " + urlCourse[0].toUpperCase();
+              }
             }
           </script>
         </div>
@@ -47,8 +59,8 @@
         <div>
           <div class ="graphSearchBoxDiv col-lg-6 col-md-6 col-sm-6 col-xs-6" id="graphSearchBox">
             <form action="graph.html" method="GET">
-              <input type="text" name="courseCode" required>
-              <input type="submit" value="Submit" />
+              <input type="text" name="courseCode" placeholder="Enter a course.." id="placeholder">
+              <input type="submit" value="Pegasearch!" id="searchbutton"/>
             </form>
           </div>
           <section>

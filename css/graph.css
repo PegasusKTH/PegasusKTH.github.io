@@ -28,6 +28,20 @@ h1{
 
 }
 
+#placeholder{
+  width: 16vmax;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: transparent;
+}
+
+#searchbutton{
+  background-color: transparent;
+  font-family: 'Audiowide';
+  font-size: 1.2vmax;
+  border: none;
+}
+
 #loading-image {
   margin-left: 37.5%;
   margin-top: 8%;
@@ -309,4 +323,6 @@ a:link {
 
 #graphSearchBox {
   text-align: center;
+  padding-top: 2vmax;
+  padding-bottom: 2vmax;
 }
