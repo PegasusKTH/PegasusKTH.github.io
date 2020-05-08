@@ -250,3 +250,13 @@ a:link {
 .searchLinkContainer {
   padding-left: 5%;
 }
+
+.graphSearchBoxDiv {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#graphSearchBox {
+  text-align: center;
+}
+
