@@ -77,6 +77,7 @@
 
                 //Check if input of coursecode into searchbar was correct
                 //If correct proceed with building tree
+                //Case1: the input course is in format like ID1020 (2 letters and 4 numbers)
                 if (tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 6) {
 
                     courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
@@ -85,7 +86,30 @@
                       var searchedCode = courseArray[0];
                       var simplConfig = firstCall(searchedCode);
                     }
-                  } else { //If input was not a coursecode match with string to create buttons
+                  } 
+
+                  //Case2: the input course is in format like FEP3360 (3 letter and 4 numbers)
+                  else if(tempNameStr.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 7){
+                    courseArray = window.location.href.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    } 
+                  }
+
+                  //Case3: the input course is in the format like AE212X (2 letters, 3 numbers and X/N in the end)
+                  else if(tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi) && tempNameStr.length == 6){
+                    courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    }
+                  }
+
+                  //If the input was not a coursecode but a course name instead, match with string to create buttons in a new pages
+                  else { 
 
                     var path = "" + window.location.href;
                     console.log(path);
