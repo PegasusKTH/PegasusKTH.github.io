@@ -4,6 +4,13 @@ body{
 
 }
 
+#prereqList{
+  color: #333333 !important;
+  text-align: left;
+  padding-bottom: 100px;
+  padding-left: 200px;
+}
+
 /* incoming from serchingbar, check what it does */
 #container {
   position: relative;
@@ -85,8 +92,50 @@ h1{
   width: 378px;
 }
 
+.caret2 {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret2::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret2-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(90deg);
+}
+
+.nested2 {
+  display: block;
+}
+
+.active {
+  display: none;
+}
+
+.listLink {
+  color: #1a0dab !important;
+  font-weight: normal !important;
+  font-size: 20px !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.listLink:hover {
+  text-decoration: underline !important;
+
+}
+
 .graphnlist{
-  
+
   color: #333333;
   /* text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
 
@@ -99,7 +148,6 @@ h1{
 .graphnlist section{
   width: 50%; float: left;
 }
-
 
 .center{
   display: block;
@@ -142,11 +190,14 @@ ul#footeritem li {
 }
 
 li{
-  margin: 50px;
+  /* margin: 50px;
   color: #ebb0d6;
   font-size: 20px;
   font-family: 'Manrope';
-  font-weight: bold;
+  font-weight: bold; */
+  display: list-item !important;
+text-align: -webkit-match-parent !important;
+list-style-type: none !important;
 }
 
 a:link {
@@ -261,4 +312,13 @@ a:link {
 
 .searchLinkContainer {
   padding-left: 5%;
+}
+
+.graphSearchBoxDiv {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#graphSearchBox {
+  text-align: center;
 }

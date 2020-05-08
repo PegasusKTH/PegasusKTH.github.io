@@ -16,11 +16,17 @@ h1{
 }
 
 h2{
-
   padding-top: 1rem;
   color: #333333;
   text-align: center;
   font-size: 28px;
+  font-family: 'Audiowide';
+}
+
+p{
+  padding-top: 1rem;
+  color: #333333;
+  text-align: center;
   font-family: 'Audiowide';
 }
 
@@ -63,7 +69,7 @@ h2{
 }
 
 #footer{
-  
+
   position: absolute;
   bottom:0;
   width:100%;
@@ -172,7 +178,7 @@ a:link {
    a:hover{
      color: #298fca;
    }
-   
+
    a{
      color: #ebb0d6;
      font-weight: bold;
