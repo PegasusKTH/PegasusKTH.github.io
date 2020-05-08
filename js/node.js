@@ -37,7 +37,7 @@ class Node {
         var arr = {
           _json_id: this._json_id,
           parent: this.parentNode,
-          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period, equivalent:"has equivalent" }
+          text: { code: this.courseCode, name:this.courseName.replace(" ", " "), hp:this.hp, period:this.period, equivalent:"Has equivalent" }
         };
 
         return arr;

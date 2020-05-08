@@ -79,6 +79,7 @@ function searching(data){ // Originally Erik/Celine
 //2. input: a valid course name     output: generate relavant courses as buttons and write them onto the web blank page
 //3. input: an invalid courseID/course name    output: lead you to course not found page
 function lookup(courseIDorName){ // Originally Patrick/Jing group
+
   if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)) { //If input is a courseID search directly and build the tree
     var jsonObject;
     var request = new XMLHttpRequest();
