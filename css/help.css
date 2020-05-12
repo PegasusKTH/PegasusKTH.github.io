@@ -138,7 +138,16 @@ a:link {
     min-width: 220px;
 
   }
+  ul{
 
+    max-width: 1000px;
+    color: #333333;
+    font-size: 22px;
+    margin: auto;
+    width: 80%;
+    font-family: 'Manrope';  
+
+  }
   #magnifying-glass{
     min-width: 25px;
     max-width: 40px;
