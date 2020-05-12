@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="image/tab-logo.png">
+        <link rel="stylesheet" href="js/treant/Treant.css">
+        <title> Course Selection </title>
+        <link href="css/buttonPage.css" rel="stylesheet">
+        <!-- fonts from google api for the headers -->
+        <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Audiowide&family=Days+One&family=Fredoka+One&family=Shrikhand&display=swap" rel="stylesheet">
+        <!-- fonts from google api for the content text -->
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Manrope&family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
+
+        <!-- IMPORTED SCRIPTS -->
+        <script type="text/javascript" src="js/lookup.js"></script>
+        <script type="text/javascript" src="js/node.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </head>
+
+    <body>
+      <div id="container">
+        <div id="content-wrap">
+            <div id="title" >
+              <a href="index.html">
+                <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
+              </a>
+            </div>
+
+            <!-- DIV Containing buttons -->
+            <h1 class="center">
+              Multiple courses found
+            </h1>
+            <div class = "searchLinkWrapper col-lg-6 col-md-6 col-sm-6 col-xs-6" id = "searchLinkWrapper">
+              <h2>
+                Searchresults:
+              </h2>
+              <div class = "searchLinkContainer">
+                <script>
+
+                  var path = "" + window.location.href;
+                  nameStr=[];
+                  nameStr = path.split("=");
+                  var searchedCourseName = nameStr[1].replace(/[+]+/g," ");
+
+                  lookup(searchedCourseName);
+
+                </script>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+          <footer id="footer">
+            <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
+            <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
+            <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
+            <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website</a>
+            <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
+        </footer>
+    
+    </body>
+</html>
