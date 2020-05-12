@@ -23,8 +23,7 @@ html, body{
 }
 
 #content-wrap {
-  overflow: auto;
-  padding-bottom: 70px;
+  padding-bottom: 6rem;
 }
 
 h1{
