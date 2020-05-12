@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="image/tab-logo.png">
+    <link rel="stylesheet" href="js/treant/Treant.css">
+    <title> Prerequisites </title>
+    <link href="css/graph.css" rel="stylesheet">
+    <!-- fonts from google api for the headers -->
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Audiowide&family=Days+One&family=Fredoka+One&family=Shrikhand&display=swap" rel="stylesheet">
+    <!-- fonts from google api for the content text -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Manrope&family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="image/background-load-screen-optimized.gif" as="image"> 
+
+  </head>
+
+  <body style="background-image: url('image/background3-version2.jpg');" id="background" >
+
+      <div id = "loadingContainer">
+        <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-background" src = "image/background-load-screen-optimized.gif" />
+        <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-image" src = "image/animation-big-glitter-dark-shadow.gif" />
+        <p id="loadingText">Building treestructure</p>
+      </div>
+
+
+      <script type="text/javascript" src="js/lookup.js"></script>
+      <script type="text/javascript" src="js/node.js"></script>
+      <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/prereqList.js"></script>
+
+    <div id="container">
+      <div id="content-wrap">
+        <div id="title" >
+          <a href="index.html">
+            <img src = "image/logo.png" id="pegasus" class="center" alt="Logo Pegasus Project group" title="Learning is Magic">
+          </a>
+          <h1 id="prereqHeader" class="center"></h1>
+          <!-- writes Prerequisites for course: XXXX. XXXX is replaced with course code  -->
+          <script>
+            var urlCourse = window.location.href.split('courseCode=');
+            if (urlCourse[1] != null){
+              document.getElementById("prereqHeader").innerHTML = " Prerequisites for course: " + urlCourse[1].toUpperCase();
+
+            }
+          </script>
+        </div>
+
+        <div>
+          <div class ="graphSearchBoxDiv col-lg-6 col-md-6 col-sm-6 col-xs-6" id="graphSearchBox">
+            <form action="graph.html" method="GET">
+              <input type="text" name="courseCode" placeholder="Enter a course.." id="placeholder" required>
+              <input type="submit" value="Pegasearch!" id="searchbutton"/>
+            </form>
+          </div>
+          <section>
+            <!-- Section 1 -->
+            <section id="section1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="graphnlist">List representation of prerequisites</div>
+                <div id="prereqList">
+
+                  <!-- Code handling the import of coursecode from URL tag -->
+                  <script>
+                  //Get the string entered in searchbar to use for checking if input was okey
+                  var tempPath = "" + window.location.href;
+                  tempNameStr=[];
+                  tempNameStr = tempPath.split("=")[1];
+
+                //Check if input of coursecode into searchbar was correct
+                //If correct proceed with building tree
+                //Case1: the input course is in format like ID1020 (2 letters and 4 numbers)
+                if (tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 6) {
+
+                    courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    }
+                  }
+
+                  //Case2: the input course is in format like FEP3360 (3 letter and 4 numbers)
+                  else if(tempNameStr.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) && tempNameStr.length == 7){
+                    courseArray = window.location.href.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    }
+                  }
+
+                  //Case3: the input course is in the format like AE212X (2 letters, 3 numbers and X/N in the end)
+                  else if(tempNameStr.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi) && tempNameStr.length == 6){
+                    courseArray = window.location.href.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi);
+                    var isthereTree = 0;
+                    if(courseArray!=null){
+                      var searchedCode = courseArray[0];
+                      var simplConfig = firstCall(searchedCode);
+                    }
+                  }
+                  else { //If the input was not a coursecode but a course name instead, match with string to create buttons in a new pages
+
+                     var path = "" + window.location.href;
+                     console.log(path);
+                     nameStr=[];
+                     nameStr = path.split("=");
+                     window.location.href = "buttonPage.html?search=" + nameStr[1];
+
+                    }
+
+                  traverseGraph(getRootNode());
+
+                  var toggler = document.getElementsByClassName("caret2");
+                  var i;
+                  for (i = 0; i < toggler.length; i++) {
+                    toggler[i].addEventListener("click", function() {
+                      this.parentElement.querySelector(".nested2").classList.toggle("active");
+                      this.classList.toggle("caret2-down");
+                    });
+                  }
+                  </script>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="graphnlist">Tree representation of prerequisites</div>
+
+              <!-- div for the tree -->
+              <div class="chart" id="chart" style="width:80%; float:right;">
+              </div>
+
+                <!-- Libraries and creating the tree itself -->
+                <script src="js/treant/Treant.js"></script>
+                <script src="js/jquery-3.5.0.min.js"></script>
+                <script src="js/raphael.js"></script>
+
+                <script type="text/javascript" src="js/main.js"></script>
+                <script type="text/javascript">
+
+                tree = new Treant( simplConfig, $ );
+
+                </script>
+                <script>
+                  $(document).ready(function(){
+                      $("#loadingContainer").fadeOut();
+                  });
+                </script>
+            </section>
+          </section>
+        </div>
+
+      </div>
+      <footer id="footer">
+      <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
+      <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
+      <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
+      <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website</a>
+      <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
+      </footer>
+      
+    </div>
+  </body>
+</html>
