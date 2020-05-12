@@ -80,7 +80,7 @@ function searching(data){ // Originally Erik/Celine
 //3. input: an invalid courseID/course name    output: lead you to course not found page
 function lookup(courseIDorName){ // Originally Patrick/Jing group
 
-  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) || courseIDorName.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)  || courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi)) { //If input is a courseID search directly and build the tree
+  if (courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][0-9]/gi) || courseIDorName.match(/[A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]/gi)  || courseIDorName.match(/[A-Z][A-Z][0-9][0-9][0-9][A-Z]/gi) || courseIDorName.match(/[A-Z][0-9][A-Z][0-9][0-9][0-9][0-9]/gi)) { //If input is a courseID search directly and build the tree
     var jsonObject;
     var request = new XMLHttpRequest();
     request.open('GET', 'https://api.kth.se/api/kopps/v2/course/' + courseIDorName +  '/detailedinformation', false);  // `false` makes the request synchronous
