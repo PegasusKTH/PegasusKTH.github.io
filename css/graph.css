@@ -1,13 +1,9 @@
-
 *{
   margin: 0;
-  padding: 0;
 }
-
 
 html, body{
   height: 100%;
-
 }
 
 #prereqList{
@@ -199,7 +195,7 @@ section{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -70px;
+  clear: both;
 }
 
 ul#footeritem li {

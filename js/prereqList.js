@@ -25,7 +25,7 @@ function traverseGraph(node) {
     if (node.equivalent.length > 0 || node.prerequisites.length > 0) {
         document.writeln(
             '<li><span class="caret2">'
-                + "<a class='listLink' href=" + node.courseURL + ">" + node.courseCode + "</a>"
+                + "<a class='listLink' href=" + node.courseURL + ">" + node.courseCode.toUpperCase() + "</a>"
                 + " - "
                 + node.courseName
                 + "</span>"
