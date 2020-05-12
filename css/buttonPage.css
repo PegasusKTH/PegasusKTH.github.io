@@ -1,6 +1,10 @@
-
-body{
+*{
   margin: 0;
+  padding: 0;
+}
+
+html, body{
+  height: 100%;
 
 }
 
@@ -13,12 +17,12 @@ body{
 
 /* incoming from serchingbar, check what it does */
 #container {
-  position: relative;
-  min-height: 100vh;
+  min-height: 100%
 }
 
 #content-wrap {
-  padding-bottom: 1rem;
+  overflow: auto;
+  padding-bottom: 70px;
 }
 
 h1{
@@ -167,13 +171,15 @@ section{
 
 #footer{
   position: relative;
-  bottom:0;
+  /*bottom:0;*/
   width:100%;
   height:70px;
   background-color: rgba(200,200,200,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -70px;
+  clear: both;
 }
 
 ul#footeritem li {

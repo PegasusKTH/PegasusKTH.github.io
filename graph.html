@@ -12,16 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Audiowide&family=Days+One&family=Fredoka+One&family=Shrikhand&display=swap" rel="stylesheet">
     <!-- fonts from google api for the content text -->
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&family=Manrope&family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="image/background-load-screen-optimized.gif" as="image"> 
+
   </head>
 
   <body style="background-image: url('image/background3-version2.jpg');" id="background" >
 
       <div id = "loadingContainer">
+        <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-background" src = "image/background-load-screen-optimized.gif" />
         <img class= "col-lg-3 col-md-3 col-sm-3 col-xs-3"  id = "loading-image" src = "image/animation-big-glitter-dark-shadow.gif" />
-        <!-- RIP cat -->
-        <!-- <img class= "col-lg-1 col-md-1 col-sm-1 col-xs-1"  id = "loading-image-bar" src = "image/catSpin.gif"/> -->
         <p id="loadingText">Building treestructure</p>
       </div>
+
 
       <script type="text/javascript" src="js/lookup.js"></script>
       <script type="text/javascript" src="js/node.js"></script>
@@ -151,13 +154,14 @@
 
       </div>
 
-      <footer id="footer">
+     
+    </div>
+    <footer id="footer">
       <a href="index.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Home &nbsp</a>
       <a href="about.html" class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> About &nbsp</a>
       <a href="help.html"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Help/FAQ &nbsp</a>
       <a href="https://pegasuskth.github.io/pegasus-projectpage.github.io/"  class="col-lg-2 col-sm-2 col-md-2 col-xs-2"> Project Website</a>
       <a href="mailto:rasham@kth.se" class="col-lg-2 col-sm-2 col-md-2 col-xs-2">Contact:&nbsp rasham@kth.se</a>
       </footer>
-    </div>
   </body>
 </html>
