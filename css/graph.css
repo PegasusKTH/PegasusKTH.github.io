@@ -1,7 +1,9 @@
-
-body{
+*{
   margin: 0;
-  padding: 0;
+}
+
+html, body{
+  height: 100%;
 }
 
 #prereqList{
@@ -17,7 +19,8 @@ body{
 }
 
 #content-wrap {
-  padding-bottom: 6rem;
+  overflow: auto;
+  padding-bottom: 70px;
 }
 
 h1{
@@ -192,7 +195,7 @@ section{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -70px;
+  clear: both;
 }
 
 ul#footeritem li {
