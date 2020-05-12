@@ -97,8 +97,12 @@ function lookup(courseIDorName){ // Originally Patrick/Jing group
   else { //If input is valid course-name create buttons for all related courses with that name, and show courseID on button
     var request = new XMLHttpRequest();
     request.open('GET', "https://api.kth.se/api/kopps/v2/courses/search?text_pattern=" + courseIDorName, false);  // `false` makes the request synchronous
-    request.send(null);
-
+    try{
+      request.send(null);
+    }
+    catch(e){
+      window.location.replace("errorPage.html");
+    }
     if (request.status === 200) {// That's HTTP for 'ok'
       jsonOBJ = JSON.parse(request.responseText);
       var temp;
